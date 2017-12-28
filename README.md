@@ -38,6 +38,8 @@
 - **!avatar <user mention>**: Display the avatar of the user
 - **!ping**: Display the current ping of the bot
 - **!invite**: Generate an invite link to the server
+- **!rank join <role>**: Make you join a role
+- **!rank leave <role>**: Make you remove you a role
 
 ## Creator and contributors ###
 

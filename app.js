@@ -103,7 +103,9 @@ bot.on('message', function(message) {
         	    **${prefix}avatar <mentionned user>:** Show your avatar
         	    **${prefix}ping:** Show the bot ping
         	    **${prefix}invite** Create a 24h link to the server
-    	    `);
+				**${prefix}rank join <role>** Make you join a role
+				**${prefix}rank leave <role>** Make you leave a role
+				`);
 		}  else {
 			message.reply(`This command is not available for the moment`);
 		}
