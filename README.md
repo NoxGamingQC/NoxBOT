@@ -51,8 +51,6 @@
 
 - NoxRacing
 
----
-
 ### Usefull Link
 
 [GitHub](https://github.com/NoxRacing/NoxButt)
