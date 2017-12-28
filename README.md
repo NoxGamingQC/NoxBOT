@@ -36,8 +36,9 @@
 
 - **!commands**: Display bot commands
 - **!avatar 'user mention'**: Display the avatar of the user
-- **!ping**: Display the current ping of the bot
 - **!invite**: Generate an invite link to the server
+- **!lmgtfy**: Send you a LMGTFY link
+- **!ping**: Display the current ping of the bot
 - **!rank list**: List of all joinable roles
 - **!rank join 'role'**: Make you join a role
 - **!rank leave 'role'**: Make you remove you a role

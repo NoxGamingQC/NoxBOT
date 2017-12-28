@@ -104,13 +104,14 @@ bot.on('message', function(message) {
 		if(modules.commands) {
         	message.author.send(`
         	${message.author}, Theres is the list of command you can use!
-        	    **${prefix}commands**: Get ${bot.user} commands
+        	    **${prefix}commands:** Get ${bot.user} commands
         	    **${prefix}avatar <mentionned user>:** Show your avatar
+				**${prefix}invite:** Create a 24h link to the server
+				**${prefix}lmgtfy <search terms>:** Send you a LMGTFY link
         	    **${prefix}ping:** Show the bot ping
-        	    **${prefix}invite** Create a 24h link to the server
-				**${prefix}rank list** List of all joinable roles
-				**${prefix}rank join <role>** Make you join a role
-				**${prefix}rank leave <role>** Make you leave a role
+				**${prefix}rank list:** List of all joinable roles
+				**${prefix}rank join <role>:** Make you join a role
+				**${prefix}rank leave <role>:** Make you leave a role
 				`);
 		}  else {
 			message.reply(`This command is not available for the moment`);
@@ -164,9 +165,9 @@ bot.on('message', function (message) {
 });
 
 bot.on('message', function (message) {
-	if (message.content === prefix + 'lmgtfy') {
+	var parts = message.content.split(" ");
+	if (parts[0] === prefix + 'lmgtfy') {
 		if (modules.lmgtfy) {
-			var parts = message.content.split(" ");
 			parts.forEach(function(word, key) {
 				if(key == 1) {
 					content = word;
@@ -175,7 +176,7 @@ bot.on('message', function (message) {
 					content += '+'+word;
 				}
 			});
-			message.reply('There is a link: http://lmgtfy.com/?q=' + content);
+			message.reply('Here is a link: http://lmgtfy.com/?q=' + content);
 		} else {
 			message.reply(`This command is not available for the moment`);
 		}
