@@ -41,6 +41,12 @@
 - **!invite**: Generate an invite link to the server
 - **!lmgtfy**: Send you a LMGTFY link
 - **!ping**: Display the current ping of the bot
+
+- **!psn**: Get NoxRacing's PSN Username
+- **!steam**: Get NoxRacing's Steam profile link
+- **!twitch**: Get NoxRacing's Twitch channel link
+- **!xbl**: Get NoxRacing's Xbox Live Username
+
 - **!rank list**: List of all joinable roles
 - **!rank join 'role'**: Make you join a role
 - **!rank leave 'role'**: Make you remove you a role
