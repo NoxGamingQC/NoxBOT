@@ -2,7 +2,7 @@
   "name": "NoxButt",
   "version": "1.0.0",
   "description": "NoxRacing's Discord bot",
-  "main": "bot.js",
+  "main": "app.js",
   "author": "Jimmy Béland-Bédard",
   "dependencies": {
     "discord.js": "^11.2.1"

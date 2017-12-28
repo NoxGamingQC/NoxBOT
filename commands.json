@@ -1,0 +1,8 @@
+{
+	"avatar": true,
+	"commands": true,
+	"ping": true,
+	"invite": true,
+	"welcome_join": true,
+	"welcome_leave": true
+}
