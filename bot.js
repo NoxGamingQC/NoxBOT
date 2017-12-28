@@ -32,11 +32,21 @@ bot.on('message', function(message) {
         message.channel.send(`${bot.user} average ping: ${bot.ping}ms`);
     }
     if (message.content === prefix + 'invite') {
-        message.guild.channels.find('name', 'language_setup').createInvite([options => {
-            maxAge: 86400
-        }]).then(function(link) {
-            message.reply(`There is an invite link to the channel: ${link}`);
-        });
+        var server = message.guild;
+        if(server) {
+            var channel = server.channels.find('name', 'language_setup');
+            if(channel) {
+                channel.createInvite([options => {
+                    maxAge: 86400
+                }]).then(function(link) {
+                    message.reply(`There is an invite link to the channel: ${link}`);
+                });
+            } else {
+                message.reply(`Server room #language_setup not found`);
+            }
+        } else {
+            message.reply(`Please use this command in a server`);
+        }
     }
 });
 
@@ -45,8 +55,8 @@ bot.on('message', function(message) {
     var parts = content.split(" ");
     var commandName = parts[0];
     if(commandName === prefix+'avatar') {
-        if (parts[1].indexOf('@') == -1) {
-            return;
+        if (!parts[1] || parts[1].indexOf('@') == -1) {
+            message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
         }
         var userID = parts[1].replace('@', '').replace('<', '').replace('>', '');
         var userMentionned = null;
@@ -55,7 +65,11 @@ bot.on('message', function(message) {
                 userMentionned = user;
             };
         });
-        message.reply(userMentionned.avatarURL);
+        if(userMentionned) {
+            message.reply(userMentionned.avatarURL);
+        } else {
+            message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
+        }
     }
 });
 
@@ -63,10 +77,10 @@ bot.on('message', function(message) {
     if (message.content === prefix + 'commands') {
         message.author.send(`
         ${message.author}, Theres is the list of command you can use!
-            **!commands**: Get ${bot.user} commands
-            **!avatar <mentionned user>:** Show your avatar
-            **!ping:** Show the bot ping
-            **!invite** Create a 24h link to the server
+            **${prefix}commands**: Get ${bot.user} commands
+            **${prefix}avatar <mentionned user>:** Show your avatar
+            **${prefix}ping:** Show the bot ping
+            **${prefix}invite** Create a 24h link to the server
             `);
     }
 });
