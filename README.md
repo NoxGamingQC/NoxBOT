@@ -22,7 +22,6 @@
 - Install pm2 so the bot will be able to restart if it crash `npm install pm2 -g`
 - The bot should work if there any issue report it on the main repository Link at the bottom of the page
 
-
 ## Starting the bot
 
 - `pm2 start app.js`
