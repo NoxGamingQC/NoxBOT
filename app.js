@@ -162,3 +162,22 @@ bot.on('message', function (message) {
 		}
 	}
 });
+
+bot.on('message', function (message) {
+	if (message.content === prefix + 'lmgtfy') {
+		if (modules.lmgtfy) {
+			var parts = message.content.split(" ");
+			parts.forEach(function(word, key) {
+				if(key == 1) {
+					content = word;
+				}
+				if(key > 1) {
+					content += '+'+word;
+				}
+			});
+			message.reply('There is a link: http://lmgtfy.com/?q=' + content);
+		} else {
+			message.reply(`This command is not available for the moment`);
+		}
+	}
+});

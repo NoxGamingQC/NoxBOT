@@ -5,6 +5,7 @@
 	"invite": true,
 	"welcome_join": true,
 	"welcome_leave": true,
+	"lmgtfy": false,
 	"rank": {
 		"list": true,
 		"join": true,
