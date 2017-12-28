@@ -1,0 +1,72 @@
+const Discord = require('discord.js');
+const config = require('./config.json');
+const bot = new Discord.Client();
+const prefix = config.prefix;
+
+bot.on('ready', function () {
+    console.log("Bot Launched...");
+    bot.user.setStatus('dnd'); // Status can be 'OnLine', 'idle', 'invisible', or 'dnd'
+    bot.user.setGame('Watching NoxRacing channel', 'https://www.twitch.tv/noxracing');
+});
+
+bot.login(config.token);
+
+bot.on('guildMemberAdd', member => {
+    const channel = member.guild.channels.find('name', 'everyone_room');
+    if (!channel) {
+        return;
+    }
+    channel.send(`${member}, welcome in **${member.guild.name}** :wink:`);
+});
+
+bot.on('guildMemberRemove', member => {
+    const channel = member.guild.channels.find('name', 'everyone_room');
+    if (!channel) {
+        return;
+    }
+    channel.send(`**${member}** just left us. Bye bye **${member}** :sob:`);
+});
+
+bot.on('message', message => {
+    if (message.content === prefix + 'ping') {
+        message.channel.send(`${bot.user} average ping: ${bot.ping}ms`);
+    }
+    if (message.content === prefix + 'invite') {
+        message.guild.channels.find('name', 'language_setup').createInvite([options => {
+            maxAge: 86400
+        }]).then(link => {
+            message.reply(`There is an invite link to the channel: ${link}`);
+        });
+    }
+});
+
+bot.on('message', message => {
+    var content = message.content;
+    var parts = content.split(" ");
+    var commandName = parts[0];
+    if(commandName === prefix+'avatar') {
+        if (parts[1].indexOf('@') == -1) {
+            return;
+        }
+        var userID = parts[1].replace('@', '').replace('<', '').replace('>', '');
+        var userMentionned = null;
+        bot.users.forEach(function(user) {
+            if(user.id === userID) {
+                userMentionned = user;
+            };
+        });
+        message.reply(userMentionned.avatarURL);
+    }
+});
+
+bot.on('message', message => {
+    if (message.content === prefix + 'commands') {
+        message.author.send(`
+        ${message.author}, Theres is the list of command you can use!
+            **!commands**: Get ${bot.user} commands
+            **!avatar <mentionned user>:** Show your avatar
+            **!ping:** Show the bot ping
+            **!invite** Create a 24h link to the server
+            `);
+    }
+});
