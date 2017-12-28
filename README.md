@@ -26,15 +26,15 @@
 
 ## Starting the bot
 
-    - `pm2 start app.js`
+- `pm2 start app.js`
 
 ## Stopping the bot
 
-    - `pm2 stop app.js`
+- `pm2 stop app.js`
 
 ## Get bot logs
 
-    - `pm2 logs app`
+- `pm2 logs app`
 
 ## Bot commands
 
