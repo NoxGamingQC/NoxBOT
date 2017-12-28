@@ -1,26 +1,27 @@
 # NoxButt
+
 ## Settings up your environement
 
 ### Prerequisites
 
-    - npm
-    - nodejs
-    - A discord account
+- npm
+- nodejs
+- A discord account
 
 ### Step
 
-    - Create a new repository
-    - Navigate into the new repository
-    - Fork the project
-    - Import the git repository into it `git remote add origin <repository_git_url>`
-    - Duplicate `config.json.exemple` and name it `config.json`
-    - Go to https://discordapp.com/developers/applications/me
-    - And create a new app
-    - Make the app a bot user
-    - Replace the token line by your discord bot token
-    - Install the node_modules `npm install`
-    - Install pm2 so the bot will be able to restart if it crash `npm install pm2 -g`
-    - The bot should work if there any issue report it on the main repository Link at the bottom of the page
+- Create a new repository
+- Navigate into the new repository
+- Fork the project
+- Import the git repository into it `git remote add origin <repository_git_url>`
+- Duplicate `config.json.exemple` and name it `config.json`
+- Go to https://discordapp.com/developers/applications/me
+- And create a new app
+- Make the app a bot user
+- Replace the token line by your discord bot token
+- Install the node_modules `npm install`
+- Install pm2 so the bot will be able to restart if it crash `npm install pm2 -g`
+- The bot should work if there any issue report it on the main repository Link at the bottom of the page
 
 
 ## Starting the bot
