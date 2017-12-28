@@ -57,6 +57,7 @@ bot.on('message', function(message) {
     if(commandName === prefix+'avatar') {
         if (!parts[1] || parts[1].indexOf('@') == -1) {
             message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
+            return;
         }
         var userID = parts[1].replace('@', '').replace('<', '').replace('>', '');
         var userMentionned = null;
@@ -69,6 +70,7 @@ bot.on('message', function(message) {
             message.reply(userMentionned.avatarURL);
         } else {
             message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
+            return;
         }
     }
 });
