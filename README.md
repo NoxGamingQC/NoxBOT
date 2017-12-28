@@ -10,13 +10,13 @@
 
 - Create a new repository
 
-- Navigate into the new repository 
+- Navigate into the new repository
 
 - Fork the project
 
 - Import the git repository into it `git remote add origin <repository_git_url>`
 
-- Duplicate `auth.json.exemple` and name it `auth.json`
+- Duplicate `config.json.exemple` and name it `config.json`
 
 - Go to https://discordapp.com/developers/applications/me
 
@@ -30,7 +30,7 @@
 
 - The bot should work if there any issue report it on the main repository Link at the bottom of the page
 
-- 
+-
   ## Starting the bot
 
 - `node bot.js`
