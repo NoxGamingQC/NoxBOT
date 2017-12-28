@@ -103,16 +103,21 @@ bot.on('message', function(message) {
     if (message.content === prefix + 'commands') {
         if(modules.commands) {
             message.author.send(`
-            ${message.author}, Theres is the list of command you can use!
+                ${message.author}, Theres is the list of command you can use!
+
                 **${prefix}commands:** Get ${bot.user} commands
                 **${prefix}avatar <mentionned user>:** Show your avatar
                 **${prefix}invite:** Create a 24h link to the server
                 **${prefix}lmgtfy <search terms>:** Send you a LMGTFY link
                 **${prefix}ping:** Show the bot ping
+                **${prefix}psn:** Get NoxRacing's PSN Username
+                **${prefix}steam:** Get NoxRacing's Steam profile link
+                **${prefix}twitch:** Get NoxRacing's Twitch channel link
+                **${prefix}xbl:** Get NoxRacing's Xbox Live Username
                 **${prefix}rank list:** List of all joinable roles
                 **${prefix}rank join <role>:** Make you join a role
                 **${prefix}rank leave <role>:** Make you leave a role
-                `);
+            `);
         }  else {
             message.reply(`This command is not available for the moment`);
         }
@@ -182,3 +187,44 @@ bot.on('message', function (message) {
         }
     }
 });
+
+bot.on('message', function (message) {
+    if (message.content === prefix + 'psn') {
+        if (modules.rank.leave) {
+            message.reply('NoxRacing\'s Playstation Network username is: `HowlNox22607`');
+        } else {
+            message.reply(`This command is not available for the moment`);
+        }
+    }
+});
+
+bot.on('message', function (message) {
+    if (message.content === prefix + 'steam') {
+        if (modules.rank.leave) {
+            message.reply('NoxRacing Steam profile page link is: http://steamcommunity.com/id/Noxracing/');
+        } else {
+            message.reply(`This command is not available for the moment`);
+        }
+    }
+});
+
+bot.on('message', function (message) {
+    if (message.content === prefix + 'twitch') {
+        if (modules.rank.leave) {
+            message.reply('You can join NoxRacing Channel at: https://www.twitch.tv/noxracing');
+        } else {
+            message.reply(`This command is not available for the moment`);
+        }
+    }
+});
+
+bot.on('message', function (message) {
+    if (message.content === prefix + 'xbl') {
+        if (modules.rank.leave) {
+            message.reply('NoxRacing\'s Xbox Live username is: `HowlNox22607`');
+        } else {
+            message.reply(`This command is not available for the moment`);
+        }
+    }
+});
+
