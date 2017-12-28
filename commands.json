@@ -6,9 +6,52 @@
 	"welcome_join": true,
 	"welcome_leave": true,
 	"lmgtfy": true,
+	"psn": true,
+	"steam": true,
+	"twitch": true,
+	"xbl": true,
+	"live": true,
+	"hug": true,
 	"rank": {
 		"list": true,
 		"join": true,
 		"leave": true
+	},
+	"voice": {
+		"init": true,
+		"play":true,
+		"destroy":true
+	},
+	"moderation": {
+		"purge": true,
+		"message": {
+			"deleted": true,
+			"updated": true
+		},
+		"channel": {
+			"created": true,
+			"updated":true,
+			"deleted": true
+		},
+		"server": {
+			"updated": true
+		},
+		"role": {
+			"updated": true,
+			"deleted": true
+		},
+		"member": {
+			"added": true,
+			"removed": true,
+			"banned": true,
+			"unbanned": true,
+			"update": true
+		},
+		"user": true,
+		"voice": {
+			"join": true,
+			"switch": true,
+			"leave": true
+		}
 	}
 }
