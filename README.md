@@ -1,0 +1,2 @@
+# NoxButt
+A discord bot
