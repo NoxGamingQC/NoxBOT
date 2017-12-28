@@ -5,9 +5,14 @@ const bot = new Discord.Client({autoReconnect:true});
 const prefix = config.prefix;
 
 bot.on('ready', function () {
-    console.log("Bot Launched...");
-    bot.user.setStatus('Online'); // Status can be 'OnLine', 'idle', 'invisible', or 'dnd'
-    bot.user.setGame(prefix+'commands'/*, 'https://www.twitch.tv/noxracing'*/); //In comment is for making the bot streaming live on twitch
+	console.log("Bot Launched...");
+	if(config.development) {
+		bot.user.setStatus('dnd'); // Status can be 'OnLine', 'idle', 'invisible', or 'dnd'
+		bot.user.setGame(prefix + 'commands | In development...');
+	} else {
+		bot.user.setStatus('Online');
+		bot.user.setGame(prefix+'commands');
+	}
 });
 
 bot.login(config.token);
@@ -103,6 +108,7 @@ bot.on('message', function(message) {
         	    **${prefix}avatar <mentionned user>:** Show your avatar
         	    **${prefix}ping:** Show the bot ping
         	    **${prefix}invite** Create a 24h link to the server
+				**${prefix}rank list** List of all joinable roles
 				**${prefix}rank join <role>** Make you join a role
 				**${prefix}rank leave <role>** Make you leave a role
 				`);
@@ -116,20 +122,43 @@ bot.on('message', function(message) {
 bot.on('message', function (message) {
 	Object.keys(config.assignable_roles).forEach(function(assignableRole) {
 		if (message.content === prefix + 'rank join ' + assignableRole) {
-			message.guild.roles.forEach(function (role) {
-				if(role.name == config.assignable_roles[assignableRole]) {
-					message.member.addRole(role.id);
-					message.react("☑");
-				}
-			});
+			if(modules.rank.join) {
+				message.guild.roles.forEach(function (role) {
+					if(role.name == config.assignable_roles[assignableRole]) {
+						message.member.addRole(role.id);
+						message.react("☑");
+					}
+				});
+			} else {
+				message.reply(`This command is not available for the moment`);
+			}
 		}
 		if (message.content === prefix + 'rank leave ' + assignableRole) {
-			message.guild.roles.forEach(function (role) {
-				if (role.name == config.assignable_roles[assignableRole]) {
-					message.member.removeRole(role.id);
-					message.react("☑");
-				}
-			});
+			if (modules.rank.leave) {
+				message.guild.roles.forEach(function (role) {
+					if (role.name == config.assignable_roles[assignableRole]) {
+						message.member.removeRole(role.id);
+						message.react("☑");
+					}
+				});
+			} else {
+				message.reply(`This command is not available for the moment`);
+			}
 		}
 	});
+});
+
+bot.on('message', function (message) {
+	if (message.content === prefix + 'rank list') {
+		if (modules.rank.leave) {
+			var rankList = [];
+			Object.keys(config.assignable_roles).forEach(function (assignableRole) {
+				rankList.push('+'+assignableRole);
+			});
+			var content = rankList.join('\n');
+			message.reply('There is a list of joinable roles:\n```diff\n'+content+'```');
+		} else {
+			message.reply(`This command is not available for the moment`);
+		}
+	}
 });

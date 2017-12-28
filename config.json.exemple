@@ -1,7 +1,8 @@
 {
 	"token": "",
-	"prefix": "!",
-	"commands": {
+	"prefix": "/",
+	"development": false,
+	"room": {
 		"welcome_page_name": "everyone_room",
 		"welcome_room_fr": "general_room",
 		"welcome_room_en": "salon_general",

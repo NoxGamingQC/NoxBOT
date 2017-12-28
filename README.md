@@ -28,18 +28,19 @@
 
 ## Stopping the bot
 
-  `pm2 stop app.js`
+- `pm2 stop app.js`
 ## Get bot logs
-`pm2 logs app`
+- `pm2 logs app`
 
 ## Bot commands
 
 - **!commands**: Display bot commands
-- **!avatar <user mention>**: Display the avatar of the user
+- **!avatar 'user mention'**: Display the avatar of the user
 - **!ping**: Display the current ping of the bot
 - **!invite**: Generate an invite link to the server
-- **!rank join <role>**: Make you join a role
-- **!rank leave <role>**: Make you remove you a role
+- **!rank list**: List of all joinable roles
+- **!rank join 'role'**: Make you join a role
+- **!rank leave 'role'**: Make you remove you a role
 
 ## Creator and contributors ###
 
