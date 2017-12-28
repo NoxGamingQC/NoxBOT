@@ -11,7 +11,7 @@ bot.on('ready', function () {
 
 bot.login(config.token);
 
-bot.on('guildMemberAdd', member => {
+bot.on('guildMemberAdd', function(member) {
     const channel = member.guild.channels.find('name', 'everyone_room');
     if (!channel) {
         return;
@@ -19,7 +19,7 @@ bot.on('guildMemberAdd', member => {
     channel.send(`${member}, welcome in **${member.guild.name}** :wink:`);
 });
 
-bot.on('guildMemberRemove', member => {
+bot.on('guildMemberRemove', function(member) {
     const channel = member.guild.channels.find('name', 'everyone_room');
     if (!channel) {
         return;
@@ -27,20 +27,20 @@ bot.on('guildMemberRemove', member => {
     channel.send(`**${member}** just left us. Bye bye **${member}** :sob:`);
 });
 
-bot.on('message', message => {
+bot.on('message', function(message) {
     if (message.content === prefix + 'ping') {
         message.channel.send(`${bot.user} average ping: ${bot.ping}ms`);
     }
     if (message.content === prefix + 'invite') {
         message.guild.channels.find('name', 'language_setup').createInvite([options => {
             maxAge: 86400
-        }]).then(link => {
+        }]).then(function(link) {
             message.reply(`There is an invite link to the channel: ${link}`);
         });
     }
 });
 
-bot.on('message', message => {
+bot.on('message', function(message) {
     var content = message.content;
     var parts = content.split(" ");
     var commandName = parts[0];
@@ -59,7 +59,7 @@ bot.on('message', message => {
     }
 });
 
-bot.on('message', message => {
+bot.on('message', function(message) {
     if (message.content === prefix + 'commands') {
         message.author.send(`
         ${message.author}, Theres is the list of command you can use!
