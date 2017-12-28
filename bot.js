@@ -5,7 +5,7 @@ const prefix = config.prefix;
 
 bot.on('ready', function () {
     console.log("Bot Launched...");
-    bot.user.setStatus('dnd'); // Status can be 'OnLine', 'idle', 'invisible', or 'dnd'
+    bot.user.setStatus('Online'); // Status can be 'OnLine', 'idle', 'invisible', or 'dnd'
     bot.user.setGame('Watching NoxRacing channel', 'https://www.twitch.tv/noxracing');
 });
 
