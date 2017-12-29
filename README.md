@@ -1,10 +1,12 @@
 # NoxButt
+
 ## Settings up your environement
 
 ### Prerequisites
- - npm
- - nodejs
- - A discord account
+
+- npm
+- nodejs
+- A discord account
 
 ### Step
 
@@ -13,14 +15,12 @@
 - Fork the project
 - Import the git repository into it `git remote add origin <repository_git_url>`
 - Duplicate `config.json.exemple` and name it `config.json`
-- Go to https://discordapp.com/developers/applications/me
-- And create a new app
+- Go to [Discord devloppers website](https://discordapp.com/developers/applications/me) and create a new app
 - Make the app a bot user
 - Replace the token line by your discord bot token
 - Install the node_modules `npm install`
 - Install pm2 so the bot will be able to restart if it crash `npm install pm2 -g`
 - The bot should work if there any issue report it on the main repository Link at the bottom of the page
-
 
 ## Starting the bot
 
@@ -29,24 +29,34 @@
 ## Stopping the bot
 
 - `pm2 stop app.js`
+
 ## Get bot logs
+
 - `pm2 logs app`
 
 ## Bot commands
 
 - **!commands**: Display bot commands
 - **!avatar 'user mention'**: Display the avatar of the user
-- **!ping**: Display the current ping of the bot
 - **!invite**: Generate an invite link to the server
+- **!lmgtfy**: Send you a LMGTFY link
+- **!ping**: Display the current ping of the bot
+
+- **!psn**: Get NoxRacing's PSN Username
+- **!steam**: Get NoxRacing's Steam profile link
+- **!twitch**: Get NoxRacing's Twitch channel link
+- **!xbl**: Get NoxRacing's Xbox Live Username
+
 - **!rank list**: List of all joinable roles
 - **!rank join 'role'**: Make you join a role
 - **!rank leave 'role'**: Make you remove you a role
 
-## Creator and contributors ###
+## Creator and contributors
 
 - NoxRacing
 
----
 ### Usefull Link
+
 [GitHub](https://github.com/NoxRacing/NoxButt)
+
 [Website](http://noxracing.herokuapp.com/projects/NoxButt)
