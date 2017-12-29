@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const roles = require('./roles.js');
 const config = require('./config.json');
 const modules = require('./commands.json');
 const bot = new Discord.Client({autoReconnect:true});
@@ -16,6 +17,8 @@ bot.on('ready', function () {
 });
 
 bot.login(config.token);
+
+roles.commands(bot, modules, prefix, config);
 
 if(modules.welcome_join) {
 	bot.on('guildMemberAdd', function(member) {
@@ -113,51 +116,6 @@ bot.on('message', function(message) {
 				**${prefix}rank leave <role>** Make you leave a role
 				`);
 		}  else {
-			message.reply(`This command is not available for the moment`);
-		}
-	}
-});
-
-//Roles Commands
-bot.on('message', function (message) {
-	Object.keys(config.assignable_roles).forEach(function(assignableRole) {
-		if (message.content === prefix + 'rank join ' + assignableRole) {
-			if(modules.rank.join) {
-				message.guild.roles.forEach(function (role) {
-					if(role.name == config.assignable_roles[assignableRole]) {
-						message.member.addRole(role.id);
-						message.react("☑");
-					}
-				});
-			} else {
-				message.reply(`This command is not available for the moment`);
-			}
-		}
-		if (message.content === prefix + 'rank leave ' + assignableRole) {
-			if (modules.rank.leave) {
-				message.guild.roles.forEach(function (role) {
-					if (role.name == config.assignable_roles[assignableRole]) {
-						message.member.removeRole(role.id);
-						message.react("☑");
-					}
-				});
-			} else {
-				message.reply(`This command is not available for the moment`);
-			}
-		}
-	});
-});
-
-bot.on('message', function (message) {
-	if (message.content === prefix + 'rank list') {
-		if (modules.rank.leave) {
-			var rankList = [];
-			Object.keys(config.assignable_roles).forEach(function (assignableRole) {
-				rankList.push('+'+assignableRole);
-			});
-			var content = rankList.join('\n');
-			message.reply('There is a list of joinable roles:\n```diff\n'+content+'```');
-		} else {
 			message.reply(`This command is not available for the moment`);
 		}
 	}
