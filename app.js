@@ -1,7 +1,12 @@
 const Discord = require('discord.js');
-const roles = require('./Commands/roles.js');
+const opus = require('opusscript');
+const ytdl = require('ytdl-core');
+const youtubeSearch = require('youtube-search');
 const config = require('./config.json');
 const modules = require('./commands.json');
+const roles = require('./Commands/roles.js');
+const music = require('./Commands/music.js');
+
 const bot = new Discord.Client({autoReconnect:true});
 const prefix = config.prefix;
 
@@ -18,7 +23,8 @@ bot.on('ready', function () {
 
 bot.login(config.token);
 
-roles.commands(bot, modules, prefix, config);
+roles.commands(bot, modules, config);
+music.commands(bot, modules, config, opus, ytdl, youtubeSearch);
 
 if(modules.welcome_join) {
     bot.on('guildMemberAdd', function(member) {

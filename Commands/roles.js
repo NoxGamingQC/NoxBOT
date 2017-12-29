@@ -1,4 +1,6 @@
-exports.commands = function (bot, modules, prefix, config) {
+
+exports.commands = function (bot, modules, config) {
+    const prefix = config.prefix;
     bot.on('message', function (message) {
         Object.keys(config.assignable_roles).forEach(function (assignableRole) {
             if (message.content === prefix + 'rank join ' + assignableRole) {
@@ -6,7 +8,7 @@ exports.commands = function (bot, modules, prefix, config) {
                     message.guild.roles.forEach(function (role) {
                         if (role.name == config.assignable_roles[assignableRole]) {
                             message.member.addRole(role.id);
-                            message.react("☑");
+                            message.react("✅");
                         }
                     });
                 } else {
@@ -15,16 +17,14 @@ exports.commands = function (bot, modules, prefix, config) {
                 }
             }
         });
-    });
 
-    bot.on('message', function (message) {
         Object.keys(config.assignable_roles).forEach(function (assignableRole) {
             if (message.content === prefix + 'rank leave ' + assignableRole) {
                 if (modules.rank.leave) {
                     message.guild.roles.forEach(function (role) {
                         if (role.name == config.assignable_roles[assignableRole]) {
                             message.member.removeRole(role.id);
-                            message.react("☑");
+                            message.react("✅");
                         }
                     });
                 } else {
@@ -33,9 +33,7 @@ exports.commands = function (bot, modules, prefix, config) {
                 }
             }
         });
-    });
 
-    bot.on('message', function (message) {
         if (message.content === prefix + 'rank list') {
             if (modules.rank.leave) {
                 var rankList = [];

@@ -1,7 +1,8 @@
 {
     "token": "",
+    "youtube_key": "",
     "prefix": "/",
-    "development": false,
+    "development": true,
     "room": {
         "welcome_page_name": "everyone_room",
         "welcome_room_fr": "general_room",
