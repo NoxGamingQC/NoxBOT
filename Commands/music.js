@@ -1,6 +1,7 @@
 exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch) {
     const prefix = config.prefix;
     var connection = null;
+    var dispatcher = null;
     const streamOptions = {
         seek: 0,
         volume: 1,
@@ -8,12 +9,6 @@ exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch) {
     };
 
     function play(server, message) {
-        console.log(bot.user);
-        if(!connection) {
-            message.react("❌");
-            message.reply(`Please use ${prefix}init before starting playing music`);
-            return;
-        }
         connection.then(connexion => {
             dispatcher = connexion.playStream(ytdl(server.queue[0], { filter: "audioonly" }));
             server.queue.shift();
@@ -21,7 +16,7 @@ exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch) {
                 if (server.queue[0]) {
                     play(server, message);
                 }
-                message.channel.send("Song Finished...")
+                message.channel.send("Song Ended!");
             });
         });
     };
@@ -34,19 +29,22 @@ exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch) {
         console.log(name);
         youtubeSearch(name, opts, function (errors, results) {
             if (errors) {
+                message.reaction = null;
                 message.react("❌");
-                message.reply("Erreur - cannot add " + results[0].link + ", try again later");
+                message.reply("I got a problem adding `" + name + "` to the queue, please try again later");
                 return;
             }
-            message.react("✅");
-            server.queue.push(results[0].link)
             message.reply("Adding " + results[0].link);
+            server.queue.push(results[0].link)
+            message.react("✅");
             play(server, message);
         });
     };
 
     bot.on('message', function (message) {
         var server = bot[message.guild.id];
+        var args = message.content.split(' ');
+
         if (message.content === (prefix + "list")) {
             if (server) {
                 var queueList = server.queue.join('\n');
@@ -60,30 +58,55 @@ exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch) {
             connection = message.member.voiceChannel.join();
         }
 
-        if (message.content === (prefix + "leave")) {
-            message.member.voiceChannel.leave();
+        if (message.content === (prefix + "pause")) {
+            connection.then(connexion => {
+                dispatcher.pause();
+            });
         }
 
-        var args = message.content.split(' ');
+        if (message.content === (prefix + "stop")) {
+            connection.then(connexion => {
+                dispatcher.end();
+            });
+        }
+
+        if (message.content === (prefix + "resume")) {
+            connection.then(connexion => {
+                dispatcher.resume();
+            });
+        }
+
+        if (message.content === (prefix + "leave")) {
+            message.member.voiceChannel.leave();
+            connection = null;
+        }
+
         if (args[0] === (prefix + "play")) {
-            if (!args[1]) {
-                return message.channel.send("Please send a link/name...");
-            }
-            if (!message.member.voiceChannel) {
-                return message.reply("Please join a voice channel first!");
-            }
-            if (!bot[message.guild.id]) {
-                bot[message.guild.id] = {
-                    queue: [],
+            if(connection) {
+                if (!args[1]) {
+                    message.react("❌");
+                    return message.channel.send("Please send me a YouTube link or search terms!");
                 }
-            }
-            var server = bot[message.guild.id]
-            if (args[1].startsWith("http")) {
-                server.queue.push(args[1]);
-                message.reply("Adding " + args[1]);
-                play(server, message);
+                if (!message.member.voiceChannel) {
+                    message.react("❌");
+                    return message.reply("Please join a voice channel first!");
+                }
+                if (!bot[message.guild.id]) {
+                    bot[message.guild.id] = {
+                        queue: [],
+                    }
+                }
+                var server = bot[message.guild.id]
+                if (args[1].startsWith("http")) {
+                    server.queue.push(args[1]);
+                    message.reply("Adding " + args[1]);
+                    play(server, message);
+                } else {
+                    searchfunc(server, message);
+                }
             } else {
-                searchfunc(server, message);
+                message.react("❌");
+                message.reply(`Please use \`${prefix}init\` before starting playing music`);
             }
         }
     });
