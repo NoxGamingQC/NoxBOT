@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const roles = require('./roles.js');
+const roles = require('./Commands/roles.js');
 const config = require('./config.json');
 const modules = require('./commands.json');
 const bot = new Discord.Client({autoReconnect:true});
