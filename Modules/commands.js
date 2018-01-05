@@ -1,0 +1,25 @@
+exports.commands = function (bot, modules, config, message) {
+    const prefix = config.prefix;
+    if (message.content === prefix + 'commands') {
+        if (modules.commands) {
+            message.author.send(`
+                ${message.author}, Theres is the list of command you can use!
+
+                **${prefix}commands:** Get ${bot.user} commands
+                **${prefix}avatar <mentionned user>:** Show your avatar
+                **${prefix}invite:** Create a 24h link to the server
+                **${prefix}lmgtfy <search terms>:** Send you a LMGTFY link
+                **${prefix}ping:** Show the bot ping
+                **${prefix}psn:** Get NoxRacing's PSN Username
+                **${prefix}steam:** Get NoxRacing's Steam profile link
+                **${prefix}twitch:** Get NoxRacing's Twitch channel link
+                **${prefix}xbl:** Get NoxRacing's Xbox Live Username
+                **${prefix}rank list:** List of all joinable roles
+                **${prefix}rank join <role>:** Make you join a role
+                **${prefix}rank leave <role>:** Make you leave a role
+            `);
+        } else {
+            message.reply(`This command is not available for the moment`);
+        }
+    }
+}

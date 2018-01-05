@@ -4,8 +4,10 @@ const ytdl = require('ytdl-core');
 const youtubeSearch = require('youtube-search');
 const config = require('./config.json');
 const modules = require('./commands.json');
-const roles = require('./Commands/roles.js');
-const music = require('./Commands/music.js');
+const roles = require('./Modules/roles.js');
+const music = require('./Modules/music.js');
+const commands = require('./Modules/commands.js');
+const welcome = require('./Modules/welcome.js');
 
 const bot = new Discord.Client({autoReconnect:true});
 const prefix = config.prefix;
@@ -23,28 +25,13 @@ bot.on('ready', function () {
 
 bot.login(config.token);
 
-roles.commands(bot, modules, config);
-music.commands(bot, modules, config, opus, ytdl, youtubeSearch);
+welcome.module(bot, modules, config);
 
-if(modules.welcome_join) {
-    bot.on('guildMemberAdd', function(member) {
-        const channel = member.guild.channels.find('name', config.room.welcome_page_name);
-        if (!channel) {
-            return;
-        }
-        channel.send(`${member}, welcome in **${member.guild.name}** :wink:`);
-    });
-}
-
-if(modules.welcome_leave) {
-    bot.on('guildMemberRemove', function(member) {
-        const channel = member.guild.channels.find('name', config.room.welcome_page_name);
-        if (!channel) {
-            return;
-        }
-        channel.send(`**${member}** just left us. Bye bye **${member}** :sob:`);
-    });
-}
+bot.on('message', function (message) {
+    commands.commands(bot, modules, config, message);
+    roles.commands(bot, modules, config, message);
+    music.commands(bot, modules, config, opus, ytdl, youtubeSearch, message);
+});
 
 bot.on('message', function(message) {
     if (message.content === prefix + 'ping') {
@@ -102,31 +89,6 @@ bot.on('message', function(message) {
                 message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
                 return;
             }
-        }  else {
-            message.reply(`This command is not available for the moment`);
-        }
-    }
-});
-
-bot.on('message', function(message) {
-    if (message.content === prefix + 'commands') {
-        if(modules.commands) {
-            message.author.send(`
-                ${message.author}, Theres is the list of command you can use!
-
-                **${prefix}commands:** Get ${bot.user} commands
-                **${prefix}avatar <mentionned user>:** Show your avatar
-                **${prefix}invite:** Create a 24h link to the server
-                **${prefix}lmgtfy <search terms>:** Send you a LMGTFY link
-                **${prefix}ping:** Show the bot ping
-                **${prefix}psn:** Get NoxRacing's PSN Username
-                **${prefix}steam:** Get NoxRacing's Steam profile link
-                **${prefix}twitch:** Get NoxRacing's Twitch channel link
-                **${prefix}xbl:** Get NoxRacing's Xbox Live Username
-                **${prefix}rank list:** List of all joinable roles
-                **${prefix}rank join <role>:** Make you join a role
-                **${prefix}rank leave <role>:** Make you leave a role
-            `);
         }  else {
             message.reply(`This command is not available for the moment`);
         }
