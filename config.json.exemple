@@ -1,33 +1,34 @@
 {
-	"token": "",
-	"prefix": "/",
-	"development": false,
-	"room": {
-		"welcome_page_name": "everyone_room",
-		"welcome_room_fr": "general_room",
-		"welcome_room_en": "salon_general",
-		"invite_room": "language_setup"
-	},
-	"roles": {
-		"administrator": "Administrators",
-		"moderator": "Moderators",
-		"twitch_followers": "Followers",
-		"twitch_subscribers": "Subscribers",
-		"twitch_moderators": "Twitch Moderators",
-		"bots": ":robot: Cephalons"
-	},
-	"language_roles": {
-		"fr": ":flag_fr: FR",
-		"en": ":flag_us: EN"
-	},
-	"assignable_roles": {
-		"programmers": "Programmers",
-		"tenno": "Tenno",
-		"trucker": "Trucker",
-		"soldier": "Soldiers",
-		"esport": "Esport",
-		"cubistics": "Cubistics",
-		"pokemon": "Pokemon Master",
-		"nsfw": "18+"
-	}
+    "token": "",
+    "youtube_key": "",
+    "prefix": "/",
+    "development": true,
+    "room": {
+        "welcome_page_name": "everyone_room",
+        "welcome_room_fr": "general_room",
+        "welcome_room_en": "salon_general",
+        "invite_room": "language_setup"
+    },
+    "roles": {
+        "administrator": "Administrators",
+        "moderator": "Moderators",
+        "twitch_followers": "Followers",
+        "twitch_subscribers": "Subscribers",
+        "twitch_moderators": "Twitch Moderators",
+        "bots": ":robot: Cephalons"
+    },
+    "language_roles": {
+        "fr": ":flag_fr: FR",
+        "en": ":flag_us: EN"
+    },
+    "assignable_roles": {
+        "programmers": "Programmers",
+        "tenno": "Tenno",
+        "trucker": "Trucker",
+        "soldier": "Soldiers",
+        "esport": "Esport",
+        "cubistics": "Cubistics",
+        "pokemon": "Pokemon Master",
+        "nsfw": "18+"
+    }
 }

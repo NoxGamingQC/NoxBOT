@@ -5,6 +5,9 @@
   "main": "app.js",
   "author": "Jimmy Béland-Bédard",
   "dependencies": {
-    "discord.js": "^11.2.1"
+    "discord.js": "^11.2.1",
+    "opusscript": "0.0.6",
+    "youtube-search": "^1.0.10",
+    "ytdl-core": "^0.18.5"
   }
 }
