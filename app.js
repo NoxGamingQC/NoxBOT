@@ -35,9 +35,11 @@ bot.on('message', function (message) {
 
 bot.on('message', function(message) {
     if (message.content === prefix + 'ping') {
-        if(modules.ping) {
+        if (modules.ping) {
+            message.react("✅");
             message.channel.send(`${bot.user} average ping: ${bot.ping}ms`);
         } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }
@@ -50,16 +52,20 @@ bot.on('message', function(message) {
                 if(channel) {
                     channel.createInvite([options => {
                         maxAge: 86400
-                    }]).then(function(link) {
+                    }]).then(function (link) {
+                        message.react("✅");
                         message.reply(`There is an invite link to the channel: ${link}`);
                     });
                 } else {
+                    message.react("❌");
                     message.reply(`Server room #${config.room.invite_room} not found`);
                 }
             } else {
+                message.react("❌");
                 message.reply(`Please use this command in a server`);
             }
         } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }
@@ -73,6 +79,7 @@ bot.on('message', function(message) {
     if(commandName === prefix+'avatar') {
         if(modules.avatar) {
             if (!parts[1] || parts[1].indexOf('@') == -1) {
+                message.react("❌");
                 message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
                 return;
             }
@@ -83,13 +90,16 @@ bot.on('message', function(message) {
                     userMentionned = user;
                 };
             });
-            if(userMentionned) {
+            if (userMentionned) {
+                message.react("✅");
                 message.reply(userMentionned.avatarURL);
             } else {
+                message.react("❌");
                 message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
                 return;
             }
-        }  else {
+        } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }
@@ -107,8 +117,10 @@ bot.on('message', function (message) {
                     content += '+'+word;
                 }
             });
+            message.react("✅");
             message.reply('Here is a link: http://lmgtfy.com/?q=' + content);
         } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }
@@ -117,8 +129,10 @@ bot.on('message', function (message) {
 bot.on('message', function (message) {
     if (message.content === prefix + 'psn') {
         if (modules.rank.leave) {
+            message.react("✅");
             message.reply('NoxRacing\'s Playstation Network username is: `HowlNox22607`');
         } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }
@@ -127,8 +141,10 @@ bot.on('message', function (message) {
 bot.on('message', function (message) {
     if (message.content === prefix + 'steam') {
         if (modules.rank.leave) {
+            message.react("✅");
             message.reply('NoxRacing Steam profile page link is: http://steamcommunity.com/id/Noxracing/');
         } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }
@@ -137,8 +153,10 @@ bot.on('message', function (message) {
 bot.on('message', function (message) {
     if (message.content === prefix + 'twitch') {
         if (modules.rank.leave) {
+            message.react("✅");
             message.reply('You can join NoxRacing Channel at: https://www.twitch.tv/noxracing');
         } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }
@@ -147,8 +165,10 @@ bot.on('message', function (message) {
 bot.on('message', function (message) {
     if (message.content === prefix + 'xbl') {
         if (modules.rank.leave) {
+            message.react("✅");
             message.reply('NoxRacing\'s Xbox Live username is: `HowlNox22607`');
         } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }
