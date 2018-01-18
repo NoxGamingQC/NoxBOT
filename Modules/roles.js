@@ -40,8 +40,10 @@ exports.commands = function (bot, modules, config, message) {
                 rankList.push('+' + assignableRole);
             });
             var content = rankList.join('\n');
+            message.react("✅");
             message.reply('There is a list of joinable roles:\n```diff\n' + content + '```');
         } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }

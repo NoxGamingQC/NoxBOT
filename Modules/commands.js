@@ -18,7 +18,10 @@ exports.commands = function (bot, modules, config, message) {
                 **${prefix}rank join <role>:** Make you join a role
                 **${prefix}rank leave <role>:** Make you leave a role
             `);
+            message.react("✅");
+            message.reply(`List of commands have been sent to your private message, go check them out! :wink:`);
         } else {
+            message.react("❌");
             message.reply(`This command is not available for the moment`);
         }
     }
