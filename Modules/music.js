@@ -2,7 +2,6 @@ exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch, me
     const prefix = config.prefix;
     var server = bot[message.guild.id];
     var args = message.content.split(' ');
-    var connection = null;
     var dispatcher = null;
     const streamOptions = {
         seek: 0,
@@ -20,34 +19,34 @@ exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch, me
     }
 
     if (message.content === (prefix + "init")) {
-        connection = message.member.voiceChannel.join();
+        getConnection(message).join();
     }
 
     if (message.content === (prefix + "pause")) {
-        connection.then(connexion => {
+        getConnection(message).then(connexion => {
             dispatcher.pause();
         });
     }
 
     if (message.content === (prefix + "stop")) {
-        connection.then(connexion => {
+        getConnection(message).then(connexion => {
             dispatcher.end();
         });
     }
 
     if (message.content === (prefix + "resume")) {
-        connection.then(connexion => {
+        getConnection(message).then(connexion => {
             dispatcher.resume();
         });
     }
 
     if (message.content === (prefix + "leave")) {
         message.member.voiceChannel.leave();
-        connection = null;
+        getConnection(message) = null;
     }
 
     if (args[0] === (prefix + "play")) {
-        if(connection) {
+        if (getConnection(message)) {
             if (!args[1]) {
                 message.react("❌");
                 return message.channel.send("Please send me a YouTube link or search terms!");
@@ -87,6 +86,10 @@ exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch, me
             });
         });
     };
+
+    function getConnection(message) {
+        return message.member.voiceChannel;
+    }
 
     function searchfunc(message) {
         var opts = {
