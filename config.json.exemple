@@ -2,19 +2,18 @@
     "token": "",
     "youtube_key": "",
     "prefix": "/",
-    "development": true,
+    "development": false,
     "room": {
-        "welcome_page_name": "everyone_room",
-        "welcome_room_fr": "general_room",
-        "welcome_room_en": "salon_general",
+        "welcome_page_name": "general",
+        "welcome_room_fr": "salon_francais",
+        "welcome_room_en": "english_room",
         "invite_room": "language_setup"
     },
     "roles": {
-        "administrator": "Administrators",
-        "moderator": "Moderators",
-        "twitch_followers": "Followers",
-        "twitch_subscribers": "Subscribers",
-        "twitch_moderators": "Twitch Moderators",
+        "administrator": "NoxRacing",
+        "moderator": "Mods",
+        "twitch_subscribers": "Subs",
+        "twitch_moderators": "Twitch Mods",
         "bots": ":robot: Cephalons"
     },
     "language_roles": {
@@ -26,7 +25,6 @@
         "tenno": "Tenno",
         "trucker": "Trucker",
         "soldier": "Soldiers",
-        "esport": "Esport",
         "cubistics": "Cubistics",
         "pokemon": "Pokemon Master",
         "nsfw": "18+"

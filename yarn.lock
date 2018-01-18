@@ -87,7 +87,7 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
 
-discord.js@^11.2.1:
+discord.js@11.2.1:
   version "11.2.1"
   resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-11.2.1.tgz#bfc0f5a8b6398dc372d026e503592646456053fc"
   dependencies:
@@ -392,8 +392,8 @@ ultron@~1.1.0:
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.1.tgz#9fe1536a10a664a65266a1e3ccf85fd36302bc9c"
 
 uuid@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 
 verror@1.10.0:
   version "1.10.0"
@@ -439,8 +439,8 @@ youtube-search@^1.0.10:
     xml2js "~0.2.8"
 
 ytdl-core@^0.18.5:
-  version "0.18.5"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-0.18.5.tgz#f80e94a1e3e60a54057cb184092b293e39ed6a0c"
+  version "0.18.7"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-0.18.7.tgz#e8f52b2d6dfc1f658fe2d06507fc18ce9e42f1ae"
   dependencies:
     html-entities "^1.1.3"
     m3u8stream "^0.2.1"
