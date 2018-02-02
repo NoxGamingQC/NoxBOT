@@ -297,7 +297,7 @@ irc-colors@^1.1.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/irc-colors/-/irc-colors-1.4.1.tgz#ac8a3c8970f9be686fc6d678fd392af3d415fec0"
 
-"irc@github:kritzware/node-irc":
+irc@kritzware/node-irc:
   version "0.5.2"
   resolved "https://codeload.github.com/kritzware/node-irc/tar.gz/cab82a1a4d7fe16484ca8bddddefb89418d4c8b8"
   dependencies:
