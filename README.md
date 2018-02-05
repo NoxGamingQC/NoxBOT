@@ -12,10 +12,11 @@
 
 - Activate the developper mode on Windows 10
 - Navigate to "Activate or desactivate Windows functionality"
-- Cocher "Sub-system Windows for Linux (beta)"
+- Check "Sub-system Windows for Linux (beta)"
 - Open Linux commandline
 - Install git: `sudo apt-get install git`
 - Install ssh: `sudo apt-get install ssh`
+- Install npm: `sudo apt-get install npm`
 - Generate an ssh key: `ssh keygen`
 - Accept the default location
 - Enter a password
@@ -28,6 +29,7 @@
 - Open a terminal
 - Install git: `sudo apt-get install git`
 - Install ssh: `sudo apt-get install ssh`
+- Install npm: `sudo apt-get install npm`
 - Generate an ssh key: `ssh keygen`
 - Accept the default location
 - Enter a password

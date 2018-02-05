@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const opus = require('opusscript');
 const ytdl = require('ytdl-core');
 const youtubeSearch = require('youtube-search');
+const auth = require('./auth.json');
 const config = require('./config.json');
 const modules = require('./commands.json');
 const roles = require('./Modules/roles.js');
@@ -23,7 +24,7 @@ bot.on('ready', function () {
     }
 });
 
-bot.login(config.token);
+bot.login(auth.token);
 
 welcome.module(bot, modules, config);
 
