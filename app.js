@@ -19,7 +19,7 @@ bot.on('ready', function () {
         bot.user.setGame(prefix + 'commands | In development...');
     } else {
         bot.user.setStatus('Online');
-        bot.user.setGame(prefix+'commands');
+        bot.user.setGame(prefix + 'commands', 'https://www.twitch.tv/noxracing');
     }
 });
 
