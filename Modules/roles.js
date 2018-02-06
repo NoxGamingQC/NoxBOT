@@ -1,50 +1,46 @@
 
 exports.commands = function (bot, modules, config, message) {
     const prefix = config.prefix;
-    Object.keys(config.assignable_roles).forEach(function (assignableRole) {
-        if (message.content === prefix + 'rank join ' + assignableRole) {
-            if (modules.rank.join) {
-                message.guild.roles.forEach(function (role) {
-                    if (role.name == config.assignable_roles[assignableRole]) {
-                        message.member.addRole(role.id);
-                        message.react("✅");
-                    }
-                });
+    var parts = message.content.split(" ");
+    if (parts[0] === prefix + 'rank') {
+        if (parts[1] === 'join') {
+            var role = message.guild.roles.find('name', '+' + parts[2]);
+            if (role) {
+                message.member.addRole(role.id);
+                message.react("✅");
+                message.reply('You joined ' + parts[2] + ' successfuly')
             } else {
                 message.react("❌");
-                message.reply(`This command is not available for the moment`);
+                message.reply(`This role does not exist`);
             }
-        }
-    });
-
-    Object.keys(config.assignable_roles).forEach(function (assignableRole) {
-        if (message.content === prefix + 'rank leave ' + assignableRole) {
-            if (modules.rank.leave) {
-                message.guild.roles.forEach(function (role) {
-                    if (role.name == config.assignable_roles[assignableRole]) {
-                        message.member.removeRole(role.id);
-                        message.react("✅");
-                    }
-                });
+        } else if (parts[1] === 'leave') {
+            var role = message.guild.roles.find('name', '+' + parts[2]);
+            if (role) {
+                message.member.removeRole(role.id);
+                message.react("✅");
+                message.reply('You leaved ' + parts[2] + ' successfuly')
             } else {
                 message.react("❌");
-                message.reply(`This command is not available for the moment`);
+                message.reply(`This role does not exist`);
             }
-        }
-    });
-
-    if (message.content === prefix + 'rank list') {
-        if (modules.rank.leave) {
-            var rankList = [];
-            Object.keys(config.assignable_roles).forEach(function (assignableRole) {
-                rankList.push('+' + assignableRole);
+        } else if (parts[1] === 'list') {
+            var rolesList = [];
+            message.guild.roles.forEach(function (role) {
+                if (role.name.indexOf('+') !== -1) {
+                    rolesList.push(role.name);
+                }
             });
-            var content = rankList.join('\n');
-            message.react("✅");
-            message.reply('There is a list of joinable roles:\n```diff\n' + content + '```');
-        } else {
+            if (rolesList.length) {
+                roleString = rolesList.join('\n');
+                message.react("✅");
+                message.reply('There\'s a list of joinable roles: ```diff\n' + roleString + '```');
+            } else {
+                message.react("❌");
+                message.reply(`You can't assign to yourself any roles on this server`);
+            }
+        }  else {
             message.react("❌");
-            message.reply(`This command is not available for the moment`);
+            message.reply(`This command does not exist`);
         }
     }
 }
