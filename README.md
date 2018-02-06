@@ -80,6 +80,11 @@
 - **!rank join 'role'**: Make you join a role
 - **!rank leave 'role'**: Make you remove you a role
 
+- **!color set 'color':** Give you a color
+- **!color reset:** Remove your color
+- **!color see 'color':** Give you a demo of the color
+- **!color list:** Give you a list of color
+
 ## Creator and contributors
 
 - NoxRacing

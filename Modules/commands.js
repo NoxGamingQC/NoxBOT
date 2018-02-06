@@ -17,6 +17,11 @@ exports.commands = function (bot, modules, config, message) {
                 **${prefix}rank list:** List of all joinable roles
                 **${prefix}rank join <role>:** Make you join a role
                 **${prefix}rank leave <role>:** Make you leave a role
+                **${prefix}color set <color>:** Give you a color
+                **${prefix}color reset:** Remove your color
+                **${prefix}color see <color>:** Give you a demo of the color
+                **${prefix}color list:** Give you a list of color
+            `);
             `);
             message.react("✅");
             message.reply(`List of commands have been sent to your private message, go check them out! :wink:`);
