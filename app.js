@@ -195,14 +195,13 @@ bot.on('message', function (message) {
                 message.reply(`This color does not exist`);
             }
         } else if(parts[1] === 'reset') {
-                message.guild.roles.forEach(function(role) {
-                    if(role.name.indexOf('Color_') !== -1) {  
-                        message.member.removeRole(role.id);
-                    }
-                });
-                message.react("✅");
-                message.reply('Color reset successfuly')
-            }
+            message.guild.roles.forEach(function(role) {
+                if(role.name.indexOf('Color_') !== -1) {  
+                    message.member.removeRole(role.id);
+                }
+            });
+            message.react("✅");
+            message.reply('Color reset successfuly')
         } else if(parts[1] === 'list') {
             var colorList = [];
             message.guild.roles.forEach(function(role) {
