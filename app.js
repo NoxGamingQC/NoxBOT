@@ -210,9 +210,9 @@ bot.on('message', function (message) {
                 }
             });
             if(colorList.length) {
-                colorsString = colorList.join(', ');
+                colorsString = colorList.join('\n+');
                 message.react("✅");
-                message.reply('There\'s a list of assignable colors: ```\n' + colorsString + '```');
+                message.reply('There\'s a list of assignable colors: ```diff\n+' + colorsString + '```');
             } else {
                 message.react("❌");
                 message.reply(`You can't assign to yourself any color on this server`);

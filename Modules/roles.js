@@ -27,13 +27,13 @@ exports.commands = function (bot, modules, config, message) {
             var rolesList = [];
             message.guild.roles.forEach(function (role) {
                 if (role.name.indexOf('+') !== -1) {
-                    rolesList.push(role.name.replace('+', ''));
+                    rolesList.push(role.name);
                 }
             });
             if (rolesList.length) {
-                roleString = rolesList.join(', ');
+                roleString = rolesList.join('\n');
                 message.react("✅");
-                message.reply('There\'s a list of assignable roles: ```\n' + roleString + '```');
+                message.reply('There\'s a list of joinable roles: ```diff\n' + roleString + '```');
             } else {
                 message.react("❌");
                 message.reply(`You can't assign to yourself any roles on this server`);
