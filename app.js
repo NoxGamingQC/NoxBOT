@@ -194,9 +194,7 @@ bot.on('message', function (message) {
                 message.react("❌");
                 message.reply(`This color does not exist`);
             }
-        }  if(parts[1] === 'reset') {
-            var color = message.guild.roles.find('name', parts[2]);
-            if(color) {
+        } else if(parts[1] === 'reset') {
                 message.guild.roles.forEach(function(role) {
                     if(role.name.indexOf('Color_') !== -1) {  
                         message.member.removeRole(role.id);
@@ -216,7 +214,7 @@ bot.on('message', function (message) {
             colorsString = colorList.join(', ');
             message.react("✅");
             message.reply('There\'s a list of assignable colors: ```\n' + colorsString + '```')
-        } if(parts[1] === 'see') {
+        } else if(parts[1] === 'see') {
             var color = message.guild.roles.find('name', parts[2]);
             if(color) {
             var hex =  ('000000' + color.color.toString(16)).slice(-6);
