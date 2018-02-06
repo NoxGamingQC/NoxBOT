@@ -8,6 +8,35 @@
 - nodejs
 - A discord account
 
+### Windows 10 environement setup
+
+- Activate the developper mode on Windows 10
+- Navigate to "Activate or desactivate Windows functionality"
+- Check "Sub-system Windows for Linux (beta)"
+- Open Linux commandline
+- Install git: `sudo apt-get install git`
+- Install ssh: `sudo apt-get install ssh`
+- Install npm: `sudo apt-get install npm`
+- Generate an ssh key: `ssh keygen`
+- Accept the default location
+- Enter a password
+- Retype your password to confirm it
+- Check if the ssh folder contain the key: `ls ~/.ssh`
+- Display the ssh key: `~/.ssh/id_rsa.pub`
+
+### Ubuntu environement setup
+
+- Open a terminal
+- Install git: `sudo apt-get install git`
+- Install ssh: `sudo apt-get install ssh`
+- Install npm: `sudo apt-get install npm`
+- Generate an ssh key: `ssh keygen`
+- Accept the default location
+- Enter a password
+- Retype your password to confirm it
+- Check if the ssh folder contain the key: `ls ~/.ssh`
+- Display the ssh key: `~/.ssh/id_rsa.pub`
+
 ### Step
 
 - Create a new repository
@@ -50,6 +79,11 @@
 - **!rank list**: List of all joinable roles
 - **!rank join 'role'**: Make you join a role
 - **!rank leave 'role'**: Make you remove you a role
+
+- **!color set 'color':** Give you a color
+- **!color reset:** Remove your color
+- **!color see 'color':** Give you a demo of the color
+- **!color list:** Give you a list of color
 
 ## Creator and contributors
 

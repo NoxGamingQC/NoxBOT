@@ -276,6 +276,12 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+iconv@~2.2.1:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/iconv/-/iconv-2.2.3.tgz#e084d60eeb7d73da7f0a9c096e4c8abe090bfaed"
+  dependencies:
+    nan "^2.3.5"
+
 inflight@^1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/inflight/-/inflight-1.0.6.tgz#49bd6331d7d02d0c09bc910a1075ba8165b56df9"
@@ -286,6 +292,19 @@ inflight@^1.0.4:
 inherits@2, inherits@~2.0.0, inherits@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
+
+irc-colors@^1.1.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/irc-colors/-/irc-colors-1.4.1.tgz#ac8a3c8970f9be686fc6d678fd392af3d415fec0"
+
+irc@kritzware/node-irc:
+  version "0.5.2"
+  resolved "https://codeload.github.com/kritzware/node-irc/tar.gz/cab82a1a4d7fe16484ca8bddddefb89418d4c8b8"
+  dependencies:
+    irc-colors "^1.1.0"
+  optionalDependencies:
+    iconv "~2.2.1"
+    node-icu-charset-detector "~0.2.0"
 
 is-function@^1.0.1, is-function@~1.0.0:
   version "1.0.1"
@@ -327,6 +346,10 @@ jsprim@^1.2.2:
     extsprintf "1.3.0"
     json-schema "0.2.3"
     verror "1.10.0"
+
+lodash@^4.16.2:
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
 long@^3.2.0:
   version "3.2.0"
@@ -389,6 +412,23 @@ mout@^0.11.0:
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
+
+nan@^2.3.3, nan@^2.3.5:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz#ed715f3fe9de02b57a5e6252d90a96675e1f085a"
+
+node-icu-charset-detector@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/node-icu-charset-detector/-/node-icu-charset-detector-0.2.0.tgz#c2320da374ddcb671fc54cb4a0e041e156ffd639"
+  dependencies:
+    nan "^2.3.3"
+
+node-twitchbot@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/node-twitchbot/-/node-twitchbot-2.0.5.tgz#e1246b96bdfe25082460c5274d795a58976e5b1a"
+  dependencies:
+    irc kritzware/node-irc
+    lodash "^4.16.2"
 
 oauth-sign@~0.8.2:
   version "0.8.2"

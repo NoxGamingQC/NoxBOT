@@ -93,7 +93,7 @@ exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch, me
 
     function searchfunc(message) {
         var opts = {
-            key: config.youtube_key,
+            key: auth.youtube_key,
         }
         var name = message.content.slice(6);
         console.log(name);

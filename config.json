@@ -1,8 +1,6 @@
 {
-    "token": "",
-    "youtube_key": "",
     "prefix": "/",
-    "development": false,
+    "development": true,
     "room": {
         "welcome_page_name": "general",
         "welcome_room_fr": "salon_francais",

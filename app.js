@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const opus = require('opusscript');
 const ytdl = require('ytdl-core');
 const youtubeSearch = require('youtube-search');
+const auth = require('./auth.json');
 const config = require('./config.json');
 const modules = require('./commands.json');
 const roles = require('./Modules/roles.js');
@@ -15,15 +16,16 @@ const prefix = config.prefix;
 bot.on('ready', function () {
     console.log("Bot Launched...");
     if(config.development) {
-        bot.user.setStatus('dnd'); // Status can be 'OnLine', 'idle', 'invisible', or 'dnd'
-        bot.user.setGame(prefix + 'commands | In development...');
+        bot.user.setStatus('dnd'); // Status can be 'Online', 'idle', 'invisible', or 'dnd'
+        bot.user.setActivity(prefix + 'commands | In development...');
     } else {
         bot.user.setStatus('Online');
-        bot.user.setGame(prefix+'commands');
+        bot.user.setActivity(prefix + 'commands');
+        //bot.user.setGame('Watching NoxRacing live at https://www.twitch.tv/noxracing', 'https://www.twitch.tv/noxracing');
     }
 });
 
-bot.login(config.token);
+bot.login(auth.token);
 
 welcome.module(bot, modules, config);
 
@@ -174,3 +176,62 @@ bot.on('message', function (message) {
     }
 });
 
+bot.on('message', function (message) {
+    var parts = message.content.split(" ");
+    if (parts[0] === prefix + 'color') {
+        if(parts[1] === 'set') {
+            var color = message.guild.roles.find('name', parts[2]);
+            if(color) {
+                message.guild.roles.forEach(function(role) {
+                    if(role.name.indexOf('Color_') !== -1) {  
+                        message.member.removeRole(role.id);
+                    }
+                });
+                message.member.addRole(color.id);
+                message.react("✅");
+                message.reply('Color: ' + parts[2].replace('Color_', '') + ' added successfuly')
+            } else {
+                message.react("❌");
+                message.reply(`This color does not exist`);
+            }
+        }  if(parts[1] === 'reset') {
+            var color = message.guild.roles.find('name', parts[2]);
+            if(color) {
+                message.guild.roles.forEach(function(role) {
+                    if(role.name.indexOf('Color_') !== -1) {  
+                        message.member.removeRole(role.id);
+                    }
+                });
+                message.react("✅");
+                message.reply('Color reset successfuly')
+            }
+        } else if(parts[1] === 'list') {
+            var colorList = [];
+            message.guild.roles.forEach(function(role) {
+                if(role.name.indexOf('Color_') !== -1) {  
+                    colorList.push(role.name);
+                    console.log(role.color);
+                }
+            });
+            colorsString = colorList.join(', ');
+            message.react("✅");
+            message.reply('There\'s a list of assignable colors: ```\n' + colorsString + '```')
+        } if(parts[1] === 'see') {
+            var color = message.guild.roles.find('name', parts[2]);
+            if(color) {
+            var hex =  ('000000' + color.color.toString(16)).slice(-6);
+                message.channel.send({embed: {
+                    color: color.color,
+                    title: color.name,
+                    description: '#' + hex
+                }});
+            } else {
+                message.react("❌");
+                message.reply(`This color does not exist`);
+            }
+        } else {
+            message.react("❌");
+            message.reply(`This command does not exist`);
+        }
+    }
+});
