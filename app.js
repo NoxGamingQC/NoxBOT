@@ -207,7 +207,6 @@ bot.on('message', function (message) {
             message.guild.roles.forEach(function(role) {
                 if(role.name.indexOf('Color_') !== -1) {  
                     colorList.push(role.name);
-                    console.log(role.color);
                 }
             });
             colorsString = colorList.join(', ');
