@@ -209,9 +209,14 @@ bot.on('message', function (message) {
                     colorList.push(role.name.replace('Color_', ''));
                 }
             });
-            colorsString = colorList.join(', ');
-            message.react("✅");
-            message.reply('There\'s a list of assignable colors: ```\n' + colorsString + '```')
+            if(colorList.length) {
+                colorsString = colorList.join(', ');
+                message.react("✅");
+                message.reply('There\'s a list of assignable colors: ```\n' + colorsString + '```');
+            } else {
+                message.react("❌");
+                message.reply(`You can't assign to yourself any color on this server`);
+            }
         } else if(parts[1] === 'see') {
             var color = message.guild.roles.find('name', 'Color_' + parts[2]);
             if(color) {
