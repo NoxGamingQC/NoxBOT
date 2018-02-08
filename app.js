@@ -16,12 +16,13 @@ const prefix = config.prefix;
 bot.on('ready', function () {
     console.log("Bot Launched...");
     if(config.development) {
+        //bot.user.setAvatar('./img/avatar/NoxButtBeta.png'); //Uncomment to change bot avatar in devlopement
         bot.user.setStatus('dnd'); // Status can be 'Online', 'idle', 'invisible', or 'dnd'
         bot.user.setActivity(prefix + 'commands | In development...');
     } else {
+        bot.user.setAvatar('./img/avatar/NoxButt.png'); //Uncomment to change bot avatar in production
         bot.user.setStatus('Online');
         bot.user.setActivity(prefix + 'commands');
-        //bot.user.setGame('Watching NoxRacing live at https://www.twitch.tv/noxracing', 'https://www.twitch.tv/noxracing');
     }
 });
 
