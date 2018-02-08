@@ -2,13 +2,12 @@ exports.module = function (bot, modules, config) {
     const prefix = config.prefix;
     if (modules.welcome_join) {
         bot.on('guildMemberAdd', function (member) {
-            const channel = member.guild.channels.find('name', config.room.welcome_page_name);
-            if (!channel) {
-                return;
-            }
             if(member.guild.id == '282902357862514688') { // Nox's Racing Circle
                 member.addRole('410428761385992206');
-                //channel.send(`${member}, welcome in **${member.guild.name}** :wink:`);
+            }
+            if(member.guild.id == '410174046919983124') { // Communauté Multi-Gaming
+                var channel = member.guild.channels.find('id', '410782731006509082');
+                channel.send(`${member}, bienvenue dans **${member.guild.name}** :wink:`);
             }
         });
     }
@@ -30,6 +29,10 @@ exports.module = function (bot, modules, config) {
                         channel.send(`**${member}** just left us. Bye bye **${member}** :sob:`);
                     }
                 });
+            }
+            if(member.guild.id == '282902357862514688') { // Communauté Multi-Gaming
+                var channel = member.guild.channels.find('id', '410782731006509082');
+                channel.send(`**${member}** just left us. Bye bye **${member}** :sob:`);
             }
         });
     }
