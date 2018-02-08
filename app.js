@@ -20,7 +20,7 @@ bot.on('ready', function () {
         bot.user.setStatus('dnd'); // Status can be 'Online', 'idle', 'invisible', or 'dnd'
         bot.user.setActivity(prefix + 'commands | In development...');
     } else {
-        bot.user.setAvatar('./img/avatar/NoxButt.png'); //Uncomment to change bot avatar in production
+        //bot.user.setAvatar('./img/avatar/NoxButt.png'); //Uncomment to change bot avatar in production
         bot.user.setStatus('Online');
         bot.user.setActivity(prefix + 'commands');
     }
