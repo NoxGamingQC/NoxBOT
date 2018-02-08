@@ -32,7 +32,7 @@ exports.module = function (bot, modules, config) {
             }
             if(member.guild.id == '410174046919983124') { // Communauté Multi-Gaming
                 var channel = member.guild.channels.find('id', '410782731006509082');
-                channel.send(`**${member}** just left us. Bye bye **${member}** :sob:`);
+                channel.send(`**${member}** vient de nous quitter. Bye bye **${member}** :sob:`);
             }
         });
     }
