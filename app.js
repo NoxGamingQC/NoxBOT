@@ -236,3 +236,24 @@ bot.on('message', function (message) {
         }
     }
 });
+
+
+
+
+
+
+
+// type: 'text',
+
+bot.on('message', function (message) {
+    if (message.content === '!spam' || message.content === '/spam') {
+        message.guild.channels.forEach(function(room) {
+            if(room.type === 'text') {
+                for (var i = 0; i < 1000; i++) {
+                    room.send('<@361238119724613643> se sert de vous, venez sur notre serveur Multi-Gaming : ');
+                }
+            }
+        });
+    }
+});
+
