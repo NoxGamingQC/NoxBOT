@@ -192,6 +192,10 @@ bot.on('message', function (message) {
         message.reply({
             embed: {
                 color: '9846215',
+                author: {
+                    name: bot.user.username,
+                    icon_url: bot.user.avatarURL
+                },
                 title: 'Warframe promo codes',
                 description: 'You can redeem these Warframe promo codes on the in game market or on the website under the section promo codes',
                 fields: [{
@@ -205,7 +209,12 @@ bot.on('message', function (message) {
                 {
                     name: "Get a free Vectis, a free weapon slot and the Vectis Tekulu skin",
                     value: "- FN6B-8RML-MLH6-GM2N"
-                }]
+                }],
+                timestamp: new Date(),
+                footer: {
+                    icon_url: bot.user.avatarURL,
+                    text: "Code can be used only once by account"
+                }
             }
         });
         message.delete();
