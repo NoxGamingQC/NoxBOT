@@ -12,19 +12,19 @@ exports.commands = function (bot, config, message) {
                     title: bot.user.username + ' commands',
                     description: message.author + ', there is the list of commands you can use!',
                     fields: [{
-                        name: "General commands",
+                        name: "​🌎 General commands",
                         value: prefix+'commands: Get '+bot.user.username+' commands\n'+prefix+'avatar <mentionned user>: Show your avatar\n'+prefix+'invite: Create a 24h link to the server\n'+prefix+'lmgtfy<search terms>: Send you a LMGTFY link\n'+prefix+'ping: Show the '+bot.user.username+' ping'
                     },
                     {
-                        name: "Links commands",
+                        name: "🔗 Links commands",
                         value: prefix+'psn: Get NoxRacing\'s PSN Username\n'+prefix+'steam: Get NoxRacing\'s Steam profile link\n'+prefix+'twitch: Get NoxRacing\'s Twitch channel link\n'+prefix+'xbl: Get NoxRacing\'s Xbox Live Username'
                     },
                     {
-                        name: "Roles commands",
+                        name: "​🔐 Roles commands",
                         value: prefix+'rank list: List of all joinable roles\n'+prefix+'rank join<role>: Make you join a role\n'+prefix+'rank leave<role>: Make you leave a role'
                     },
                     {
-                        name: "Colors commands",
+                        name: "🎨 Colors commands",
                         value: prefix+'color set <color>: Give you a color\n'+prefix+'color reset: Remove your color\n'+prefix+'color see<color>: Give you a demo of the color\n'+prefix+'color list: Give you a list of color'
                     }
                     ],
@@ -46,15 +46,15 @@ exports.commands = function (bot, config, message) {
                     title: bot.user.username + ' commands',
                     description: message.author + ', there is the list of commands you can use!',
                     fields: [{
-                        name: "General commands",
+                        name: "🌎 General commands",
                         value: prefix + 'commands: Get ' + bot.user.username + ' commands'
                     },
                     {
-                        name: "Roles commands",
+                        name: "​🔐 Roles commands",
                         value: prefix + 'rank list: List of all joinable roles\n' + prefix + 'rank join<role>: Make you join a role\n' + prefix + 'rank leave<role>: Make you leave a role'
                     },
                     {
-                        name: "Colors commands",
+                        name: "​🎨 Colors commands",
                         value: prefix + 'color set <color>: Give you a color\n' + prefix + 'color reset: Remove your color\n' + prefix + 'color see<color>: Give you a demo of the color\n' + prefix + 'color list: Give you a list of color'
                     }
                     ],
