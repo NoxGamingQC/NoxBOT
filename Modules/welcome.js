@@ -39,7 +39,7 @@ exports.module = function (bot, modules, config) {
 
     bot.on('message', function (message) {
         var member = message.member;
-        if(message.guild.id == '282902357862514688') { // Nox's Racing Circle
+        if(message.guild && message.guild.id == '282902357862514688') { // Nox's Racing Circle
             member.roles.forEach(function(role) {
                 if(role.id == '410428761385992206') {
                     if(message.content === prefix + 'lang fr') {
