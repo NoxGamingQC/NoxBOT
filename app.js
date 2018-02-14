@@ -200,7 +200,7 @@ bot.on('message', function (message) {
                 description: 'You can redeem these Warframe promo codes on the in game market or on the website under the section promo codes',
                 fields: [{
                     name: "These are some Warframe Partner Glyphs code",
-                    value: "- IFLYNN\n- TACTICALPOTATO\n- MOGAMU\n- SKILLUP\n- ORIGINALWICKEDFUN\n- ADMIRALBAHROO\n- SP00NERISM\n- BIKEMAN\n- SUMMIT1G\n- KINGGOTTHALION\n- MCIK\n- TVSBOH\n- HOMIINVOCADO\n- BRICKY\n- N00BLSHOWTEK"
+                    value: "- ADMIRALBAHROO\n- BIKEMAN\n- BRICKY\n- HOMIINVOCADO\n- IFLYNN\n- KINGGOTTHALION\n- MCIK\n- MOGAMU\n- N00BLSHOWTEK\n- ORIGINALWICKEDFUN\n- SKILLUP\n- SP00NERISM\n- SUMMIT1G\n- TACTICALPOTATO\n- TVSBOH"
                 },
                 {
                     name: "Free Heat Sword and a weapon slot",
