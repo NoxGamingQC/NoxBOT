@@ -217,6 +217,8 @@ bot.on('message', function (message) {
                 }
             }
         });
-        message.delete();
+        if (message.deletable) {
+            message.delete()
+        }
     }
 });

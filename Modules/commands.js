@@ -35,28 +35,40 @@ exports.commands = function (bot, config, message) {
                     }
                 }
             });
-            message.delete();
         } else {
-            message.author.send(`
-                ${message.author}, Theres is the list of command you can use!
-
-                **${prefix}commands:** Get ${bot.user} commands
-
-                **Roles commands**
-                ---
-                **${prefix}rank list:** List of all joinable roles
-                **${prefix}rank join <role>:** Make you join a role
-                **${prefix}rank leave <role>:** Make you leave a role
-
-                **Colors commands**
-                ---
-                **${prefix}color set <color>:** Give you a color
-                **${prefix}color reset:** Remove your color
-                **${prefix}color see <color>:** Give you a demo of the color
-                **${prefix}color list:** Give you a list of color
-            `);
+            message.author.send({
+                embed: {
+                    color: '11141120',
+                    author: {
+                        name: bot.user.username,
+                        icon_url: bot.user.avatarURL
+                    },
+                    title: bot.user.username + ' commands',
+                    description: message.author + ', there is the list of commands you can use!',
+                    fields: [{
+                        name: "General commands",
+                        value: prefix + 'commands: Get ' + bot.user.username + ' commands'
+                    },
+                    {
+                        name: "Roles commands",
+                        value: prefix + 'rank list: List of all joinable roles\n' + prefix + 'rank join<role>: Make you join a role\n' + prefix + 'rank leave<role>: Make you leave a role'
+                    },
+                    {
+                        name: "Colors commands",
+                        value: prefix + 'color set <color>: Give you a color\n' + prefix + 'color reset: Remove your color\n' + prefix + 'color see<color>: Give you a demo of the color\n' + prefix + 'color list: Give you a list of color'
+                    }
+                    ],
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: bot.user.avatarURL,
+                        text: "© Copyright 2018 - NoxRacing"
+                    }
+                }
+            });
         }
-        message.react("✅");
+        if (message.deletable) {
+            message.delete()
+        }
         message.reply(`List of commands have been sent to your private message, go check them out! :wink:`);
     }
 }
