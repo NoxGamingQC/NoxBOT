@@ -183,3 +183,31 @@ bot.on('message', function (message) {
         }
     }
 });
+
+
+
+bot.on('message', function (message) {
+    if (message.content === prefix + 'warframe codes') {
+        var codeList = '';
+        message.reply({
+            embed: {
+                color: '9846215',
+                title: 'Warframe promo codes',
+                description: 'You can redeem these Warframe promo codes on the in game market or on the website under the section promo codes',
+                fields: [{
+                    name: "These are some Warframe Partner Glyphs code",
+                    value: "- IFLYNN\n- TACTICALPOTATO\n- MOGAMU\n- SKILLUP\n- ORIGINALWICKEDFUN\n- ADMIRALBAHROO\n- SP00NERISM\n- BIKEMAN\n- SUMMIT1G\n- KINGGOTTHALION\n- MCIK\n- TVSBOH\n- HOMIINVOCADO\n- BRICKY"
+                },
+                {
+                    name: "Free Heat Sword and a weapon slot",
+                    value: "- FREESWORD"
+                },
+                {
+                    name: "Get a free Vectis, a free weapon slot and the Vectis Tekulu skin",
+                    value: "- FN6B-8RML-MLH6-GM2N"
+                }]
+            }
+        });
+        message.delete();
+    }
+});
