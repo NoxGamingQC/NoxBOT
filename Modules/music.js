@@ -1,4 +1,4 @@
-exports.commands = function (bot, modules, config, opus, ytdl, youtubeSearch, message) {
+exports.commands = function (bot, config, opus, ytdl, youtubeSearch, message) {
     const prefix = config.prefix;
     var server = bot[message.guild.id];
     var args = message.content.split(' ');

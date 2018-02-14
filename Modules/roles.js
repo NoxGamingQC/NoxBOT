@@ -1,5 +1,5 @@
 
-exports.commands = function (bot, modules, config, message) {
+exports.commands = function (bot, config, message) {
     const prefix = config.prefix;
     var parts = message.content.split(" ");
     if (parts[0] === prefix + 'rank') {
