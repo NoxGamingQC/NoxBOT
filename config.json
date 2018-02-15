@@ -6,25 +6,5 @@
         "welcome_room_fr": "salon_francais",
         "welcome_room_en": "english_room",
         "invite_room": "language_setup"
-    },
-    "roles": {
-        "administrator": "NoxRacing",
-        "moderator": "Mods",
-        "twitch_subscribers": "Subs",
-        "twitch_moderators": "Twitch Mods",
-        "bots": ":robot: Cephalons"
-    },
-    "language_roles": {
-        "fr": ":flag_fr: FR",
-        "en": ":flag_us: EN"
-    },
-    "assignable_roles": {
-        "programmers": "Programmers",
-        "tenno": "Tenno",
-        "trucker": "Trucker",
-        "soldier": "Soldiers",
-        "cubistics": "Cubistics",
-        "pokemon": "Pokemon Master",
-        "nsfw": "18+"
     }
 }

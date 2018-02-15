@@ -4,10 +4,10 @@ const ytdl = require('ytdl-core');
 const youtubeSearch = require('youtube-search');
 const auth = require('./auth.json');
 const config = require('./config.json');
-const modules = require('./commands.json');
 const roles = require('./Modules/roles.js');
 const music = require('./Modules/music.js');
 const commands = require('./Modules/commands.js');
+const linksCommands = require('./Modules/links.js');
 const welcome = require('./Modules/welcome.js');
 
 const bot = new Discord.Client({autoReconnect:true});
@@ -28,51 +28,42 @@ bot.on('ready', function () {
 
 bot.login(auth.token);
 
-welcome.module(bot, modules, config);
+welcome.module(bot, config);
 
 bot.on('message', function (message) {
-    commands.commands(bot, modules, config, message);
-    roles.commands(bot, modules, config, message);
-    //music.commands(bot, modules, config, opus, ytdl, youtubeSearch, message);
+    commands.commands(bot, config, message);
+    roles.commands(bot, config, message);
+    linksCommands.commands(bot, config, message);
+    //music.commands(bot, config, opus, ytdl, youtubeSearch, message);
 });
 
 bot.on('message', function(message) {
     if(message.guild && message.guild.id == '282902357862514688') {
         if (message.content === prefix + 'ping') {
-            if (modules.ping) {
-                message.react("✅");
-                message.channel.send(`${bot.user} average ping: ${bot.ping}ms`);
-         } else {
-                message.react("❌");
-                message.reply(`This command is not available for the moment`);
-            }
+            message.react("✅");
+            message.channel.send(`${bot.user} average ping: ${bot.ping}ms`);
         }
     }
 
     if (message.content === prefix + 'invite') {
         if(message.guild && message.guild.id == '282902357862514688') {
-            if(modules.invite) {
-                var server = message.guild;
-                if(server) {
-                    var channel = server.channels.find('name', config.room.invite_room);
-                    if(channel) {
-                        channel.createInvite([options => {
-                            maxAge: 86400
-                        }]).then(function (link) {
-                            message.react("✅");
-                            message.reply(`There is an invite link to the channel: ${link}`);
-                        });
-                    } else {
-                        message.react("❌");
-                        message.reply(`Server room #${config.room.invite_room} not found`);
-                    }
+            var server = message.guild;
+            if(server) {
+                var channel = server.channels.find('name', config.room.invite_room);
+                if(channel) {
+                    channel.createInvite([options => {
+                        maxAge: 86400
+                    }]).then(function (link) {
+                        message.react("✅");
+                        message.reply(`There is an invite link to the channel: ${link}`);
+                    });
                 } else {
                     message.react("❌");
-                    message.reply(`Please use this command in a server`);
+                    message.reply(`Server room #${config.room.invite_room} not found`);
                 }
             } else {
                 message.react("❌");
-                message.reply(`This command is not available for the moment`);
+                message.reply(`Please use this command in a server`);
             }
         }
     }
@@ -85,30 +76,25 @@ bot.on('message', function(message) {
 
     if(commandName === prefix+'avatar') {
         if(message.guild && message.guild.id == '282902357862514688') {
-            if(modules.avatar) {
-                if (!parts[1] || parts[1].indexOf('@') == -1) {
-                    message.react("❌");
-                    message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
-                    return;
-                }
-                var userID = parts[1].replace('@', '').replace('<', '').replace('>', '');
-                var userMentionned = null;
-                bot.users.forEach(function(user) {
-                    if(user.id === userID) {
-                        userMentionned = user;
-                    };
-                });
-                if (userMentionned) {
-                    message.react("✅");
-                    message.reply(userMentionned.avatarURL);
-                } else {
-                    message.react("❌");
-                    message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
-                    return;
-                }
+            if (!parts[1] || parts[1].indexOf('@') == -1) {
+                message.react("❌");
+                message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
+                return;
+            }
+            var userID = parts[1].replace('@', '').replace('<', '').replace('>', '');
+            var userMentionned = null;
+            bot.users.forEach(function(user) {
+                if(user.id === userID) {
+                    userMentionned = user;
+                };
+            });
+            if (userMentionned) {
+                message.react("✅");
+                message.reply(userMentionned.avatarURL);
             } else {
                 message.react("❌");
-                message.reply(`This command is not available for the moment`);
+                message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
+                return;
             }
         }
     }
@@ -118,65 +104,18 @@ bot.on('message', function (message) {
     if(message.guild && message.guild.id == '282902357862514688') {
         var parts = message.content.split(" ");
         if (parts[0] === prefix + 'lmgtfy') {
-            if (modules.lmgtfy) {
-                parts.forEach(function(word, key) {
-                    if(key == 1) {
-                        content = word;
-                    }
-                    if(key > 1) {
-                        content += '+'+word;
-                    }
-                });
-                message.react("✅");
-                message.reply('Here is a link: http://lmgtfy.com/?q=' + content);
-            } else {
-                message.react("❌");
-                message.reply(`This command is not available for the moment`);
-            }
+            parts.forEach(function(word, key) {
+                if(key == 1) {
+                    content = word;
+                }
+                if(key > 1) {
+                    content += '+'+word;
+                }
+            });
+            message.react("✅");
+            message.reply('Here is a link: http://lmgtfy.com/?q=' + content);
         }
     }
-});
-
-bot.on('message', function (message) {
-    if(message.guild && message.guild.id == '282902357862514688') {
-        if (message.content === prefix + 'psn') {
-            if (modules.rank.leave) {
-                message.react("✅");
-                message.reply('NoxRacing\'s Playstation Network username is: `HowlNox22607`');
-            } else {
-                message.react("❌");
-                message.reply(`This command is not available for the moment`);
-            }
-        }
-
-        if (message.content === prefix + 'steam') {
-            if (modules.rank.leave) {
-                message.react("✅");
-                message.reply('NoxRacing Steam profile page link is: http://steamcommunity.com/id/Noxracing/');
-            } else {
-                message.react("❌");
-                message.reply(`This command is not available for the moment`);
-            }
-        }
-        if (message.content === prefix + 'twitch') {
-            if (modules.rank.leave) {
-                message.react("✅");
-                message.reply('You can join NoxRacing Channel at: https://www.twitch.tv/noxracing');
-            } else {
-                message.react("❌");
-                message.reply(`This command is not available for the moment`);
-            }
-        }
-        if (message.content === prefix + 'xbl') {
-            if (modules.rank.leave) {
-                message.react("✅");
-                message.reply('NoxRacing\'s Xbox Live username is: `HowlNox22607`');
-            } else {
-                message.react("❌");
-                message.reply(`This command is not available for the moment`);
-            }
-        }
-    }     
 });
 
 bot.on('message', function (message) {
@@ -242,5 +181,44 @@ bot.on('message', function (message) {
             message.react("❌");
             message.reply(`You must be in a server to use this command`);
         }
-    } 
+    }
+});
+
+
+
+bot.on('message', function (message) {
+    if (message.content === prefix + 'warframe codes') {
+        var codeList = '';
+        message.reply({
+            embed: {
+                color: '9846215',
+                author: {
+                    name: bot.user.username,
+                    icon_url: bot.user.avatarURL
+                },
+                title: 'Warframe promo codes',
+                description: 'You can redeem these Warframe promo codes on the in game market or on the website under the section promo codes',
+                fields: [{
+                    name: "These are some Warframe Partner Glyphs code",
+                    value: "- ADMIRALBAHROO\n- BIKEMAN\n- BRICKY\n- HOMIINVOCADO\n- IFLYNN\n- KINGGOTTHALION\n- MCIK\n- MOGAMU\n- N00BLSHOWTEK\n- ORIGINALWICKEDFUN\n- SKILLUP\n- SP00NERISM\n- SUMMIT1G\n- TACTICALPOTATO\n- TVSBOH"
+                },
+                {
+                    name: "Free Heat Sword and a weapon slot",
+                    value: "- FREESWORD"
+                },
+                {
+                    name: "Get a free Vectis, a free weapon slot and the Vectis Tekulu skin",
+                    value: "- FN6B-8RML-MLH6-GM2N"
+                }],
+                timestamp: new Date(),
+                footer: {
+                    icon_url: bot.user.avatarURL,
+                    text: "Code can be used only once by account"
+                }
+            }
+        });
+        if (message.deletable) {
+            message.delete()
+        }
+    }
 });
