@@ -222,3 +222,13 @@ bot.on('message', function (message) {
         }
     }
 });
+
+
+bot.on('message', function (message) {
+    if (message.content === prefix + 'kiwis') {
+        message.channel.send('🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝');
+        if (message.deletable) {
+            message.delete()
+        }
+    }
+});
