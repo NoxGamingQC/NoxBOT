@@ -232,3 +232,49 @@ bot.on('message', function (message) {
         }
     }
 });
+
+bot.on('message', function (message) {
+    if (message.guild.id === '282902357862514688') {
+        var parts = message.content.split(" ");
+        if (parts[0] === prefix + 'timeout') {
+            var isMod = false;
+            message.member.roles.forEach(function(role) {
+                if (role.id === '372704012669288450') {
+                    isMod = true;
+                }
+            });
+            if (isMod) {
+                if (!parts[1] || parts[1].indexOf('@') == -1) {
+                    message.react("❌");
+                    message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
+                    return;
+                }
+                var userID = parts[1].replace('!', '').replace('@', '').replace('<', '').replace('>', '');
+                message.guild.members.forEach(function(member) {
+                    if(member.id === userID) {
+                        member.addRole('415944725460156416');
+                        message.channel.send({
+                            embed: {
+                                color: '2536811',
+                                author: {
+                                    name: message.author.username,
+                                    icon_url: message.author.avatarURL
+                                },
+                                title: 'User timeout',
+                                description: 'Member ' + parts[1] + ' have been snooze on ' + message.guild.name,
+                                timestamp: new Date(),
+                                footer: {
+                                    icon_url: bot.user.avatarURL,
+                                    text: bot.user.username,
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            if (message.deletable) {
+                message.delete()
+            }
+        }
+    }
+});
