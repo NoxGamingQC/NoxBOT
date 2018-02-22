@@ -256,12 +256,12 @@ bot.on('message', function (message) {
 bot.on('message', function (message) {
     if (message.content === prefix + 'warframe codes') {
         var codeList = '';
-        message.reply({
+        message.channel.send({
             embed: {
                 color: '9846215',
                 author: {
-                    name: bot.user.username,
-                    icon_url: bot.user.avatarURL
+                    name: message.author.username,
+                    icon_url: message.author.avatarURL
                 },
                 title: 'Warframe promo codes',
                 description: 'You can redeem these Warframe promo codes on the in game market or on the website under the section promo codes',
@@ -284,6 +284,9 @@ bot.on('message', function (message) {
                 }
             }
         });
+        if (message.deletable) {
+            message.delete();
+        }
     }
 });
 
