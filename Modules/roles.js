@@ -2,7 +2,7 @@
 exports.commands = function (bot, config, message) {
     const prefix = config.prefix;
     var parts = message.content.split(" ");
-    if (parts[0] === prefix + 'rank') {
+    if (parts[0] === prefix + 'rank' && parts[1]) {
         if(message.guild) {
             if (parts[1] === 'join') {
                 var role = message.guild.roles.find('name', '+' + parts[2]);

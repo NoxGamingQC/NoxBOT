@@ -1,7 +1,7 @@
 exports.commands = function (bot, config, message) {
     const prefix = config.prefix;
     var parts = message.content.split(" ");
-    if (parts[0] === prefix + 'color') {
+    if (parts[0] === prefix + 'color' && parts[1]) {
         if (message.guild) {
             if (parts[1] === 'set') {
                 var color = message.guild.roles.find('name', 'Color_' + parts[2]);
