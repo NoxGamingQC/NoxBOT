@@ -1,22 +1,26 @@
-
 exports.commands = function (bot, config, message) {
     const prefix = config.prefix;
     var parts = message.content.split(" ");
-    if (parts[0] === prefix + 'rank' && parts[1]) {
-        if(message.guild) {
-            if (parts[1] === 'join') {
-                var role = message.guild.roles.find('name', '+' + parts[2]);
-                if (role) {
-                    message.member.addRole(role.id);
+    if (parts[0] === prefix + 'color' && parts[1]) {
+        if (message.guild) {
+            if (parts[1] === 'set') {
+                var color = message.guild.roles.find('name', 'Color_' + parts[2]);
+                if (color) {
+                    message.guild.roles.forEach(function (role) {
+                        if (role.name.indexOf('Color_') !== -1) {
+                            message.member.removeRole(role.id);
+                        }
+                    });
+                    message.member.addRole(color.id);
                     message.channel.send({
                         embed: {
-                            color: role.color,
+                            color: color.color,
                             author: {
                                 name: message.author.username,
                                 icon_url: message.author.avatarURL
                             },
-                            title: 'Roles',
-                            description: 'You joined ' + parts[2] + ' successfully',
+                            title: 'Colors',
+                            description: 'Color ' + parts[2] + ' assigned successfuly',
                             timestamp: new Date(),
                             footer: {
                                 icon_url: bot.user.avatarURL,
@@ -32,8 +36,8 @@ exports.commands = function (bot, config, message) {
                                 name: message.author.username,
                                 icon_url: message.author.avatarURL
                             },
-                            title: 'Error - Roles',
-                            description: 'This role does not exist',
+                            title: 'Error - Color',
+                            description: 'This color does not exist',
                             timestamp: new Date(),
                             footer: {
                                 icon_url: bot.user.avatarURL,
@@ -42,53 +46,37 @@ exports.commands = function (bot, config, message) {
                         }
                     });
                 }
-            } else if (parts[1] === 'leave') {
-                var role = message.guild.roles.find('name', '+' + parts[2]);
-                if (role) {
-                    message.member.removeRole(role.id);
-                    message.channel.send({
-                        embed: {
-                            color: role.color,
-                            author: {
-                                name: message.author.username,
-                                icon_url: message.author.avatarURL
-                            },
-                            title: 'Roles',
-                            description: 'You leaved ' + parts[2] + ' successfully',
-                            timestamp: new Date(),
-                            footer: {
-                                icon_url: bot.user.avatarURL,
-                                text: bot.user.username
-                            }
-                        }
-                    });
-                } else {
-                    message.channel.send({
-                        embed: {
-                            color: '16711680',
-                            author: {
-                                name: message.author.username,
-                                icon_url: message.author.avatarURL
-                            },
-                            title: 'Error - Roles',
-                            description: 'This role does not exist',
-                            timestamp: new Date(),
-                            footer: {
-                                icon_url: bot.user.avatarURL,
-                                text: bot.user.username
-                            }
-                        }
-                    });
-                }
-            } else if (parts[1] === 'list') {
-                var rolesList = [];
+            } else if (parts[1] === 'reset') {
                 message.guild.roles.forEach(function (role) {
-                    if (role.name.indexOf('+') !== -1) {
-                        rolesList.push(role.name.replace('+', ''));
+                    if (role.name.indexOf('Color_') !== -1) {
+                        message.member.removeRole(role.id);
                     }
                 });
-                if (rolesList.length) {
-                    roleString = rolesList.join('\n- ');
+                message.channel.send({
+                    embed: {
+                        color: '4961603',
+                        author: {
+                            name: message.author.username,
+                            icon_url: message.author.avatarURL
+                        },
+                        title: 'Color',
+                        description: 'Colors reset successfully',
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: bot.user.avatarURL,
+                            text: bot.user.username
+                        }
+                    }
+                });
+            } else if (parts[1] === 'list') {
+                var colorList = [];
+                message.guild.roles.forEach(function (role) {
+                    if (role.name.indexOf('Color_') !== -1) {
+                        colorList.push(role.name.replace('Color_', ''));
+                    }
+                });
+                if (colorList.length) {
+                    colorsString = colorList.join('\n- ');
                     message.channel.send({
                         embed: {
                             color: '4961603',
@@ -96,8 +84,32 @@ exports.commands = function (bot, config, message) {
                                 name: message.author.username,
                                 icon_url: message.author.avatarURL
                             },
-                            title: 'There\'s a list of joinable roles',
-                            description: '- ' + roleString,
+                            title: 'There\'s a list of assignable colors',
+                            description: '- ' + colorsString,
+                            timestamp: new Date(),
+                            footer: {
+                                icon_url: bot.user.avatarURL,
+                                text: bot.user.username
+                            }
+                        }
+                    });
+                } else {
+                    message.react("❌");
+                    message.reply(`You can't assign to yourself any color on this server`);
+                }
+            } else if (parts[1] === 'see') {
+                var color = message.guild.roles.find('name', 'Color_' + parts[2]);
+                if (color) {
+                    var hex = ('000000' + color.color.toString(16)).slice(-6);
+                    message.channel.send({
+                        embed: {
+                            color: color.color,
+                            author: {
+                                name: message.author.username,
+                                icon_url: message.author.avatarURL
+                            },
+                            title: color.name.replace('Color_', ''),
+                            description: '#' + hex,
                             timestamp: new Date(),
                             footer: {
                                 icon_url: bot.user.avatarURL,
@@ -113,8 +125,8 @@ exports.commands = function (bot, config, message) {
                                 name: message.author.username,
                                 icon_url: message.author.avatarURL
                             },
-                            title: 'Error - Roles',
-                            description: 'You can\'t assign to yourself any roles on this server',
+                            title: 'Error - Color',
+                            description: 'This color does not exist',
                             timestamp: new Date(),
                             footer: {
                                 icon_url: bot.user.avatarURL,
@@ -123,7 +135,7 @@ exports.commands = function (bot, config, message) {
                         }
                     });
                 }
-            }  else {
+            } else {
                 message.channel.send({
                     embed: {
                         color: '16711680',
@@ -131,7 +143,7 @@ exports.commands = function (bot, config, message) {
                             name: message.author.username,
                             icon_url: message.author.avatarURL
                         },
-                        title: 'Error - Roles',
+                        title: 'Error - Color',
                         description: 'This command does not exist',
                         timestamp: new Date(),
                         footer: {
@@ -149,7 +161,7 @@ exports.commands = function (bot, config, message) {
                         name: message.author.username,
                         icon_url: message.author.avatarURL
                     },
-                    title: 'Error - Roles',
+                    title: 'Error - Color',
                     description: 'You must be in a server to use this command',
                     timestamp: new Date(),
                     footer: {
