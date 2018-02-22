@@ -40,8 +40,22 @@ bot.on('message', function (message) {
 bot.on('message', function(message) {
     if(message.guild && message.guild.id == '282902357862514688') {
         if (message.content === prefix + 'ping') {
-            message.react("✅");
-            message.channel.send(`${bot.user} average ping: ${bot.ping}ms`);
+            message.channel.send({
+                embed: {
+                    color: '11141120',
+                    author: {
+                        name: message.author.username,
+                        icon_url: message.author.avatarURL
+                    },
+                    title: bot.user.username + ' ping',
+                    description: `Average ping: ${bot.ping}ms`,
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: bot.user.avatarURL,
+                        text: bot.user.username
+                    }
+                }
+            });
         }
     }
 
@@ -55,7 +69,6 @@ bot.on('message', function(message) {
                         channel.createInvite([options => {
                             maxAge: 86400
                         }]).then(function (link) {
-                            message.react("✅");
                             message.channel.send({
                                 embed: {
                                     color: '11141120',
@@ -68,7 +81,7 @@ bot.on('message', function(message) {
                                     timestamp: new Date(),
                                     footer: {
                                         icon_url: bot.user.avatarURL,
-                                        text: 'Invite link valid only for 24h'
+                                        text: 'Invite link are valid only for 24h'
                                     }
                                 }
                             })
