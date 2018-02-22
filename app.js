@@ -153,8 +153,27 @@ bot.on('message', function(message) {
                 };
             });
             if (userMentionned) {
-                message.react("✅");
-                message.reply(userMentionned.avatarURL);
+                message.reply({
+                    embed: {
+                        color: '11141120',
+                        author: {
+                            name: message.author.username,
+                            icon_url: message.author.avatarURL
+                        },
+                        title: userMentionned.username + '\'s avatar',
+                        description: userMentionned.avatarURL,
+                        timestamp: new Date(),
+                        image: {
+                            url: userMentionned.avatarURL
+                        },
+                        footer: {
+                            icon_url: bot.user.avatarURL,
+                            text: bot.user.username
+                        }
+                    }
+                });
+                //message.react("✅");
+                //message.reply(userMentionned.avatarURL);
             } else {
                 message.react("❌");
                 message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
