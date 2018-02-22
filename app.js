@@ -145,7 +145,7 @@ bot.on('message', function(message) {
                 message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
                 return;
             }
-            var userID = parts[1].replace('@', '').replace('<', '').replace('>', '');
+            var userID = parts[1].replace('!', '').replace('@', '').replace('<', '').replace('>', '');
             var userMentionned = null;
             bot.users.forEach(function(user) {
                 if(user.id === userID) {
