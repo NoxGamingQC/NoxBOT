@@ -141,8 +141,25 @@ bot.on('message', function(message) {
     if(commandName === prefix+'avatar') {
         if(message.guild && message.guild.id == '282902357862514688') {
             if (!parts[1] || parts[1].indexOf('@') == -1) {
-                message.react("❌");
-                message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
+                message.channel.send({
+                    embed: {
+                        color: '16711680',
+                        author: {
+                            name: message.author.username,
+                            icon_url: message.author.avatarURL
+                        },
+                        title: 'Error - Avatar',
+                        description: 'Wrong parameters passed to command: `' + prefix + 'avatar`',
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: bot.user.avatarURL,
+                            text: bot.user.username
+                        }
+                    }
+                });
+                if (message.deletable) {
+                    message.delete();
+                }
                 return;
             }
             var userID = parts[1].replace('!', '').replace('@', '').replace('<', '').replace('>', '');
@@ -173,8 +190,25 @@ bot.on('message', function(message) {
                     }
                 });
             } else {
-                message.react("❌");
-                message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
+                message.channel.send({
+                    embed: {
+                        color: '16711680',
+                        author: {
+                            name: message.author.username,
+                            icon_url: message.author.avatarURL
+                        },
+                        title: 'Error - Avatar',
+                        description: 'Wrong parameters passed to command: `' + prefix + 'avatar`',
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: bot.user.avatarURL,
+                            text: bot.user.username
+                        }
+                    }
+                });
+                if (message.deletable) {
+                    message.delete();
+                }
                 return;
             }
         }
