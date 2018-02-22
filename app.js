@@ -312,7 +312,7 @@ bot.on('message', function (message) {
                 if (parts.slice(2).join(' ').trim()) {
                     message.guild.members.forEach(function(member) {
                         if(member.id === userID) {
-                            member.addRole('416033177044516874');
+                            member.addRole('416036567698636800');
                             message.channel.send({
                                 embed: {
                                     color: '2536811',
