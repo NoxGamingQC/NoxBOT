@@ -144,7 +144,7 @@ exports.commands = function (bot, config, message) {
                             icon_url: message.author.avatarURL
                         },
                         title: 'Error - Color',
-                        description: 'This color does not exist',
+                        description: 'This command does not exist',
                         timestamp: new Date(),
                         footer: {
                             icon_url: bot.user.avatarURL,
@@ -170,6 +170,9 @@ exports.commands = function (bot, config, message) {
                     }
                 }
             });
+        }
+        if (message.deletable) {
+            message.delete();
         }
     }
 }
