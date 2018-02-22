@@ -46,25 +46,73 @@ bot.on('message', function(message) {
     }
 
     if (message.content === prefix + 'invite') {
-        if(message.guild && message.guild.id == '282902357862514688') {
+        if(message.guild) {
+            if (message.guild.id == '282902357862514688') {
             var server = message.guild;
-            if(server) {
-                var channel = server.channels.find('name', config.room.invite_room);
-                if(channel) {
-                    channel.createInvite([options => {
-                        maxAge: 86400
-                    }]).then(function (link) {
-                        message.react("✅");
-                        message.reply(`There is an invite link to the channel: ${link}`);
-                    });
-                } else {
-                    message.react("❌");
-                    message.reply(`Server room #${config.room.invite_room} not found`);
+                if(server) {
+                    var channel = server.channels.find('id', '383695542452092929');
+                    if(channel) {
+                        channel.createInvite([options => {
+                            maxAge: 86400
+                        }]).then(function (link) {
+                            message.react("✅");
+                            message.channel.send({
+                                embed: {
+                                    color: '11141120',
+                                    author: {
+                                        name: message.author.username,
+                                        icon_url: message.author.avatarURL
+                                    },
+                                    title: 'Invite link',
+                                    description: `${link}`,
+                                    timestamp: new Date(),
+                                    footer: {
+                                        icon_url: bot.user.avatarURL,
+                                        text: 'Invite link valid only for 24h'
+                                    }
+                                }
+                            })
+                        });
+                    } else {
+                        message.channel.send({
+                            embed: {
+                                color: '16711680',
+                                author: {
+                                    name: message.author.username,
+                                    icon_url: message.author.avatarURL
+                                },
+                                title: 'Error - Invite link',
+                                description: `Cannot create invite link to the server`,
+                                timestamp: new Date(),
+                                footer: {
+                                    icon_url: bot.user.avatarURL,
+                                    text: bot.user.username
+                                }
+                            }
+                        });
+                    }
                 }
-            } else {
-                message.react("❌");
-                message.reply(`Please use this command in a server`);
             }
+        } else {
+            message.channel.send({
+                embed: {
+                    color: '16711680',
+                    author: {
+                        name: message.author.username,
+                        icon_url: message.author.avatarURL
+                    },
+                    title: 'Error - Invite link',
+                    description: `Please use this command in a server`,
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: bot.user.avatarURL,
+                        text: bot.user.username
+                    }
+                }
+            });
+        }
+        if (message.deletable) {
+            message.delete();
         }
     }
 });
@@ -149,9 +197,6 @@ bot.on('message', function (message) {
                 }
             }
         });
-        if (message.deletable) {
-            message.delete()
-        }
     }
 });
 
@@ -159,65 +204,61 @@ bot.on('message', function (message) {
 bot.on('message', function (message) {
     if (message.content === prefix + 'kiwis') {
         message.channel.send('🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝🥝');
-        if (message.deletable) {
-            message.delete()
-        }
     }
 });
 
 
 //Nox
 bot.on('message', function (message) {
-    if (message.guild.id === '282902357862514688') {
-        var parts = message.content.split(" ");
-        if (parts[0] === prefix + 'timeout') {
-            var isMod = false;
-            message.member.roles.forEach(function(role) {
-                if (role.id === '372704012669288450') {
-                    isMod = true;
-                }
-            });
-            if (isMod) {
-                if (!parts[1] || parts[1].indexOf('@') == -1) {
-                    message.react("❌");
-                    message.reply('User passed to command: `' + prefix + 'timeout` is not found');
-                    return;
-                }
-                var userID = parts[1].replace('!', '').replace('@', '').replace('<', '').replace('>', '');
-                if (parts.slice(2).join(' ').trim()) {
-                    message.guild.members.forEach(function(member) {
-                        if(member.id === userID) {
-                            member.addRole('415944725460156416');
-                            message.channel.send({
-                                embed: {
-                                    color: '2536811',
-                                    author: {
-                                        name: message.author.username,
-                                        icon_url: message.author.avatarURL
-                                    },
-                                    title: 'User timeout',
-                                    description: 'Member ' + parts[1] + ' have been snooze on ' + message.guild.name,
-                                    fields: [{
-                                        name: "Reason",
-                                        value: parts.slice(2).join(' ')
-                                    }],
-                                    timestamp: new Date(),
-                                    footer: {
-                                        icon_url: bot.user.avatarURL,
-                                        text: bot.user.username,
+    if(message.guild) {
+        if (message.guild.id === '282902357862514688') {
+            var parts = message.content.split(" ");
+            if (parts[0] === prefix + 'timeout') {
+                var isMod = false;
+                message.member.roles.forEach(function(role) {
+                    if (role.id === '372704012669288450') {
+                        isMod = true;
+                    }
+                });
+                if (isMod) {
+                    if (!parts[1] || parts[1].indexOf('@') == -1) {
+                        message.react("❌");
+                        message.reply('User passed to command: `' + prefix + 'timeout` is not found');
+                        return;
+                    }
+                    var userID = parts[1].replace('!', '').replace('@', '').replace('<', '').replace('>', '');
+                    if (parts.slice(2).join(' ').trim()) {
+                        message.guild.members.forEach(function(member) {
+                            if(member.id === userID) {
+                                member.addRole('415944725460156416');
+                                message.channel.send({
+                                    embed: {
+                                        color: '2536811',
+                                        author: {
+                                            name: message.author.username,
+                                            icon_url: message.author.avatarURL
+                                        },
+                                        title: 'User timeout',
+                                        description: 'Member ' + parts[1] + ' have been snooze on ' + message.guild.name,
+                                        fields: [{
+                                            name: "Reason",
+                                            value: parts.slice(2).join(' ')
+                                        }],
+                                        timestamp: new Date(),
+                                        footer: {
+                                            icon_url: bot.user.avatarURL,
+                                            text: bot.user.username,
+                                        }
                                     }
-                                }
-                            });
-                        }
-                    });
-                } else {
-                    message.react("❌");
-                    message.reply('You need to tell the reasons of the timeout with your message `'+ prefix + 'timeout <@user> <reason of the timeout>`');
-                    return;
+                                });
+                            }
+                        });
+                    } else {
+                        message.react("❌");
+                        message.reply('You need to tell the reasons of the timeout with your message `'+ prefix + 'timeout <@user> <reason of the timeout>`');
+                        return;
+                    }
                 }
-            }
-            if (message.deletable) {
-                message.delete()
             }
         }
     }
@@ -227,56 +268,55 @@ bot.on('message', function (message) {
 
 // TiWill
 bot.on('message', function (message) {
-    if (message.guild.id === '343049869847429120') {
-        var parts = message.content.split(" ");
-        if (parts[0] === prefix + 'timeout') {
-            var isMod = false;
-            message.member.roles.forEach(function(role) {
-                if ((role.id === '343070332850012170') || (role.id === '343069878972055552') || (role.id === '343069451056316417')) {
-                    isMod = true;
-                }
-            });
-            if (isMod) {
-                if (!parts[1] || parts[1].indexOf('@') == -1) {
-                    message.react("❌");
-                    message.reply('L\'utilisateur n\'as pas été trouvé');
-                    return;
-                }
-                var userID = parts[1].replace('!', '').replace('@', '').replace('<', '').replace('>', '');
-                if (parts.slice(2).join(' ').trim()) {
-                    message.guild.members.forEach(function(member) {
-                        if(member.id === userID) {
-                            member.addRole('343075905662353410');
-                            message.channel.send({
-                                embed: {
-                                    color: '14964897',
-                                    author: {
-                                        name: message.author.username,
-                                        icon_url: message.author.avatarURL
-                                    },
-                                    title: '🐷GROS COCHON!!',
-                                    description: 'Le membre ' + parts[1] + ' à été mute sur ' + message.guild.name,
-                                    fields: [{
-                                        name: "Raison",
-                                        value: parts.slice(2).join(' ')
-                                    }],
-                                    timestamp: new Date(),
-                                    footer: {
-                                        icon_url: bot.user.avatarURL,
-                                        text: bot.user.username,
+    if(message.guild) {
+        if (message.guild.id === '343049869847429120') {
+            var parts = message.content.split(" ");
+            if (parts[0] === prefix + 'timeout') {
+                var isMod = false;
+                message.member.roles.forEach(function(role) {
+                    if ((role.id === '343070332850012170') || (role.id === '343069878972055552') || (role.id === '343069451056316417')) {
+                        isMod = true;
+                    }
+                });
+                if (isMod) {
+                    if (!parts[1] || parts[1].indexOf('@') == -1) {
+                        message.react("❌");
+                        message.reply('L\'utilisateur n\'as pas été trouvé');
+                        return;
+                    }
+                    var userID = parts[1].replace('!', '').replace('@', '').replace('<', '').replace('>', '');
+                    if (parts.slice(2).join(' ').trim()) {
+                        message.guild.members.forEach(function(member) {
+                            if(member.id === userID) {
+                                member.addRole('343075905662353410');
+                                message.channel.send({
+                                    embed: {
+                                        color: '14964897',
+                                        author: {
+                                            name: message.author.username,
+                                            icon_url: message.author.avatarURL
+                                        },
+                                        title: '🐷GROS COCHON!!',
+                                        description: 'Le membre ' + parts[1] + ' à été mute sur ' + message.guild.name,
+                                        fields: [{
+                                            name: "Raison",
+                                            value: parts.slice(2).join(' ')
+                                        }],
+                                        timestamp: new Date(),
+                                        footer: {
+                                            icon_url: bot.user.avatarURL,
+                                            text: bot.user.username,
+                                        }
                                     }
-                                }
-                            });
-                        }
-                    });
-                } else {
-                    message.react("❌");
-                    message.reply('Vous devez précisez la raison de l\'attribution du rôle `'+ prefix + 'timeout <@utilisateur> <raison de l\'attribution du rôle>`');
-                    return;
+                                });
+                            }
+                        });
+                    } else {
+                        message.react("❌");
+                        message.reply('Vous devez précisez la raison de l\'attribution du rôle `'+ prefix + 'timeout <@utilisateur> <raison de l\'attribution du rôle>`');
+                        return;
+                    }
                 }
-            }
-            if (message.deletable) {
-                message.delete()
             }
         }
     }

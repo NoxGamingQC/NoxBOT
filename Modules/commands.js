@@ -67,7 +67,7 @@ exports.commands = function (bot, config, message) {
             });
         }
         if (message.deletable) {
-            message.delete()
+            message.delete();
         }
         message.reply(`List of commands have been sent to your private message, go check them out! :wink:`);
     }
