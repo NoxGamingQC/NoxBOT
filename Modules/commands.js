@@ -4,7 +4,7 @@ exports.commands = function (bot, config, message) {
         if(message.guild && message.guild.id == '282902357862514688') {
             message.author.send({
                 embed: {
-                    color: '11141120',
+                    color: '4961603',
                     author: {
                         name: bot.user.username,
                         icon_url: bot.user.avatarURL
@@ -41,7 +41,7 @@ exports.commands = function (bot, config, message) {
         } else {
             message.author.send({
                 embed: {
-                    color: '11141120',
+                    color: '4961603',
                     author: {
                         name: bot.user.username,
                         icon_url: bot.user.avatarURL

@@ -32,7 +32,7 @@ welcome.module(bot, config);
 bot.on('message', function (message) {
     commands.commands(bot, config, message);
     roles.commands(bot, config, message);
-    color.commands(config, message);
+    color.commands(bot, config, message);
     linksCommands.commands(bot, config, message);
     //music.commands(bot, auth, config, opus, message);
 });
@@ -42,7 +42,7 @@ bot.on('message', function(message) {
         if (message.content === prefix + 'ping') {
             message.channel.send({
                 embed: {
-                    color: '11141120',
+                    color: '4961603',
                     author: {
                         name: message.author.username,
                         icon_url: message.author.avatarURL
@@ -74,7 +74,7 @@ bot.on('message', function(message) {
                         }]).then(function (link) {
                             message.channel.send({
                                 embed: {
-                                    color: '11141120',
+                                    color: '4961603',
                                     author: {
                                         name: message.author.username,
                                         icon_url: message.author.avatarURL
@@ -172,7 +172,7 @@ bot.on('message', function(message) {
             if (userMentionned) {
                 message.channel.send({
                     embed: {
-                        color: '11141120',
+                        color: '4961603',
                         author: {
                             name: message.author.username,
                             icon_url: message.author.avatarURL
@@ -232,7 +232,7 @@ bot.on('message', function (message) {
             });
             message.channel.send({
                 embed: {
-                    color: '11141120',
+                    color: '4961603',
                     author: {
                         name: message.author.username,
                         icon_url: message.author.avatarURL

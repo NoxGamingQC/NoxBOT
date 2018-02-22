@@ -1,4 +1,4 @@
-exports.commands = function (config, message) {
+exports.commands = function (bot, config, message) {
     const prefix = config.prefix;
     var parts = message.content.split(" ");
     if (parts[0] === prefix + 'color') {
@@ -12,11 +12,39 @@ exports.commands = function (config, message) {
                         }
                     });
                     message.member.addRole(color.id);
-                    message.react("✅");
-                    message.reply('Color ' + parts[2] + ' assigned successfuly')
+                    message.channel.send({
+                        embed: {
+                            color: color.color,
+                            author: {
+                                name: message.author.username,
+                                icon_url: message.author.avatarURL
+                            },
+                            title: 'Colors',
+                            description: 'Color ' + parts[2] + ' assigned successfuly',
+                            timestamp: new Date(),
+                            footer: {
+                                icon_url: bot.user.avatarURL,
+                                text: bot.user.username
+                            }
+                        }
+                    });
                 } else {
-                    message.react("❌");
-                    message.reply(`This color does not exist`);
+                    message.channel.send({
+                        embed: {
+                            color: '16711680',
+                            author: {
+                                name: message.author.username,
+                                icon_url: message.author.avatarURL
+                            },
+                            title: 'Error - Color',
+                            description: 'This color does not exist',
+                            timestamp: new Date(),
+                            footer: {
+                                icon_url: bot.user.avatarURL,
+                                text: bot.user.username
+                            }
+                        }
+                    });
                 }
             } else if (parts[1] === 'reset') {
                 message.guild.roles.forEach(function (role) {
@@ -24,8 +52,22 @@ exports.commands = function (config, message) {
                         message.member.removeRole(role.id);
                     }
                 });
-                message.react("✅");
-                message.reply('Color reset successfuly')
+                message.channel.send({
+                    embed: {
+                        color: '4961603',
+                        author: {
+                            name: message.author.username,
+                            icon_url: message.author.avatarURL
+                        },
+                        title: 'Color',
+                        description: 'Colors reset successfully',
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: bot.user.avatarURL,
+                            text: bot.user.username
+                        }
+                    }
+                });
             } else if (parts[1] === 'list') {
                 var colorList = [];
                 message.guild.roles.forEach(function (role) {
@@ -34,9 +76,23 @@ exports.commands = function (config, message) {
                     }
                 });
                 if (colorList.length) {
-                    colorsString = colorList.join('\n+');
-                    message.react("✅");
-                    message.reply('There\'s a list of assignable colors: ```diff\n+' + colorsString + '```');
+                    colorsString = colorList.join('\n- ');
+                    message.channel.send({
+                        embed: {
+                            color: '4961603',
+                            author: {
+                                name: message.author.username,
+                                icon_url: message.author.avatarURL
+                            },
+                            title: 'There\'s a list of assignable colors',
+                            description: '- ' + colorsString,
+                            timestamp: new Date(),
+                            footer: {
+                                icon_url: bot.user.avatarURL,
+                                text: bot.user.username
+                            }
+                        }
+                    });
                 } else {
                     message.react("❌");
                     message.reply(`You can't assign to yourself any color on this server`);
@@ -48,21 +104,72 @@ exports.commands = function (config, message) {
                     message.channel.send({
                         embed: {
                             color: color.color,
+                            author: {
+                                name: message.author.username,
+                                icon_url: message.author.avatarURL
+                            },
                             title: color.name.replace('Color_', ''),
-                            description: '#' + hex
+                            description: '#' + hex,
+                            timestamp: new Date(),
+                            footer: {
+                                icon_url: bot.user.avatarURL,
+                                text: bot.user.username
+                            }
                         }
                     });
                 } else {
-                    message.react("❌");
-                    message.reply(`This color does not exist`);
+                    message.channel.send({
+                        embed: {
+                            color: '16711680',
+                            author: {
+                                name: message.author.username,
+                                icon_url: message.author.avatarURL
+                            },
+                            title: 'Error - Color',
+                            description: 'This color does not exist',
+                            timestamp: new Date(),
+                            footer: {
+                                icon_url: bot.user.avatarURL,
+                                text: bot.user.username
+                            }
+                        }
+                    });
                 }
             } else {
-                message.react("❌");
-                message.reply(`This command does not exist`);
+                message.channel.send({
+                    embed: {
+                        color: '16711680',
+                        author: {
+                            name: message.author.username,
+                            icon_url: message.author.avatarURL
+                        },
+                        title: 'Error - Color',
+                        description: 'This color does not exist',
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: bot.user.avatarURL,
+                            text: bot.user.username
+                        }
+                    }
+                });
             }
         } else {
-            message.react("❌");
-            message.reply(`You must be in a server to use this command`);
+            message.channel.send({
+                embed: {
+                    color: '16711680',
+                    author: {
+                        name: message.author.username,
+                        icon_url: message.author.avatarURL
+                    },
+                    title: 'Error - Color',
+                    description: 'You must be in a server to use this command',
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: bot.user.avatarURL,
+                        text: bot.user.username
+                    }
+                }
+            });
         }
     }
 }
