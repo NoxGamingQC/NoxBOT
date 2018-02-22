@@ -16,8 +16,8 @@ bot.on('ready', function () {
     console.log("Bot Launched...");
     if(config.development) {
         //bot.user.setAvatar('./img/avatar/NoxButtBeta.png'); //Uncomment to change bot avatar in devlopement
-        bot.user.setStatus('dnd'); // Status can be 'Online', 'idle', 'invisible', or 'dnd'
-        bot.user.setActivity(prefix + 'commands | In development...');
+        bot.user.setStatus('dnd');
+        bot.user.setActivity(prefix + 'commands | Testing 1..2..3', { 'url': 'https://www.twitch.tv/noxracing', 'type':'STREAMING'});
     } else {
         //bot.user.setAvatar('./img/avatar/NoxButt.png'); //Uncomment to change bot avatar in production
         bot.user.setStatus('Online');
