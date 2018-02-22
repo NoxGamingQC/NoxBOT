@@ -13,7 +13,7 @@ exports.commands = function (bot, config, message) {
                     description: message.author + ', there is the list of commands you can use!',
                     fields: [{
                         name: "​🌎 General commands",
-                        value: prefix+'commands: Get '+bot.user.username+' commands\n'+prefix+'avatar <mentionned user>: Show your avatar\n'+prefix+'invite: Create a 24h link to the server\n'+prefix+'lmgtfy<search terms>: Send you a LMGTFY link\n'+prefix+'ping: Show the '+bot.user.username+' ping'
+                        value: prefix+'commands: Get '+bot.user.username+' commands\n'+prefix+'avatar <mentionned user>: Show your avatar\n'+prefix+'invite: Create a 24h link to the server\n'+prefix+'lmgtfy <search terms>: Send you a LMGTFY link\n'+prefix+'ping: Show the '+bot.user.username+' ping'
                     },
                     {
                         name: "🔗 Links commands",
@@ -21,11 +21,11 @@ exports.commands = function (bot, config, message) {
                     },
                     {
                         name: "​🔐 Roles commands",
-                        value: prefix+'rank list: List of all joinable roles\n'+prefix+'rank join<role>: Make you join a role\n'+prefix+'rank leave<role>: Make you leave a role'
+                        value: prefix+'rank list: List of all joinable roles\n'+prefix+'rank join <role>: Make you join a role\n'+prefix+'rank leave <role>: Make you leave a role'
                     },
                     {
                         name: "🎨 Colors commands",
-                        value: prefix+'color set <color>: Give you a color\n'+prefix+'color reset: Remove your color\n'+prefix+'color see<color>: Give you a demo of the color\n'+prefix+'color list: Give you a list of color'
+                        value: prefix+'color set <color>: Give you a color\n'+prefix+'color reset: Remove your color\n'+prefix+'color see <color>: Give you a demo of the color\n'+prefix+'color list: Give you a list of color'
                     },
                     {
                         name: "⚔️ Moderations commands",
@@ -54,11 +54,11 @@ exports.commands = function (bot, config, message) {
                     },
                     {
                         name: "​🔐 Roles commands",
-                        value: prefix + 'rank list: List of all joinable roles\n' + prefix + 'rank join<role>: Make you join a role\n' + prefix + 'rank leave<role>: Make you leave a role'
+                        value: prefix + 'rank list: List of all joinable roles\n' + prefix + 'rank join <role>: Make you join a role\n' + prefix + 'rank leave <role>: Make you leave a role'
                     },
                     {
                         name: "​🎨 Colors commands",
-                        value: prefix + 'color set <color>: Give you a color\n' + prefix + 'color reset: Remove your color\n' + prefix + 'color see<color>: Give you a demo of the color\n' + prefix + 'color list: Give you a list of color'
+                        value: prefix + 'color set <color>: Give you a color\n' + prefix + 'color reset: Remove your color\n' + prefix + 'color see <color>: Give you a demo of the color\n' + prefix + 'color list: Give you a list of color'
                     }
                     ],
                     timestamp: new Date(),
