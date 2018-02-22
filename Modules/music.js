@@ -1,15 +1,19 @@
-exports.commands = function (bot, config, opus, ytdl, youtubeSearch, message) {
-    const prefix = config.prefix;
-    var server = bot[message.guild.id];
-    var args = message.content.split(' ');
-    var dispatcher = null;
-    const streamOptions = {
-        seek: 0,
-        volume: 1,
-        bitrate: 96000
-    };
+const ytdl = require('ytdl-core');
+const youtubeSearch = require('youtube-search');
+var connection = null;
+var dispatcher = null;
+const streamOptions = {
+    seek: 0,
+    volume: 1,
+    bitrate: 96000
+};
 
+exports.commands = function (bot, auth, config, opus, message) {
+    const prefix = config.prefix;
+    var args = message.content.split(' ');
+    
     if (message.content === (prefix + "list")) {
+        var server = bot[message.guild.id];
         if (server) {
             var queueList = server.queue.join('\n');
             message.reply(queueList);
@@ -19,7 +23,7 @@ exports.commands = function (bot, config, opus, ytdl, youtubeSearch, message) {
     }
 
     if (message.content === (prefix + "init")) {
-        getConnection(message).join();
+        connection = getConnection(message).join();
     }
 
     if (message.content === (prefix + "pause")) {
@@ -42,7 +46,7 @@ exports.commands = function (bot, config, opus, ytdl, youtubeSearch, message) {
 
     if (message.content === (prefix + "leave")) {
         message.member.voiceChannel.leave();
-        getConnection(message) = null;
+        connection = null;
     }
 
     if (args[0] === (prefix + "play")) {
@@ -75,15 +79,19 @@ exports.commands = function (bot, config, opus, ytdl, youtubeSearch, message) {
     }
 
     function play(message) {
+        var server = bot[message.guild.id];
         connection.then(connexion => {
+            console.log(server.queue[0])
             dispatcher = connexion.playStream(ytdl(server.queue[0], { filter: "audioonly" }));
             server.queue.shift();
             dispatcher.on("end", function () {
                 if (server.queue[0]) {
-                    play(server, message);
+                    play(message);
                 }
                 message.channel.send("Song Ended!");
             });
+            stream = ytdl('https://www.youtube.com/watch?v=XAWgeLF9EVQ', { filter : 'audioonly' });
+            dispatcher = connexion.playStream(stream, streamOptions);
         });
     };
 
@@ -92,6 +100,7 @@ exports.commands = function (bot, config, opus, ytdl, youtubeSearch, message) {
     }
 
     function searchfunc(message) {
+        var server = bot[message.guild.id];
         var opts = {
             key: auth.youtube_key,
         }
@@ -99,6 +108,7 @@ exports.commands = function (bot, config, opus, ytdl, youtubeSearch, message) {
         console.log(name);
         youtubeSearch(name, opts, function (errors, results) {
             if (errors) {
+                console.log(errors);
                 message.reaction = null;
                 message.react("❌");
                 message.reply("I got a problem adding `" + name + "` to the queue, please try again later");
@@ -107,7 +117,7 @@ exports.commands = function (bot, config, opus, ytdl, youtubeSearch, message) {
             message.reply("Adding " + results[0].link);
             server.queue.push(results[0].link)
             message.react("✅");
-            play(server, message);
+            play(message);
         });
     };
 }

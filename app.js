@@ -1,7 +1,5 @@
 const Discord = require('discord.js');
 const opus = require('opusscript');
-const ytdl = require('ytdl-core');
-const youtubeSearch = require('youtube-search');
 const auth = require('./auth.json');
 const config = require('./config.json');
 const roles = require('./Modules/roles.js');
@@ -34,7 +32,7 @@ bot.on('message', function (message) {
     commands.commands(bot, config, message);
     roles.commands(bot, config, message);
     linksCommands.commands(bot, config, message);
-    //music.commands(bot, config, opus, ytdl, youtubeSearch, message);
+    //music.commands(bot, auth, config, opus, message);
 });
 
 bot.on('message', function(message) {
@@ -233,6 +231,8 @@ bot.on('message', function (message) {
     }
 });
 
+
+//Nox
 bot.on('message', function (message) {
     if (message.guild.id === '282902357862514688') {
         var parts = message.content.split(" ");
@@ -254,6 +254,65 @@ bot.on('message', function (message) {
                     message.guild.members.forEach(function(member) {
                         if(member.id === userID) {
                             member.addRole('415944725460156416');
+                            message.channel.send({
+                                embed: {
+                                    color: '2536811',
+                                    author: {
+                                        name: message.author.username,
+                                        icon_url: message.author.avatarURL
+                                    },
+                                    title: 'User timeout',
+                                    description: 'Member ' + parts[1] + ' have been snooze on ' + message.guild.name,
+                                    fields: [{
+                                        name: "Reason",
+                                        value: parts.slice(2).join(' ')
+                                    }],
+                                    timestamp: new Date(),
+                                    footer: {
+                                        icon_url: bot.user.avatarURL,
+                                        text: bot.user.username,
+                                    }
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    message.react("❌");
+                    message.reply('You need to tell the reasons of the timeout with your message `'+ prefix + 'timeout <@user> <reason of the timeout>`');
+                    return;
+                }
+            }
+            if (message.deletable) {
+                message.delete()
+            }
+        }
+    }
+});
+
+
+
+// TiWill
+bot.on('message', function (message) {
+    if (message.guild.id === '343049869847429120') {
+        var parts = message.content.split(" ");
+        if (parts[0] === prefix + 'timeout') {
+            var isMod = false;
+            message.member.roles.forEach(function(role) {
+                if ((role.id === '416034008103911437') || (role.id === '416034171279114250') || (role.id === '416034297682722817')) {
+                    isMod = true;
+                }
+            });
+            if (isMod) {
+                if (!parts[1] || parts[1].indexOf('@') == -1) {
+                    message.react("❌");
+                    message.reply('User passed to command: `' + prefix + 'timeout` is not found');
+                    return;
+                }
+                var userID = parts[1].replace('!', '').replace('@', '').replace('<', '').replace('>', '');
+                if (parts.slice(2).join(' ').trim()) {
+                    message.guild.members.forEach(function(member) {
+                        if(member.id === userID) {
+                            member.addRole('416033177044516874');
                             message.channel.send({
                                 embed: {
                                     color: '2536811',
