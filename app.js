@@ -153,7 +153,7 @@ bot.on('message', function(message) {
                 };
             });
             if (userMentionned) {
-                message.reply({
+                message.channel.send({
                     embed: {
                         color: '11141120',
                         author: {
@@ -172,13 +172,14 @@ bot.on('message', function(message) {
                         }
                     }
                 });
-                //message.react("✅");
-                //message.reply(userMentionned.avatarURL);
             } else {
                 message.react("❌");
                 message.reply('Wrong parameters passed to command: `' + prefix + 'avatar`');
                 return;
             }
+        }
+        if (message.deletable) {
+            message.delete();
         }
     }
 });
