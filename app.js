@@ -298,32 +298,32 @@ bot.on('message', function (message) {
         if (parts[0] === prefix + 'timeout') {
             var isMod = false;
             message.member.roles.forEach(function(role) {
-                if ((role.id === '416034008103911437') || (role.id === '416034171279114250') || (role.id === '416034297682722817')) {
+                if ((role.id === '343070332850012170') || (role.id === '343069878972055552') || (role.id === '343069451056316417')) {
                     isMod = true;
                 }
             });
             if (isMod) {
                 if (!parts[1] || parts[1].indexOf('@') == -1) {
                     message.react("❌");
-                    message.reply('User passed to command: `' + prefix + 'timeout` is not found');
+                    message.reply('L\'utilisateur n\'as pas été trouvé');
                     return;
                 }
                 var userID = parts[1].replace('!', '').replace('@', '').replace('<', '').replace('>', '');
                 if (parts.slice(2).join(' ').trim()) {
                     message.guild.members.forEach(function(member) {
                         if(member.id === userID) {
-                            member.addRole('416036567698636800');
+                            member.addRole('343075905662353410');
                             message.channel.send({
                                 embed: {
-                                    color: '2536811',
+                                    color: '14964897',
                                     author: {
                                         name: message.author.username,
                                         icon_url: message.author.avatarURL
                                     },
-                                    title: 'User timeout',
-                                    description: 'Member ' + parts[1] + ' have been snooze on ' + message.guild.name,
+                                    title: '🐷GROS COCHON!!',
+                                    description: 'Le membre ' + parts[1] + ' à été mute sur ' + message.guild.name,
                                     fields: [{
-                                        name: "Reason",
+                                        name: "Raison",
                                         value: parts.slice(2).join(' ')
                                     }],
                                     timestamp: new Date(),
@@ -337,7 +337,7 @@ bot.on('message', function (message) {
                     });
                 } else {
                     message.react("❌");
-                    message.reply('You need to tell the reasons of the timeout with your message `'+ prefix + 'timeout <@user> <reason of the timeout>`');
+                    message.reply('Vous devez précisez la raison de l\'attribution du rôle `'+ prefix + 'timeout <@utilisateur> <raison de l\'attribution du rôle>`');
                     return;
                 }
             }
