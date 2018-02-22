@@ -26,8 +26,11 @@ exports.commands = function (bot, config, message) {
                     {
                         name: "🎨 Colors commands",
                         value: prefix+'color set <color>: Give you a color\n'+prefix+'color reset: Remove your color\n'+prefix+'color see<color>: Give you a demo of the color\n'+prefix+'color list: Give you a list of color'
-                    }
-                    ],
+                    },
+                    {
+                        name: "⚔️ Moderations commands",
+                        value: prefix + 'timeout <user> <reason>: Mute the user for an undefined amount of time, the moderator must precise the reasons of the timeout'
+                    }],
                     timestamp: new Date(),
                     footer: {
                         icon_url: bot.user.avatarURL,
