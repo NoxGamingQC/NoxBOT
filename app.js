@@ -56,6 +56,9 @@ bot.on('message', function(message) {
                     }
                 }
             });
+            if (message.deletable) {
+                message.delete();
+            }
         }
     }
 
