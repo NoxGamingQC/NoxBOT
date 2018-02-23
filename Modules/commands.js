@@ -18,7 +18,7 @@ exports.commands = function (bot, config, message) {
                         },
                         {
                             name: "🔗 Links commands",
-                            value: prefix+'psn: Get NoxRacing\'s PSN Username\n'+prefix+'steam: Get NoxRacing\'s Steam profile link\n'+prefix+'twitch: Get NoxRacing\'s Twitch channel link\n'+prefix+'xbl: Get NoxRacing\'s Xbox Live Username'
+                            value: prefix+'psn: Get NoxRacing\'s PSN Username\n'+prefix+'steam: Get NoxRacing\'s Steam profile link\n'+prefix+'steamgroup: Get NoxRacing\'s official Steam group link\n'+prefix+'twitch: Get NoxRacing\'s Twitch channel link\n'+prefix+'xbl: Get NoxRacing\'s Xbox Live Username\n'+prefix+'youtube: Get NoxRacing\'s YouTube channel link\n'+prefix+'twitter: Get NoxRacing\'s Twitter profile link\n'+prefix+'curse: Get NoxRacing\'s Curse | Twitch server link\n'+prefix+'animelist: Get NoxRacing\'s MyAnimeList profile link'
                         },
                         {
                             name: "​🔐 Roles commands",
