@@ -1,5 +1,6 @@
 //⭐MultiGaming⭐
 const commands = require('./Modules/commands.js');
+const misc = require('../../Modules/misc.js');
 const roles = require('../../Modules/roles.js');
 const rules = require('./Modules/rules.js');
 const timeout = require('./Modules/timeout.js');
@@ -8,6 +9,7 @@ const timeout = require('./Modules/timeout.js');
 
 exports.commands = function (bot, config, message) {
     commands.commands(bot, config, message);
+    misc.commands(bot, config, message);
     roles.commands(bot, config, message);
     rules.commands(bot, config, message);
     timeout.commands(bot, config, message);
