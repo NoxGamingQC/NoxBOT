@@ -8,11 +8,11 @@ exports.commands = function (bot, config, message) {
                     name: bot.user.username,
                     icon_url: bot.user.avatarURL
                 },
-                title: bot.user.username + ' commands',
+                title: 'Commandes de ' + bot.user.username,
                 description: message.author + ', voici une liste des commandes que vous pouvez utilisez!',
                 fields: [{
                     name: "🌎 Commandes générales",
-                    value: prefix + 'commands: Get ' + bot.user.username + ' commands'
+                    value: prefix + 'commands: Obtenir les commandes de ' + bot.user.username + '\nreglement: Obtenir une liste des règlements du serveur'
                 },
                 {
                     name: "​🔐 Commandes de rôles",
@@ -20,7 +20,7 @@ exports.commands = function (bot, config, message) {
                 },
                 {
                     name: "⚔️ Commandes de modérations",
-                    value: prefix + 'timeout <@utilisateur> <raison>: Mute l\'utilisateur mentionné pour une durée durée indéterminé, le modérateur dois préciser la raison du timeout'
+                    value: prefix + 'timeout <@utilisateur> <raison>: Mute l\'utilisateur mentionné pour une durée indéterminé, le modérateur dois préciser la raison du timeout'
                 }],
                 timestamp: new Date(),
                 footer: {
