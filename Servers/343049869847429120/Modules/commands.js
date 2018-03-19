@@ -12,7 +12,7 @@ exports.commands = function (bot, config, message) {
                 description: message.author + ', voici une liste des commandes que vous pouvez utilisez!',
                 fields: [{
                     name: "🌎 Commandes générales",
-                    value: prefix + 'commands: Obtenir les commandes de ' + bot.user.username + '\nreglement: Obtenir une liste des règlements du serveur'
+                    value: prefix + 'commands: Obtenir les commandes de ' + bot.user.username + '\n'+ prefix +'reglement: Obtenir une liste des règlements du serveur'
                 },
                 {
                     name: "​🔐 Commandes de rôles",
@@ -36,7 +36,7 @@ exports.commands = function (bot, config, message) {
                     name: bot.user.username,
                     icon_url: bot.user.avatarURL
                 },
-                title: bot.user.username + ' commands',
+                title: 'Commandes de ' + bot.user.username,
                 description: message.author + ', une liste des commandes vous a été envoyée dans vos messages privés! :wink:',
                 timestamp: new Date(),
                 footer: {
