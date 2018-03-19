@@ -3,12 +3,7 @@ const opus = require('opusscript');
 const auth = require('./auth.json');
 const config = require('./config.json');
 const serversCommands = require('./Servers/index.js');
-/*const roles = require('./Modules/roles.js');
-const music = require('./Modules/music.js');
-const commands = require('./Modules/commands.js');
-const color = require('./Modules/color.js');
-const linksCommands = require('./Modules/links.js');*/
-//const welcome = require('./Modules/welcome.js');
+//const music = require('./Modules/music.js');
 
 const bot = new Discord.Client({autoReconnect:true});
 const prefix = config.prefix;
@@ -32,9 +27,5 @@ serversCommands.serversModules(bot, config);
 
 bot.on('message', function (message) {
     serversCommands.serversCommands(bot, config, message);
-    /*commands.commands(bot, config, message);
-    roles.commands(bot, config, message);
-    color.commands(bot, config, message);
-    linksCommands.commands(bot, config, message);
-    music.commands(bot, auth, config, opus, message);*/
+    //music.commands(bot, auth, config, opus, message);
 });
