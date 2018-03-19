@@ -2,12 +2,13 @@ const Discord = require('discord.js');
 const opus = require('opusscript');
 const auth = require('./auth.json');
 const config = require('./config.json');
-const roles = require('./Modules/roles.js');
+const serversCommands = require('./Servers/index.js');
+/*const roles = require('./Modules/roles.js');
 const music = require('./Modules/music.js');
 const commands = require('./Modules/commands.js');
 const color = require('./Modules/color.js');
-const linksCommands = require('./Modules/links.js');
-const welcome = require('./Modules/welcome.js');
+const linksCommands = require('./Modules/links.js');*/
+//const welcome = require('./Modules/welcome.js');
 
 const bot = new Discord.Client({autoReconnect:true});
 const prefix = config.prefix;
@@ -27,111 +28,17 @@ bot.on('ready', function () {
 
 bot.login(auth.token);
 
-welcome.module(bot, config);
+//welcome.module(bot, config);
 
 bot.on('message', function (message) {
-    commands.commands(bot, config, message);
+    serversCommands.serversCommands(bot, config, message);
+    /*commands.commands(bot, config, message);
     roles.commands(bot, config, message);
     color.commands(bot, config, message);
     linksCommands.commands(bot, config, message);
-    //music.commands(bot, auth, config, opus, message);
+    music.commands(bot, auth, config, opus, message);*/
 });
-
-bot.on('message', function(message) {
-    if(message.guild && message.guild.id == '282902357862514688') {
-        if (message.content === prefix + 'ping') {
-            message.channel.send({
-                embed: {
-                    color: '4961603',
-                    author: {
-                        name: message.author.username,
-                        icon_url: message.author.avatarURL
-                    },
-                    title: bot.user.username + ' ping',
-                    description: `Average ping: ${bot.ping}ms`,
-                    timestamp: new Date(),
-                    footer: {
-                        icon_url: bot.user.avatarURL,
-                        text: bot.user.username
-                    }
-                }
-            });
-            if (message.deletable) {
-                message.delete();
-            }
-        }
-    }
-
-    if (message.content === prefix + 'invite') {
-        if(message.guild) {
-            if (message.guild.id == '282902357862514688') {
-            var server = message.guild;
-                if(server) {
-                    var channel = server.channels.find('id', '383695542452092929');
-                    if(channel) {
-                        channel.createInvite([options => {
-                            maxAge: 86400
-                        }]).then(function (link) {
-                            message.channel.send({
-                                embed: {
-                                    color: '4961603',
-                                    author: {
-                                        name: message.author.username,
-                                        icon_url: message.author.avatarURL
-                                    },
-                                    title: 'Invite link',
-                                    description: `${link}`,
-                                    timestamp: new Date(),
-                                    footer: {
-                                        icon_url: bot.user.avatarURL,
-                                        text: 'Invite link are valid only for 24h'
-                                    }
-                                }
-                            })
-                        });
-                    } else {
-                        message.channel.send({
-                            embed: {
-                                color: '16711680',
-                                author: {
-                                    name: message.author.username,
-                                    icon_url: message.author.avatarURL
-                                },
-                                title: 'Error - Invite link',
-                                description: `Cannot create invite link to the server`,
-                                timestamp: new Date(),
-                                footer: {
-                                    icon_url: bot.user.avatarURL,
-                                    text: bot.user.username
-                                }
-                            }
-                        });
-                    }
-                }
-            }
-        } else {
-            message.channel.send({
-                embed: {
-                    color: '16711680',
-                    author: {
-                        name: message.author.username,
-                        icon_url: message.author.avatarURL
-                    },
-                    title: 'Error - Invite link',
-                    description: `Please use this command in a server`,
-                    timestamp: new Date(),
-                    footer: {
-                        icon_url: bot.user.avatarURL,
-                        text: bot.user.username
-                    }
-                }
-            });
-        }
-        if (message.deletable) {
-            message.delete();
-        }
-    }
-});
+/*
 
 bot.on('message', function(message) {
     var content = message.content;
@@ -459,4 +366,4 @@ bot.on('message', function (message) {
             }
         }
     }
-});
+});*/
