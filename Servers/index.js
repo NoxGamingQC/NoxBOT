@@ -8,7 +8,7 @@ const specialServer = {
     '343049869847429120': multigaming //⭐MultiGaming⭐
 };
 
-exports.serversCommands = function (bot, config, message) {
+exports.serversCommands = function(bot, config, message) {
     if(message.guild) {
         if (specialServer[message.guild.id]) {
             specialServer[message.guild.id].commands(bot, config, message);
@@ -16,4 +16,10 @@ exports.serversCommands = function (bot, config, message) {
             generalServers.commands(bot, config, message);
         }
     }
+}
+
+exports.serversModules = function(bot, config) {
+    Object.values(specialServer).forEach(function(value) {
+        value.modules(bot, config);
+    });
 }
