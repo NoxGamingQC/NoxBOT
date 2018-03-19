@@ -20,7 +20,7 @@ exports.commands = function (bot, config, message) {
                 },
                 {
                     name: "⚔️ Commandes de modérations",
-                    value: prefix + 'timeout <@utilisateur> <raison>: Mute l\'utilisateur mentionné pour une durée durée indéterminé, le modérateur dois préciser la raison du timeout'
+                    value: prefix + 'timeout <@utilisateur> <raison>: Mute l\'utilisateur mentionné pour une durée indéterminé, le modérateur dois préciser la raison du timeout'
                 }],
                 timestamp: new Date(),
                 footer: {
