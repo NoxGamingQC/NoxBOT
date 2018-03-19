@@ -8,7 +8,7 @@ exports.commands = function (bot, config, message) {
                     name: bot.user.username,
                     icon_url: bot.user.avatarURL
                 },
-                title: bot.user.username + ' commands',
+                title: 'Commandes de ' + bot.user.username,
                 description: message.author + ', voici une liste des commandes que vous pouvez utilisez!',
                 fields: [{
                     name: "🌎 Commandes générales",
