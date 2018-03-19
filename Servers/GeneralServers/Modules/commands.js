@@ -1,0 +1,53 @@
+exports.commands = function (bot, config, message) {
+    const prefix = config.prefix;
+    if (message.content === prefix + 'commands') {
+        message.author.send({
+            embed: {
+                color: '4961603',
+                author: {
+                    name: bot.user.username,
+                    icon_url: bot.user.avatarURL
+                },
+                title: bot.user.username + ' commands',
+                description: message.author + ', there is the list of commands you can use!',
+                fields: [{
+                    name: "🌎 General commands",
+                    value: prefix + 'commands: Get ' + bot.user.username + ' commands'
+                },
+                {
+                    name: "​🔐 Roles commands",
+                    value: prefix + 'rank list: List of all joinable roles\n' + prefix + 'rank join <role>: Make you join a role\n' + prefix + 'rank leave <role>: Make you leave a role'
+                },
+                {
+                    name: "​🎨 Colors commands",
+                    value: prefix + 'color set <color>: Give you a color\n' + prefix + 'color reset: Remove your color\n' + prefix + 'color see <color>: Give you a demo of the color\n' + prefix + 'color list: Give you a list of color'
+                }
+                ],
+                timestamp: new Date(),
+                footer: {
+                    icon_url: bot.user.avatarURL,
+                    text: "© Copyright 2018 - NoxRacing"
+                }
+            }
+        });
+        message.channel.send({
+            embed: {
+                color: '4961603',
+                author: {
+                    name: bot.user.username,
+                    icon_url: bot.user.avatarURL
+                },
+                title: bot.user.username + ' commands',
+                description: message.author + ', a list of commands have been sent to your private message, go check them out! :wink:',
+                timestamp: new Date(),
+                footer: {
+                    icon_url: bot.user.avatarURL,
+                    text: "© Copyright 2018 - NoxRacing"
+                }
+            }
+        });
+        if (message.deletable) {
+            message.delete();
+        }
+    }
+}
