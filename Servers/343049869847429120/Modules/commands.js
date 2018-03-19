@@ -12,7 +12,7 @@ exports.commands = function (bot, config, message) {
                 description: message.author + ', voici une liste des commandes que vous pouvez utilisez!',
                 fields: [{
                     name: "🌎 Commandes générales",
-                    value: prefix + 'commands: Get ' + bot.user.username + ' commands'
+                    value: prefix + 'commands: Obtenir les commandes de ' + bot.user.username + '\nreglement: Obtenir une liste des règlements du serveur'
                 },
                 {
                     name: "​🔐 Commandes de rôles",
