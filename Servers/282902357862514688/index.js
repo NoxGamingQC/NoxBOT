@@ -8,6 +8,7 @@ const lmgtfy = require('../../Modules/lmgtfy.js');
 const misc = require('../../Modules/misc.js');
 const ping = require('../../Modules/ping.js');
 const roles = require('../../Modules/roles.js');
+const serverinfo = require('../../Modules/serverinfo.js');
 const timeout = require('./Modules/timeout.js');
 const userinfo = require('../../Modules/userinfo.js');
 const warframe = require('../../Modules/warframe.js');
@@ -24,6 +25,7 @@ exports.commands = function (bot, config, message) {
     misc.commands(bot, config, message);
     ping.commands(bot, config, message);
     roles.commands(bot, config, message);
+    serverinfo.commands(bot, config, message);
     timeout.commands(bot, config, message);
     userinfo.commands(bot, config, message);
     warframe.commands(bot, config, message);
