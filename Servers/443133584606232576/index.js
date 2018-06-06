@@ -1,10 +1,10 @@
 // Suicide.Squadd
-//const commands = require('./Modules/commands.js');
+const commands = require('./Modules/commands.js');
 const serverinfo = require('../../Modules/serverinfo.js');
 const welcome = require('../../Modules/welcome.js');
 
 exports.commands = function (bot, config, message) {
-    //commands.commands(bot, config, message);
+    commands.commands(bot, config, message);
     serverinfo.commands(bot, config, message);
 }
 
