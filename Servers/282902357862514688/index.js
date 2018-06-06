@@ -13,8 +13,8 @@ const timeout = require('./Modules/timeout.js');
 const twitchCommands = require('./Modules/twitchCommands.js');
 const userinfo = require('../../Modules/userinfo.js');
 const warframe = require('../../Modules/warframe.js');
-const welcome = require('./Modules/welcome.js');
-
+const welcomeCommands = require('./Modules/welcome.js');
+const welcome = require('../../Modules/welcome.js');
 
 exports.commands = function (bot, config, message) {
     avatar.commands(bot, config, message);
@@ -31,9 +31,9 @@ exports.commands = function (bot, config, message) {
     twitchCommands.commands(bot, config, message);
     userinfo.commands(bot, config, message);
     warframe.commands(bot, config, message);
-    welcome.commands(bot, config, message);
+    welcomeCommands.commands(bot, config, message);
 }
 
 exports.modules = function(bot, config) {
-    welcome.modules(bot, config);
+    welcome.modules(bot, config, '372594099322224641');
 }

@@ -1,17 +1,3 @@
-exports.modules = function (bot, config) {
-    bot.on('guildMemberAdd', function (member) {
-        var channel = member.guild.channels.find('id', '372594099322224641');
-        channel.send(`${member}, welcome in **${member.guild.name}** :wink:`);
-    });
-
-    bot.on('guildMemberRemove', function (member) {
-        member.roles.forEach(function (role) {
-            var channel = member.guild.channels.find('id', '372594099322224641');
-            channel.send(`**${member}** just left us. Bye bye **${member}** :sob:`);
-        });
-    });
-};
-
 exports.commands = function (bot, config, message) {
     const prefix = config.prefix;
     var member = message.member;

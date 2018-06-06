@@ -1,5 +1,5 @@
 {
-    "prefix": "/",
+    "prefix": "!",
     "development": true,
     "dev_token": "Mzk1NzgyOTgyNTE1OTQ5NTc4.DVp-cQ._jDmKit8o1iSFoMpn1P1nQPgZ2Y",
     "prod_token": "Mzk1NjU3MzIzMTM1MjM4MTU3.DWah5g.zuwMyeu3ZDzQDSLUVyz5CrD3M3A"
