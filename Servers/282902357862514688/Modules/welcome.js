@@ -1,47 +1,130 @@
 exports.modules = function (bot, config) {
     bot.on('guildMemberAdd', function (member) {
-        if (member.guild && member.guild.id == '282902357862514688') {
-            member.addRole('410428761385992206');
-        }
+        var channel = member.guild.channels.find('id', '372594099322224641');
+        channel.send(`${member}, welcome in **${member.guild.name}** :wink:`);
     });
 
     bot.on('guildMemberRemove', function (member) {
-        if (member.guild && member.guild.id == '282902357862514688') {
-            const channel = member.guild.channels.find('name', config.room.welcome_page_name);
-            if (!channel) {
-                return;
-            }
-            member.roles.forEach(function (role) {
-                if (role.id == '382941366419718153') {
-                    var channel = member.guild.channels.find('id', '390268563757334529');
-                    channel.send(`**${member}** vient de nous quitter. Bye bye **${member}** :sob:`);
-                }
-                if (role.id == '382941397537521666') {
-                    var channel = member.guild.channels.find('id', '390268655440756737');
-                    channel.send(`**${member}** just left us. Bye bye **${member}** :sob:`);
-                }
-            });
-        }
+        member.roles.forEach(function (role) {
+            var channel = member.guild.channels.find('id', '372594099322224641');
+            channel.send(`**${member}** just left us. Bye bye **${member}** :sob:`);
+        });
     });
 };
 
 exports.commands = function (bot, config, message) {
     const prefix = config.prefix;
     var member = message.member;
-    member.roles.forEach(function (role) {
-        if (role.id == '410428761385992206') {
-            if (message.content === prefix + 'lang fr') {
-                var channel = member.guild.channels.find('id', '390268563757334529');
-                channel.send(`${member}, bienvenue dans **${member.guild.name}** :wink:`);
-                member.addRole('382941366419718153');
-                member.removeRole('410428761385992206');
-            }
-            if (message.content === prefix + 'lang en') {
-                var channel = member.guild.channels.find('id', '390268655440756737');
-                channel.send(`${member}, welcome in **${member.guild.name}** :wink:`);
-                member.addRole('382941397537521666');
-                member.removeRole('410428761385992206');
-            }
+    if (message.content === prefix + 'lang add fr') {
+       if (member.roles.find('id', '382941366419718153') == null) {
+            member.addRole('382941366419718153');
+            var role = message.guild.roles.find('id', '382941366419718153');
+            message.channel.send({
+                embed: {
+                    color: role.color,
+                    author: {
+                        name: message.author.username,
+                        icon_url: message.author.avatarURL
+                    },
+                    title: 'Language',
+                    description: 'French language has been assigned to your speaking language',
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: bot.user.avatarURL,
+                        text: '© Copyright 2018 - NoxRacing'
+                    }
+                }
+            });
+        } else {
+           message.channel.send({
+               embed: {
+                   color: '16711680',
+                   author: {
+                       name: message.author.username,
+                       icon_url: message.author.avatarURL
+                   },
+                   title: 'Error - Language assignation',
+                   description: `You already have the language on your profile`,
+                   timestamp: new Date(),
+                   footer: {
+                       icon_url: bot.user.avatarURL,
+                       text: bot.user.username
+                   }
+               }
+           });
         }
-    });
+        if (message.deletable) {
+            message.delete();
+        }
+    }
+    if (message.content === prefix + 'lang add en') {
+        member.addRole('382941397537521666');
+        var role = message.guild.roles.find('id', '382941397537521666');
+        message.channel.send({
+            embed: {
+                color: role.color,
+                author: {
+                    name: message.author.username,
+                    icon_url: message.author.avatarURL
+                },
+                title: 'Language',
+                description: 'English language has been assigned to your speaking language',
+                timestamp: new Date(),
+                footer: {
+                    icon_url: bot.user.avatarURL,
+                    text: '© Copyright 2018 - NoxRacing'
+                }
+            }
+        });
+        if (message.deletable) {
+            message.delete();
+        }
+    }
+
+    if (message.content === prefix + 'lang remove fr') {
+        member.removeRole('382941366419718153');
+        var role = message.guild.roles.find('id', '382941366419718153');
+        message.channel.send({
+            embed: {
+                color: role.color,
+                author: {
+                    name: message.author.username,
+                    icon_url: message.author.avatarURL
+                },
+                title: 'Language',
+                description: 'French language has been removed to your speaking language',
+                timestamp: new Date(),
+                footer: {
+                    icon_url: bot.user.avatarURL,
+                    text: '© Copyright 2018 - NoxRacing'
+                }
+            }
+        });
+        if (message.deletable) {
+            message.delete();
+        }
+    }
+    if (message.content === prefix + 'lang remove en') {
+        member.removeRole('382941397537521666');
+        var role = message.guild.roles.find('id', '382941397537521666');
+        message.channel.send({
+            embed: {
+                color: role.color,
+                author: {
+                    name: message.author.username,
+                    icon_url: message.author.avatarURL
+                },
+                title: 'Language',
+                description: 'English language has been removed to your speaking language',
+                timestamp: new Date(),
+                footer: {
+                    icon_url: bot.user.avatarURL,
+                    text: '© Copyright 2018 - NoxRacing'
+                }
+            }
+        });
+        if (message.deletable) {
+            message.delete();
+        }
+    }
 }
