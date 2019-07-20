@@ -1,4 +1,4 @@
-# NoxButt
+# NoxBOT
 
 ## Settings up your environement
 
