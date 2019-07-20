@@ -1,5 +1,8 @@
 # NoxBOT
 
+[![Build Status](https://travis-ci.com/nox-studios/NoxBOT.svg?token=8xPnyZAhxFTwCpTJsxsG&branch=master)](https://travis-ci.com/nox-studios/NoxBOT)
+
+
 ## Setting up your environement
 
 ### Prerequirement
