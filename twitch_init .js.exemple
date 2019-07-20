@@ -1,0 +1,17 @@
+exports.options = {
+    identity: {
+        username: '',
+        ClientID: '',
+        password: 'oauth:',
+        client_secret: ''
+    },
+    connection: {
+        reconnect: true,
+        secure: true
+    },
+    options: {
+        debug: true
+    },
+    clientId: '',
+    channels: ['']
+};
