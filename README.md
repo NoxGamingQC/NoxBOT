@@ -6,7 +6,6 @@
 
 - npm
 - nodejs
-- pm2
 - A discord account
 
 ### Windows 10 environement setup
