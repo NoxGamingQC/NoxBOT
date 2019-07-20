@@ -1,8 +1,8 @@
 # NoxBOT
 
-## Settings up your environement
+## Setting up your environement
 
-### Prerequisites
+### Prerequirement
 
 - npm
 - nodejs
