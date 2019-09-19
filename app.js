@@ -69,8 +69,8 @@ dbConnection.query('SELECT * FROM public.bot_lists;', function (error, result) {
 
 bot.on('ready', function () {
     console.log("Bot Launched...");
-    var username = bot.user.username;
-    bot.user.setAvatar('img/avatar/' + username + '\'s avatar.png');
+    //var username = bot.user.username;
+    //bot.user.setAvatar('img/avatar/' + username + '\'s avatar.png');
     updateByTime();
     reactionRoles();
 

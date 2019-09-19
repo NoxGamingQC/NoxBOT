@@ -10,7 +10,6 @@ exports.commands = function (dbConnection, bot, serverConfig, message, prefix, e
         var minutes = Math.floor(totalSeconds / 60);
         var seconds = Math.floor(totalSeconds % 60);
 
-
         message.channel.send({
             embed: {
                 color: embedColor.success,
@@ -31,7 +30,7 @@ exports.commands = function (dbConnection, bot, serverConfig, message, prefix, e
                     name: "Version",
                         value: '• ' + os.type() + ' ' + os.release() + ' ' + os.arch() + '\n' +
                         '• discord.js ' + packageInfo.dependencies["discord.js"].version + '\n' +
-                        '• Node.js ' + global['node_version']
+                        '• Node.js ' + global.process.versions['node']
                 },
                 {
                     name: "Usage",
