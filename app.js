@@ -27,8 +27,11 @@ const dbConnection = new Client({
     ssl: true,
 });
 
+console.log('Connection to database');
 dbConnection.connect();
 
+
+console.log('Creating Discord Client');
 const bot = new Discord.Client({
     autoReconnect: true,
     max_message_cache: 0
@@ -64,9 +67,10 @@ dbConnection.query('SELECT * FROM public.bot_lists;', function (error, result) {
     }
 });
 
-
 bot.on('ready', function () {
     console.log("Bot Launched...");
+    var username = bot.user.username;
+    bot.user.setAvatar('img/avatar/' + username + '\'s avatar.png');
     updateByTime();
     reactionRoles();
 
@@ -91,7 +95,11 @@ bot.on('ready', function () {
 function reportError(error, errorCode = null, errorDescription = null, host = null) {
     if (error) {
         console.log(error);
-        var errChannel = bot.guilds.find(guild => guild.id === '282902357862514688').channels.find(channel => channel.id === '564233128697266216'); // #crash_logs in Nox's Server
+        var errorGuild = bot.guilds.find(guild => guild.id === '605028700182020101')
+        if(!errorGuild) {
+            return;
+        }
+        var errChannel = errorGuild.channels.find(channel => channel.id === '605898526362304512'); // #crash_logs in Nox's Server
         if (!errChannel) {
             return;
         }
