@@ -8,7 +8,7 @@ exports.commands = function (dbConnection, bot, serverConfig, message, prefix, e
                     icon_url: bot.user.avatarURL
                 },
                 title: '',
-                description: 'Hey there! I\'m a bot made by NoxGamingQC#3942.',
+                description: 'Hey there! I\'m a bot made by NoxGamingQC#3929.',
                 thumbnail: {
                     url: bot.user.avatarURL
                 },
@@ -18,7 +18,7 @@ exports.commands = function (dbConnection, bot, serverConfig, message, prefix, e
                 },
                 {
                     name: "Support",
-                    value: 'Found an error, or having trouble with the bot? Join the Discord [here](https://discord.gg/KPd4cC4) and we will assist you.'
+                    value: 'Found an error, or having trouble with the bot? Join the Discord [here](https://discord.gg/reKASKN) and we will assist you.'
                 },
                 {
                     name: "Invite",
@@ -30,7 +30,7 @@ exports.commands = function (dbConnection, bot, serverConfig, message, prefix, e
                 },
                 {
                     name: "About",
-                    value: 'I was made by NoxGamingQC#3942 with discord.js and the Twitch API. To see statistics and more, type `' + prefix + 'info`.'
+                    value: 'I was made by NoxGamingQC#3929 with discord.js and the Twitch API. To see statistics and more, type `' + prefix + 'info`.'
                 },
                 ],
                 timestamp: new Date(),

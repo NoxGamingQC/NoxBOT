@@ -42,11 +42,11 @@ exports.commands = function (dbConnection, bot, serverConfig, message, prefix, e
                 },
                 {
                     name: "Discord",
-                    value: 'https://discord.gg/KPd4cC4'
+                    value: 'https://discord.gg/reKASKN'
                 },
                 {
                     name: "Developer",
-                    value: 'NoxGamingQC#3942 • [Website](https://rebrand.ly/noxgamingqc)'
+                    value: 'NoxGamingQC#3929 • [Website](https://rebrand.ly/noxgamingqc)'
                 }
                 ],
                 timestamp: new Date(),
