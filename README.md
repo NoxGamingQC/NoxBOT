@@ -69,6 +69,8 @@
 ## Creator and contributors
 
 - NoxGamingQC
+- Gouliram
+- Theros
 
 ### Usefull Link
 
