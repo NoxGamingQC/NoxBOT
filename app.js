@@ -67,6 +67,8 @@ dbConnection.query('SELECT * FROM public.bot_lists;', function (error, result) {
     }
 });
 
+var authorName = 'NoxGamingQC#3929';
+
 bot.on('ready', function () {
     console.log("Bot Launched...");
     //var username = bot.user.username;
