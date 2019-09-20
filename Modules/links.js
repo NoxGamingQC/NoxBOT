@@ -1,4 +1,4 @@
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
     if (message.content === prefix + 'psn') {
         message.channel.send({
             embed: {

@@ -12,7 +12,7 @@ const explicitContentName = {
     2: 'All members'
 }
 
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
     if (message.content === prefix + 'serverinfo') {
         var botNumber = 0;
         var categoriesChannels = [];

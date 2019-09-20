@@ -10,16 +10,16 @@ const ping = require('../../Modules/ping.js');
 const serverinfo = require('../../Modules/server_info.js');
 const userinfo = require('../../Modules/user_info.js');
 
-exports.commands = function (dbConnection, bot, config, message, prefix, embedColor, reportError) {
-    avatar.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
+exports.commands = function (message, prefix) {
+    avatar.commands(message, prefix);
     //commands.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
-    help.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
-    info.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
-    invite.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
-    lmgtfy.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
-    misc.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
-    ping.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
+    help.commands(message, prefix);
+    info.commands(message, prefix);
+    invite.commands(message, prefix);
+    lmgtfy.commands(message, prefix);
+    misc.commands(message, prefix);
+    ping.commands(message, prefix);
     //roles.commands(bot, config, message, prefix, embedColor, reportError);
-    serverinfo.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
-    userinfo.commands(dbConnection, bot, config, message, prefix, embedColor, reportError);
+    serverinfo.commands(message, prefix);
+    userinfo.commands(message, prefix);
 }

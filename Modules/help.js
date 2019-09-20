@@ -1,4 +1,4 @@
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
     if (message.content === prefix + 'help') {
         message.channel.send({
             embed: {
@@ -8,7 +8,7 @@ exports.commands = function (dbConnection, bot, serverConfig, message, prefix, e
                     icon_url: bot.user.avatarURL
                 },
                 title: '',
-                description: 'Hey there! I\'m a bot made by NoxGamingQC#3929.',
+                description: 'Hey there! I\'m a bot made by ' + authorName + '.',
                 thumbnail: {
                     url: bot.user.avatarURL
                 },
@@ -30,7 +30,7 @@ exports.commands = function (dbConnection, bot, serverConfig, message, prefix, e
                 },
                 {
                     name: "About",
-                    value: 'I was made by NoxGamingQC#3929 with discord.js and the Twitch API. To see statistics and more, type `' + prefix + 'info`.'
+                    value: 'I was made by ' + authorName + ' with discord.js and the Twitch API. To see statistics and more, type `' + prefix + 'info`.'
                 },
                 ],
                 timestamp: new Date(),

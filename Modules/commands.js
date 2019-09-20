@@ -1,13 +1,33 @@
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix, serverConfig) {
     if (message.content === prefix + 'commands') {
         dbConnection.query('SELECT * FROM public.modules_lists', function (error, result, fields) {
             var activeCommands = [];
             var moduleInMaintenance = [];
             result.rows.forEach(function(value) {
-                if(value.Maintenance) {
+                if(!isDev && value.Maintenance) {
                     moduleInMaintenance.push(value.Slug);
                 }
             });
+
+            if((typeof serverConfig) == 'undefined') {
+                message.channel.send({
+                    embed: {
+                        color: embedColor.error,
+                        author: {
+                            name: message.author.username + ' - commands',
+                            icon_url: message.author.avatarURL
+                        },
+                        title: 'Command error',
+                        description: 'Can\'t get command for this server try again later',
+                        timestamp: new Date(),
+                        footer: {
+                            icon_url: message.author.avatarURL,
+                            text: message.author.tag
+                        }
+                    }
+                });
+                return;
+            }
 
             if(serverConfig.avatar) {
                 if (moduleInMaintenance.indexOf("avatar") > -1) {

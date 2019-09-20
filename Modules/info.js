@@ -1,7 +1,7 @@
 const packageInfo = require('./../package-lock.json');
 var os = require('os');
 
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
     if (message.content === prefix + 'info') {
 
         var totalSeconds = (bot.uptime / 1000);

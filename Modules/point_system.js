@@ -1,6 +1,6 @@
 const { createCanvas, loadImage } = require('canvas');
 
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
     var parts = message.content.split(" ");
     if (parts[0] === prefix + 'rank') {
         const canvas = createCanvas(950, 282);

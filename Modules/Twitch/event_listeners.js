@@ -1,13 +1,4 @@
-var jsdom = require('jsdom');
-const config = require('../../config.json');
-const twitchInit = require('../../twitch_init.js');
-const { JSDOM } = jsdom;
-const { window } = new JSDOM();
-const { document } = (new JSDOM('')).window;
-global.document = document;
-var $ = jQuery = require('jquery')(window);
-
-exports.listener = function (bot, client, dbConnection, reportError) {
+exports.listener = function () {
     if (!config.development) {
         var updateInterval = (20 * (60 * 1000 ));
         setInterval(function () {

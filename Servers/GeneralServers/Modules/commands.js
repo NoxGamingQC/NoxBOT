@@ -1,4 +1,4 @@
-exports.commands = function (bot, config, message, prefix, embedColor) {
+exports.commands = function (message, prefix) {
     if (message.content === prefix + 'commands') {
         message.author.send({
             embed: {

@@ -3,7 +3,7 @@ const generalServers = require('./GeneralServers/index.js');
 const twitchInit = require('../twitch_init.js');
 const twitchUserInfo = require('../Modules/twitch_user_info.js');
 
-exports.serversCommands = function (dbConnection, bot, config, message, embedColor, reportError) {
+exports.serversCommands = function (message) {
     if (message.guild) {
         var isServerInDB = false;
 
@@ -11,7 +11,7 @@ exports.serversCommands = function (dbConnection, bot, config, message, embedCol
             if (error) {
                 reportError(error, '500', 'An error occured when I tryied to check the bot list table in the database to dispatch servers. (./Servers/index.js)');
             }
-            var isDev = result.rows[0].isDev;
+            global.isDev = result.rows[0].isDev;
             var defaultPrefix = result.rows[0].DefaultPrefix;
             dbConnection.query('SELECT * FROM public.servers_config', function (error, result, fields) {
                 if (error) {
@@ -20,13 +20,13 @@ exports.serversCommands = function (dbConnection, bot, config, message, embedCol
                 result.rows.forEach(function(serverConfig) {
                     if(serverConfig.ServerID === message.guild.id) {
                         var prefix = isDev ? defaultPrefix : serverConfig.Prefix;
-                        customServer.commands(dbConnection, bot, serverConfig, message, prefix, embedColor, isDev);
-                        twitchUserInfo.commands(bot, config, message, embedColor, twitchInit, serverConfig.Prefix);
+                        customServer.commands(message, prefix, serverConfig);
+                        twitchUserInfo.commands(message, prefix, serverConfig);
                         isServerInDB = true;
                     }
                     if(!isServerInDB) {
-                        generalServers.commands(dbConnection, bot, serverConfig, message, defaultPrefix, embedColor, isDev);
-                        twitchUserInfo.commands(bot, config, message, embedColor, twitchInit, defaultPrefix);
+                        generalServers.commands(message, defaultPrefix);
+                        twitchUserInfo.commands(message, defaultPrefix);
                     }
                 });
             });

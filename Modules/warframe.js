@@ -4,15 +4,7 @@ https://api.warframestat.us/ps4
 https://api.warframestat.us/xb1
 */
 
-var jsdom = require('jsdom');
-const { JSDOM } = jsdom;
-const { window } = new JSDOM();
-const { document } = (new JSDOM('')).window;
-global.document = document;
-var $ = jQuery = require('jquery')(window);
-
-
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
     var content = message.content;
     var parts = content.split(" ");
     var commandName = parts[0]/*.toLowerCase()*/ + ' ' + parts[1]/*.toLowerCase()*/;

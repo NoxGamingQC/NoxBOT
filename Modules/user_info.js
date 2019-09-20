@@ -1,4 +1,4 @@
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
     var content = message.content;
     var parts = content.split(" ");
     var commandName = parts[0];

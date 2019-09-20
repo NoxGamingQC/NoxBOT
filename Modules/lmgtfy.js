@@ -1,4 +1,4 @@
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
     var parts = message.content.split(" ");
     if (parts[0] === prefix + 'lmgtfy') {
         parts.forEach(function (word, key) {

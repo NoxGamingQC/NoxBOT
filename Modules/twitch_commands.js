@@ -10,17 +10,17 @@ const twitchTeam = require('./Twitch/team.js');
 
 const twitchEventListener = require('./Twitch/event_listeners.js');
 
-exports.twitchCommands = function (bot, client, dbConnection, reportError) {
-    twitchEventListener.listener(bot, client, dbConnection, reportError);
+exports.twitchCommands = function () {
+    twitchEventListener.listener(TwitchClient);
     client.on('message', function (room, chatter, message, self, reportError) {
-        twitchGeneral.commands(client, room, chatter, message, self, reportError);
-        twitchGames.commands(client, room, chatter, message, self, reportError);
-        twitchHelp.commands(client, room, chatter, message, self, reportError);
-        twitchMiscs.commands(client, room, chatter, message, self, reportError);
-        twitchModerator.commands(client, room, chatter, message, self, reportError);
-        twitchNoxbuttSays.commands(client, room, chatter, message, self, reportError);
-        twitchSponsors.commands(client, room, chatter, message, self, reportError);
-        twitchSocials.commands(client, room, chatter, message, self, reportError);
-        twitchTeam.commands(client, room, chatter, message, self, reportError);
+        twitchGeneral.commands(room, chatter, message, self);
+        twitchGames.commands(room, chatter, message, self);
+        twitchHelp.commands(room, chatter, message, self);
+        twitchMiscs.commands(room, chatter, message, self);
+        twitchModerator.commands(room, chatter, message, self);
+        twitchNoxbuttSays.commands(room, chatter, message, self);
+        twitchSponsors.commands(room, chatter, message, self);
+        twitchSocials.commands(room, chatter, message, self);
+        twitchTeam.commands(room, chatter, message, self);
     });
 }

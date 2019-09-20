@@ -1,4 +1,4 @@
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
     var parts = message.content.split(' ');
     var commandName = message.content.split(' ')[0];
     if (commandName === prefix + 'giveaway') {

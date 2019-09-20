@@ -10,7 +10,7 @@ const streamOptions = {
     bitrate: 96000
 };
 
-exports.commands = function (dbConnection, bot, serverConfig, message, prefix, embedColor, reportError) {
+exports.commands = function (message, prefix) {
    var args = message.content.split(' ');
 
     if (message.content === (prefix + "list")) {

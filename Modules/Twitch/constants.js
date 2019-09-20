@@ -1,4 +1,4 @@
-exports.constants = function (client) {
+exports.constants = function () {
     isSubscriber = function(user) {
         return user.subscriber;
     }
@@ -12,7 +12,7 @@ exports.constants = function (client) {
     }
 
     getChatters = function(channel, callback) {
-        client.api({
+        TwitchClient.api({
             url: "http://tmi.twitch.tv/group/user/" + channel + "/chatters",
             method: "GET"
         }, function (err, res, body) {

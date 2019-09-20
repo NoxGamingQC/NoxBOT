@@ -1,4 +1,4 @@
-exports.commands = function (bot, config, message, prefix, embedColor) {
+exports.commands = function (message, prefix) {
     var parts = message.content.split(" ");
     if (message.content === prefix + 'chatstats') {
         message.channel.send({

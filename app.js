@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const tmi = require('tmi.js');
 const auth = require('./auth.json');
-const config = require('./config.json');
+global.config = require('./config.json');
 const serversCommands = require('./Servers/index.js');
 const botSettings = require('./Modules/settings.js');
 const twitchInit = require('./twitch_init.js');
@@ -12,17 +12,21 @@ const { JSDOM } = jsdom;
 const { window } = new JSDOM();
 const { document } = (new JSDOM('')).window;
 global.document = document;
-var $ = jQuery = require('jquery')(window);
+global.$ = jQuery = require('jquery')(window);
 
 var waitingForReaction = [];
 
-const TwitchClient = new tmi.client(twitchInit.options);
+global.authorName = 'NoxGamingQC#3929';
+global.website = 'https://rebrand.ly/noxgamingqc';
+global.discordServerLink = 'https://discord.gg/reKASKN';
+
+global.TwitchClient = new tmi.client(twitchInit.options);
 const talkedRecently = new Set();
 
 var lastError = null;
 
 
-const dbConnection = new Client({
+global.dbConnection = new Client({
     connectionString: config.db_url,
     ssl: true,
 });
@@ -32,7 +36,7 @@ dbConnection.connect();
 
 
 console.log('Creating Discord Client');
-const bot = new Discord.Client({
+global.bot = new Discord.Client({
     autoReconnect: true,
     max_message_cache: 0
 });
@@ -67,8 +71,6 @@ dbConnection.query('SELECT * FROM public.bot_lists;', function (error, result) {
     }
 });
 
-var authorName = 'NoxGamingQC#3929';
-
 bot.on('ready', function () {
     console.log("Bot Launched...");
     //var username = bot.user.username;
@@ -80,17 +82,16 @@ bot.on('ready', function () {
         if (error) {
             reportError(error, '500', 'An error occured when I logged on Discord and checked the bot lists table in the database. (./app.js)');
         }
-        var isDev = result.rows[0].isDev;
-        bot.user.setStatus(!!result.rows[0].isDev ? 'dnd' : 'Online');
+        global.isDev = !!result.rows[0].isDev;
+        bot.user.setStatus(isDev ? 'dnd' : 'Online');
         bot.user.setActivity(bot.user.username + ' is back online.');
         if (!isDev) {
             TwitchClient.on('connected', function () {
                 console.log('Connected to Twitch');
-                twitch.twitchCommands(bot, TwitchClient, dbConnection, reportError);
+                twitch.twitchCommands();
             });
             TwitchClient.connect();
         }
-
     });
 })
 
@@ -244,30 +245,23 @@ bot.on('disconnect', function(errMsg, code) {
     bot.connect();
 });
 
-
-
 //serversCommands.serversModules(bot, config);
 
 bot.on('message', function (message) {
+    global.embedColor = {
+        success: '4437377',
+        warning: '16766720',
+        error: '16711680',
+        twitch: '6570404'
+    }
     if (!!message.guild) {
-        var embedColor = {
-            success: '4437377',
-            warning: '16766720',
-            error: '16711680',
-            twitch: '6570404'
-        }
         message.guild.members.forEach(function(member) {
             if (member.id === bot.user.id) {
-                embedColor = {
-                    success: member.displayColor,
-                    warning: '16766720',
-                    error: '16711680',
-                    twitch: '6570404'
-                }
+                embedColor.success = member.displayColor;
             }
         });
         //botSettings.commands(bot, message, embedColor);
-        serversCommands.serversCommands(dbConnection, bot, config, message, embedColor, reportError);
+        serversCommands.serversCommands(message);
 
         if (!config.development && !talkedRecently.has(message.author.id)) {
             givePointsToUser(message, embedColor);
