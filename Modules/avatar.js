@@ -5,25 +5,15 @@ exports.commands = function (message, prefix) {
 
     if (commandName === prefix + 'avatar') {
         if (!parts[1]) {
-            message.channel.send({
-                embed: {
-                    color: embedColor.success,
-                    author: {
-                        name: message.author.username + ' - Avatar',
-                        icon_url: message.author.avatarURL
-                    },
-                    title: message.author.username + '\'s avatar',
-                    description: message.author.avatarURL,
-                    timestamp: new Date(),
-                    image: {
-                        url: message.author.avatarURL
-                    },
-                    footer: {
-                        icon_url: message.author.avatarURL,
-                        text: message.author.tag
-                    }
-                }
-            });
+            embed.send(message,
+                embedColor.success,
+                'Avatar',
+                message.author.username + '\'s avatar',
+                message.author.avatarURL,
+                null,
+                null,
+                message.author.avatarURL
+            );
 
             if (message && message.deletable) {
                 message.delete();
