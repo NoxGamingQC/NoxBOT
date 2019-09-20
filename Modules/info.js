@@ -45,8 +45,10 @@ exports.commands = function (dbConnection, bot, serverConfig, message, prefix, e
                     value: 'https://discord.gg/reKASKN'
                 },
                 {
-                    name: "Developer",
-                    value: 'NoxGamingQC#3929 • [Website](https://rebrand.ly/noxgamingqc)'
+                    name: "Developers",
+                    value: '• NoxGamingQC#3929 • [Website](https://rebrand.ly/noxgamingqc) • [Discord](https://discord.gg/reKASKN) • [Twitch](https://twitch.tv/noxgamingqc) • [GitHub](https://github.com/noxgamingqc)\n' +
+                            '• Gouliram#2700 • [GitHub](https://github.com/gouliram)\n' +
+                            '• Theros#0001 • [GitHub](https://github.com/sm0k3)'
                 }
                 ],
                 timestamp: new Date(),
