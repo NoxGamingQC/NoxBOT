@@ -12,7 +12,7 @@ const twitchEventListener = require('./Twitch/event_listeners.js');
 
 exports.twitchCommands = function () {
     twitchEventListener.listener(TwitchClient);
-    client.on('message', function (room, chatter, message, self, reportError) {
+    TwitchClient.on('message', function (room, chatter, message, self, reportError) {
         twitchGeneral.commands(room, chatter, message, self);
         twitchGames.commands(room, chatter, message, self);
         twitchHelp.commands(room, chatter, message, self);
