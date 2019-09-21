@@ -18,17 +18,17 @@ exports.serversCommands = function (message) {
                     reportError(error, '500', 'An error occured when I tryied to check the servers configuration table in the database. (./Servers/index.js)');
                 }
                 result.rows.forEach(function(serverConfig) {
+                    var prefix = isDev ? defaultPrefix : serverConfig.Prefix;
                     if(serverConfig.ServerID === message.guild.id) {
-                        var prefix = isDev ? defaultPrefix : serverConfig.Prefix;
                         customServer.commands(message, prefix, serverConfig);
                         twitchUserInfo.commands(message, prefix, serverConfig);
                         isServerInDB = true;
                     }
-                    if(!isServerInDB) {
-                        generalServers.commands(message, defaultPrefix);
-                        twitchUserInfo.commands(message, defaultPrefix);
-                    }
                 });
+                if(!isServerInDB) {
+                    generalServers.commands(message, defaultPrefix);
+                    twitchUserInfo.commands(message, defaultPrefix);
+                }
             });
         });
     }
