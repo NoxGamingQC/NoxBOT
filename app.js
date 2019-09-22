@@ -327,7 +327,7 @@ function reactionEventListener(bot, reactionRole) {
 }
 
 function updateByTime() {
-    var updateInterval = (5 * /*60 */ 1000);
+    var updateInterval = (5 * 60 * 1000);
     setInterval(function () {
         dbConnection.query('SELECT * FROM public.bot_lists WHERE "BotID"=\'' + bot.user.id + '\';', function (error, result) {
             if (error) {
