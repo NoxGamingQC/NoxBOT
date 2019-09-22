@@ -327,7 +327,7 @@ function reactionEventListener(bot, reactionRole) {
 }
 
 function updateByTime() {
-    var updateInterval = (5 * 60 * 1000);
+    var updateInterval = (5 * /*60 */ 1000);
     setInterval(function () {
         dbConnection.query('SELECT * FROM public.bot_lists WHERE "BotID"=\'' + bot.user.id + '\';', function (error, result) {
             if (error) {
@@ -335,27 +335,27 @@ function updateByTime() {
             }
             var defaultPrefix = result.rows[0].DefaultPrefix;
             bot.user.setStatus(!!result.rows[0].isDev ? 'dnd' : 'Online');
-            dbConnection.query('SELECT * FROM public.bot_activity;', function (error, result) {
-                if (error) {
-                    reportError(error, '500', 'An error occured when I tryied to check the activity list table in the database to update my activity. (./app.js)');
+            var totalMembers = 0;
+            $.ajax({
+                url: 'http://noxgamingqc.herokuapp.com/noxbot/get_data/bot_activities',
+                method: 'get',
+                success: function(activities) {
+                    activities.push('help | ' + bot.guilds.array().length + ' servers');
+                    bot.guilds.forEach(function(guild) {
+                        totalMembers += guild.memberCount;
+                    });
+                    activities.push('help | ' + totalMembers + ' users');
+                    var botActivity = defaultPrefix + activities[Math.floor(Math.random() * activities.length)]
+
+                    bot.user.setActivity(botActivity);
+
+                    defaultPrefix = null;
+                    totalMember = null;
+                    botActivity = null;
+                },
+                error: function(error) {
+                    console.log(error);
                 }
-                var totalMembers = 0;
-                var activityLists = [];
-                result.rows.forEach(function(activity, key){
-                    activityLists.push(activity.Activity)
-                });
-                activityLists.push('help | ' + bot.guilds.array().length + ' servers');
-                bot.guilds.forEach(function(guild) {
-                    totalMembers += guild.memberCount;
-                });
-                activityLists.push('help | ' + totalMembers + ' users');
-                var botActivity = defaultPrefix + activityLists[Math.floor(Math.random() * activityLists.length)]
-
-                bot.user.setActivity(botActivity);
-
-                defaultPrefix = null;
-                totalMember = null;
-                botActivity = null;
             });
         })
         reactionRoles();
