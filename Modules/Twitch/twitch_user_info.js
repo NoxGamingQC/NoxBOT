@@ -1,4 +1,3 @@
-
 exports.commands = function (message, prefix) {
     if(message.content.split(' ')[0].includes(prefix + 'twitchuserinfo') && message.content.split(' ')[1]) {
         $.ajax({
