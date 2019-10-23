@@ -1,14 +1,14 @@
-const twitchGeneral = require('./Twitch/general.js');
-const twitchGames = require('./Twitch/games.js');
-const twitchHelp = require('./Twitch/help.js');
-const twitchMiscs = require('./Twitch/misc.js');
-const twitchModerator = require('./Twitch/moderator.js');
-const twitchNoxbuttSays = require('./Twitch/noxbutt_says.js');
-const twitchSponsors = require('./Twitch/sponsors.js');
-const twitchSocials = require('./Twitch/social.js');
-const twitchTeam = require('./Twitch/team.js');
+const twitchGeneral = require('./Twitch_Commands/general.js');
+const twitchGames = require('./Twitch_Commands/games.js');
+const twitchHelp = require('./Twitch_Commands/help.js');
+const twitchMiscs = require('./Twitch_Commands/misc.js');
+const twitchModerator = require('./Twitch_Commands/moderator.js');
+const twitchNoxbuttSays = require('./Twitch_Commands/noxbutt_says.js');
+const twitchSponsors = require('./Twitch_Commands/sponsors.js');
+const twitchSocials = require('./Twitch_Commands/social.js');
+const twitchTeam = require('./Twitch_Commands/team.js');
 
-const twitchEventListener = require('./Twitch/event_listeners.js');
+const twitchEventListener = require('./Twitch_Commands/event_listeners.js');
 
 exports.twitchCommands = function () {
     twitchEventListener.listener(TwitchClient);

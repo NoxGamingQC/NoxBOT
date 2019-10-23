@@ -1,22 +1,20 @@
+
+const fs = require('fs');
 const ytdl = require('ytdl-core');
 const youtubeSearch = require('youtube-search');
 var connection = null;
-var dispatcher = null;
-const auth = require('../auth.json');
-
+const auth = require('../../auth.json');
 const streamOptions = {
     seek: 0,
-    volume: 1,
-    bitrate: 96000
+    volume: 1
 };
 
 exports.commands = function (message, prefix) {
    var args = message.content.split(' ');
-
+   server[message.guild.id] = {}
     if (message.content === (prefix + "list")) {
-        var server = bot[message.guild.id];
-        if (server) {
-            var queueList = server.queue.join('\n');
+        if (server[message.guild.id].queue) {
+            var queueList = server[message.guild.id].queue.join('\n');
             message.channel.send({
                 embed: {
                     color: embedColor.success,
@@ -57,6 +55,26 @@ exports.commands = function (message, prefix) {
     }
 
     if (message.content === (prefix + "init")) {
+        server[message.guild.id].queue = [];
+        if (!message.member.voiceChannel) {
+            message.channel.send({
+                embed: {
+                    color: embedColor.error,
+                    author: {
+                        name: bot.user.username,
+                        icon_url: bot.user.avatarURL
+                    },
+                    title: 'Error - Member not found',
+                    description: 'Please join a voice channel before summoning me!',
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: message.author.avatarURL,
+                        text: message.author.tag
+                    }
+                }
+            });
+            return;
+        }
         connection = message.member.voiceChannel.join();
         message.channel.send({
             embed: {
@@ -203,36 +221,8 @@ exports.commands = function (message, prefix) {
                 }
                 return;
             }
-            if (!message.member.voiceChannel) {
-                message.channel.send({
-                    embed: {
-                        color: embedColor.error,
-                        author: {
-                            name: bot.user.username,
-                            icon_url: bot.user.avatarURL
-                        },
-                        title: 'Error - Member not found',
-                        description: 'Please join a voice channel before summoning me!',
-                        timestamp: new Date(),
-                        footer: {
-                            icon_url: message.author.avatarURL,
-                            text: message.author.tag
-                        }
-                    }
-                });
-                if (message && message.deletable) {
-                    message.delete();
-                }
-                return;
-            }
-            if (!bot[message.guild.id]) {
-                bot[message.guild.id] = {
-                    queue: [],
-                }
-            }
-            var server = bot[message.guild.id]
             if (args[1].startsWith("https") || args[1].startsWith("http")) {
-                server.queue.push(args[1]);
+                server[message.guild.id].queue.push(args[1]);
                 message.reply("Adding " + args[1]);
                 play(message);
             } else {
@@ -262,12 +252,13 @@ exports.commands = function (message, prefix) {
         }
     }
 
-    function play(message) {
-        var server = bot[message.guild.id];
+    function play(message = '') {
         if (connection) {
             connection.then(connexion => {
-                if (server.queue[0]) {
-                    dispatcher = connexion.playStream(ytdl(server.queue[0], { filter: 'audioonly' }), streamOptions);
+                if (server[message.guild.id].queue[0]) {
+                    console.log(server[message.guild.id].queue[0]);
+                    var stream = ytdl(server[message.guild.id].queue[0], { filter : 'audioonly' });
+                    dispatcher = connexion.playStream(stream, streamOptions);
                 }
                 dispatcher.on("end", function () {
                     message.channel.send({
@@ -286,8 +277,8 @@ exports.commands = function (message, prefix) {
                             }
                         }
                     });
-                    server.queue.shift();
-                    if (server.queue[0]) {
+                    server[message.guild.id].queue.shift();
+                    if (server[message.guild.id].queue[0]) {
                         message.channel.send({
                             embed: {
                                 color: embedColor.success,
@@ -310,20 +301,20 @@ exports.commands = function (message, prefix) {
             }).catch(function(error) {
                 if (error) {
                     reportError(error);
-                    console.error;
+                    console.log(error);
                 }
             });
         }
     };
 
     function searchfunc(message) {
-        var server = bot[message.guild.id];
         var opts = {
             key: auth.youtube_key,
         }
         var name = message.content.slice(6);
         youtubeSearch(name, opts, function (errors, results) {
             if (errors) {
+                reportError(errors);
                 console.log(errors);
                 message.reaction = null;
 
@@ -385,14 +376,17 @@ exports.commands = function (message, prefix) {
                     }
                 }
             });
-            server.queue.push(results[0].link)
+            if(!server[message.guild.id].queue) {
+                server[message.guild.id].queue = [];
+            }
+            server[message.guild.id].queue.push(results[0].link);
+
+            play(message);
 
             if (message && message.deletable) {
                 message.delete();
             }
-            if(!dispatcher) {
-                play(message);
-            }
+
         });
     };
 }

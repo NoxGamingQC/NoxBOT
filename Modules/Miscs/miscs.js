@@ -49,14 +49,14 @@ exports.commands = function (message, prefix) {
             embed: {
                 color: embedColor.success,
                 author: {
-                    name: bot.user.username + ' - NoxRacing',
+                    name: bot.user.username + ' - NoxGamingQC',
                     icon_url: bot.user.avatarURL
                 },
                 thumbnail: {
                     url: 'https://images-ext-1.discordapp.net/external/gyNfORp6lowlycpFmh2NKZ_ZZ7cjldDFOefAs8tX8xI/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/169592161132740608/14596f36b4a467abca755424768023fd.png'
                 },
                 title: '',
-                description: '**"**I’m a guy! I’m a guys! Oh fuck that shit I’m a Nox**"** – _NoxRacing, 2017-12-17_',
+                description: '**"**I’m a guy! I’m a guys! Oh fuck that shit I’m a Nox**"** – _NoxGamingQC, 2017-12-17_',
                 timestamp: new Date(),
                 footer: {
                     icon_url: message.author.avatarURL,

@@ -1,7 +1,7 @@
 const customServer = require('./CustomServers/index.js');
 const generalServers = require('./GeneralServers/index.js');
 const twitchInit = require('../twitch_init.js');
-const twitchUserInfo = require('../Modules/twitch_user_info.js');
+const twitchUserInfo = require('../Modules/Twitch/twitch_user_info.js');
 
 exports.serversCommands = function (message) {
     if (message.guild) {

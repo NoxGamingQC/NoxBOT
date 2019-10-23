@@ -3,9 +3,9 @@ const tmi = require('tmi.js');
 const auth = require('./auth.json');
 global.config = require('./config.json');
 const serversCommands = require('./Servers/index.js');
-const botSettings = require('./Modules/settings.js');
+const botSettings = require('./Modules/Bot/settings.js');
 const twitchInit = require('./twitch_init.js');
-const twitch = require('./Modules/twitch_commands.js');
+const twitch = require('./Modules/Twitch/twitch_commands.js');
 global.baseMethods = require('./BaseMethods.js');
 global.embed = require('./embed.js');
 const { Client } = require('pg');
@@ -21,6 +21,7 @@ var waitingForReaction = [];
 global.authorName = 'NoxGamingQC#3929';
 global.website = 'https://rebrand.ly/noxgamingqc';
 global.discordServerLink = 'https://discord.gg/reKASKN';
+global.server = {};
 
 global.TwitchClient = new tmi.client(twitchInit.options);
 const talkedRecently = new Set();
@@ -73,6 +74,8 @@ dbConnection.query('SELECT * FROM public.bot_lists;', function (error, result) {
     }
 });
 
+bot.on('debug', console.log)
+
 bot.on('ready', function () {
     console.log("Bot Launched...");
     //var username = bot.user.username;
@@ -97,7 +100,7 @@ bot.on('ready', function () {
     });
 })
 
-function reportError(error, errorCode = null, errorDescription = null, host = null) {
+global.reportError = function(error, errorCode = null, errorDescription = null, host = null) {
     if (error) {
         console.log(error);
         var errorGuild = bot.guilds.find(guild => guild.id === '605028700182020101')
@@ -337,7 +340,7 @@ function updateByTime() {
             bot.user.setStatus(!!result.rows[0].isDev ? 'dnd' : 'Online');
             var totalMembers = 0;
             $.ajax({
-                url: 'http://noxgamingqc.herokuapp.com/noxbot/get_data/bot_activities',
+                url: 'http://noxgamingqc.herokuapp.com/noxbot/data/json/activities',
                 method: 'get',
                 success: function(activities) {
                     activities.push('help | ' + bot.guilds.array().length + ' servers');

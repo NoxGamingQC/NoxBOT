@@ -1,4 +1,4 @@
-const packageInfo = require('./../package-lock.json');
+const packageInfo = require('./../../package-lock.json');
 var os = require('os');
 
 exports.commands = function (message, prefix) {
