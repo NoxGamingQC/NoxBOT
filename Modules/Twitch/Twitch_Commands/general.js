@@ -10,6 +10,6 @@ exports.commands = function (room, chatter, message, self, reportError) {
             TwitchClient.action(room, '@' + chatter['display-name'] + ', you can help NoxRacing to help children of his local Children\'s Miracle Network hospitals at https://www.extra-life.org/participant/noxracinggaming')
         };
         if ((message.toLowerCase()).includes("!time")) {
-            TwitchClient.action(room, '@' + chatter['display-name'] + ', it is now ' + moment().utcOffset(-5).format('HH:mm') +' for NoxRacing')
+            TwitchClient.action(room, '@' + chatter['display-name'] + ', it is now ' + moment().utcOffset(-4).format('HH:mm') +' for NoxGamingQC')
         };
 }
