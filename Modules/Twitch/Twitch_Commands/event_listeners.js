@@ -81,7 +81,7 @@ exports.listener = function () {
                                     }
                                 });
                             } else {
-                                if ((!stream.data[0] && twitchLive.isLive === 'true')) {
+                                if ((!stream.data[0] || stream.data[0].type !== 'live') && twitchLive.isLive === 'true') {
                                     dbConnection.query('UPDATE public.twitch_live SET "isLive"=\'false\' WHERE "ID"=\'' + twitchLive.ID + '\'', function(error, result) {
                                         if (error) {
                                             reportError(error, '500', 'An error occured when I tryied to update a user that completed his live on twitch | _Twitch Live is inactive_. (./Modules/Twitch/event_listeners.js)');

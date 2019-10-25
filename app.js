@@ -22,11 +22,12 @@ global.authorName = 'NoxGamingQC#3929';
 global.website = 'https://rebrand.ly/noxgamingqc';
 global.discordServerLink = 'https://discord.gg/reKASKN';
 global.server = {};
+global.discordToken = (config.development ? auth.dev_token : auth.prod_token);
 
 global.TwitchClient = new tmi.client(twitchInit.options);
 const talkedRecently = new Set();
 
-var lastError = null;
+global.lastError = null;
 
 
 global.dbConnection = new Client({
@@ -65,14 +66,7 @@ function isEmoji(str) {
     }
 }
 
-dbConnection.query('SELECT * FROM public.bot_lists;', function (error, result) {
-    if (error) throw error;
-    for (let row of result.rows) {
-        if (row.isDev === config.development) {
-            bot.login(row.OauthToken);
-        }
-    }
-});
+bot.login(discordToken);
 
 bot.on('debug', console.log)
 
@@ -340,6 +334,10 @@ function updateByTime() {
             bot.user.setStatus(!!result.rows[0].isDev ? 'dnd' : 'Online');
             var totalMembers = 0;
             $.ajax({
+                headers: {
+                    'Client-ID': bot.user.id,
+                    'Authorization': discordToken
+                },
                 url: 'http://noxgamingqc.herokuapp.com/noxbot/data/json/activities',
                 method: 'get',
                 success: function(activities) {

@@ -13,7 +13,7 @@ exports.commands = function (message, prefix) {
                         url: server.iconURL
                     },
                     title: server.name,
-                    description: 'https://discord.gg/KPd4cC4\n\n• ' + server.memberCount + ' members',
+                    description: discordServerLink + '\n\n• ' + server.memberCount + ' members',
                     timestamp: new Date(),
                     footer: {
                         icon_url: message.author.avatarURL,
