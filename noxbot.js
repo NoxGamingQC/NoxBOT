@@ -331,8 +331,8 @@ function reactionEventListener(bot, reactionRole) {
 function updateByTime() {
     var updateInterval = (5 * 60 * 1000);
     setInterval(function () {
-            var defaultPrefix = (config.isDev ? config.dev_prefix : config.prod_prefix);
-            bot.user.setStatus((config.isDev ? 'dnd' : 'Online'));
+            var defaultPrefix = (isDev ? config.dev_prefix : config.prod_prefix);
+            bot.user.setStatus((isDev ? 'dnd' : 'Online'));
             var totalMembers = 0;
             $.ajax({
                 headers: {
