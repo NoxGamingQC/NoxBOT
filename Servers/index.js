@@ -6,8 +6,7 @@ const twitchUserInfo = require('../Modules/Twitch/twitch_user_info.js');
 exports.serversCommands = function (message) {
     if (message.guild) {
         var isServerInDB = false;
-        global.isDev = config.isDev;
-        var defaultPrefix = config.isDev ? config.dev_prefix : config.prod_prefix;
+        var defaultPrefix = (isDev ? config.dev_prefix : config.prod_prefix);
         /*dbConnection.query('SELECT * FROM public.servers_config', function (error, result, fields) {
             if (error) {
                 reportError(error, '500', 'An error occured when I tryied to check the servers configuration table in the database. (./Servers/index.js)');
