@@ -282,7 +282,7 @@ function reactionRoles() {
                     } else {
                         reportError("", 400, 'The given emoji isn\'t well formated');
                     }
-                    if(!reactionLists[reactionRole.emoji]) {
+                    if(!reactionLists.includes(reactionRole.emoji)) {
                         reactionLists[reactionRole.emoji] = reactionRole
                     }
                     reactionEventListener(bot, reactionLists)
@@ -306,8 +306,6 @@ function reactionEventListener(bot, reactionRole) {
         bot.setMaxListeners(0);
         bot.on('messageReactionAdd', (reaction, user) => {
             if(reactionRole[reaction.emoji.name]) {
-                console.log(reaction.message.id);
-                console.log(reactionRole[reaction.emoji.name].messageID);
                 if (isEmoji(reactionRole[reaction.emoji.name].emoji) && (reactionRole[reaction.emoji.name]) && (user.id !== bot.user.id) && (reaction.message.id === reactionRole[reaction.emoji.name].messageID)) {
                     
                     bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji.name].serverID).members.find(member => member.id === user.id).addRole(reactionRole[reaction.emoji.name].roleID);

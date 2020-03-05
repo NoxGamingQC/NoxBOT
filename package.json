@@ -2,7 +2,7 @@
     "name": "NoxBOT",
     "version": "1.0.0",
     "description": "A bot made by NoxGamingQC#0001",
-    "main": "app.js",
+    "main": "noxbot.js",
     "author": "Jimmy Béland-Bédard",
     "dependencies": {
         "canvas": "^2.4.1",
