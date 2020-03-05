@@ -42,11 +42,11 @@ exports.commands = function (message, prefix) {
                 },
                 {
                     name: "Discord",
-                    value: 'https://discord.gg/reKASKN'
+                    value: 'https://discord.gg/6DGc24x'
                 },
                 {
                     name: "Developers",
-                    value: '• NoxGamingQC#3929 • [Website](https://rebrand.ly/noxgamingqc) • [Discord](https://discord.gg/reKASKN) • [Twitch](https://twitch.tv/noxgamingqc) • [GitHub](https://github.com/noxgamingqc) • [Instagram](https://instagram.com/noxgamingqc)\n' +
+                    value: '• NoxGamingQC#0001 • [Website](https://rebrand.ly/noxgamingqc) • [Discord](https://discord.gg/6DGc24x) • [Twitch](https://twitch.tv/noxgamingqc) • [GitHub](https://github.com/noxgamingqc) • [Instagram](https://instagram.com/noxgamingqc)\n' +
                             '• Gouliram#2700 • [GitHub](https://github.com/gouliram)\n' +
                             '• Theros#0001 • [GitHub](https://github.com/sm0k3)'
                 }

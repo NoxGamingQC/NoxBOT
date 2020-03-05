@@ -18,7 +18,7 @@ exports.commands = function (message, prefix) {
                 },
                 {
                     name: "Support",
-                    value: 'Found an error, or having trouble with the bot? Join the Discord [here](https://discord.gg/reKASKN) and we will assist you.'
+                    value: 'Found an error, or having trouble with the bot? Join the Discord [here](https://discord.gg/6DGc24x) and we will assist you.'
                 },
                 {
                     name: "Invite",

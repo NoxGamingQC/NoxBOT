@@ -18,9 +18,9 @@ global.$ = jQuery = require('jquery')(window);
 
 var waitingForReaction = [];
 
-global.authorName = 'NoxGamingQC#3929';
+global.authorName = 'NoxGamingQC#0001';
 global.website = 'https://rebrand.ly/noxgamingqc';
-global.discordServerLink = 'https://discord.gg/reKASKN';
+global.discordServerLink = 'https://discord.gg/6DGc24x';
 global.server = {};
 global.discordToken = (config.development ? auth.dev_token : auth.prod_token);
 
@@ -28,15 +28,6 @@ global.TwitchClient = new tmi.client(twitchInit.options);
 const talkedRecently = new Set();
 
 global.lastError = null;
-
-
-global.dbConnection = new Client({
-    connectionString: config.db_url,
-    ssl: true,
-});
-
-console.log('Connection to database');
-dbConnection.connect();
 
 
 console.log('Creating Discord Client');
@@ -55,14 +46,16 @@ process.on('unhandledRejection', (error) => {
 
 function isEmoji(str) {
     var ranges = [
-        '\ud83c[\udf00-\udfff]',
-        '\ud83d[\udc00-\ude4f]',
-        '\ud83d[\ude80-\udeff]'
+        '(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|[\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|[\ud83c[\ude32-\ude3a]|[\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])'
     ];
-    if (str.match(ranges.join('|'))) {
-        return true;
+    if(str) {
+        if (str.match(ranges.join('|'))) {
+            return true;
+        } else {
+            return false;
+        }
     } else {
-        return false;
+        return false
     }
 }
 
@@ -77,22 +70,17 @@ bot.on('ready', function () {
     updateByTime();
     reactionRoles();
 
-    dbConnection.query('SELECT * FROM public.bot_lists WHERE "BotID"=\'' + bot.user.id + '\';', function (error, result) {
-        if (error) {
-            reportError(error, '500', 'An error occured when I logged on Discord and checked the bot lists table in the database. (./app.js)');
-        }
-        global.isDev = !!result.rows[0].isDev;
-        bot.user.setStatus(isDev ? 'dnd' : 'Online');
-        bot.user.setActivity(bot.user.username + ' is back online.');
-        if (!isDev) {
-            TwitchClient.on('connected', function () {
-                console.log('Connected to Twitch');
-                twitch.twitchCommands();
-            });
-            TwitchClient.connect();
-        }
-    });
-})
+    global.isDev = config.development;
+    bot.user.setStatus(isDev ? 'dnd' : 'Online');
+    bot.user.setActivity(bot.user.username + ' is back online.');
+    if (!isDev) {
+        TwitchClient.on('connected', function () {
+            console.log('Connected to Twitch');
+            twitch.twitchCommands();
+        });
+        TwitchClient.connect();
+    }
+});
 
 global.reportError = function(error, errorCode = null, errorDescription = null, host = null) {
     if (error) {
@@ -263,7 +251,7 @@ bot.on('message', function (message) {
         serversCommands.serversCommands(message);
 
         if (!config.development && !talkedRecently.has(message.author.id)) {
-            givePointsToUser(message, embedColor);
+            //givePointsToUser(message, embedColor);
             talkedRecently.add(message.author.id);
             setTimeout(() => {
                 talkedRecently.delete(message.author.id);
@@ -273,26 +261,38 @@ bot.on('message', function (message) {
 })
 
 function reactionRoles() {
-    dbConnection.query('SELECT * From public.reactions_roles;', function (error, result) {
-        if (error) {
+    $.ajax({
+        url: "http://noxgamingqc.herokuapp.com/noxbot/data/json/roles_reactions",
+        method: "GET",
+
+        error: function (error) {
             reportError(error, '500', 'An error occured when I tryied to check the reactions role table in the database. (./app.js)');
+        },
+        
+        success: function (result) {
+            var reactionLists = [];
+            result.forEach(function (reactionRole) {
+                bot.guilds.find(guild => guild.id === reactionRole.serverID).channels.find(channel => channel.id === reactionRole.channelID).fetchMessage(reactionRole.messageID)
+                .then(function (message) {
+                    if (reactionRole.emoji && reactionRole.emoji.indexOf(':') != -1) {
+                        var emoji = bot.emojis.find(emoji => emoji.name === reactionRole.emoji.split(':')[1]);
+                        message.react(emoji.id);
+                    } else if (isEmoji(reactionRole.emoji)) {
+                        message.react(reactionRole.emoji);
+                    } else {
+                        reportError("", 400, 'The given emoji isn\'t well formated');
+                    }
+                    if(!reactionLists[reactionRole.emoji]) {
+                        reactionLists[reactionRole.emoji] = reactionRole
+                    }
+                    reactionEventListener(bot, reactionLists)
+                })
+                .catch(function (error) {
+                    reportError(error);
+                });
+            });
         }
-        result.rows.forEach(function (reactionRole) {
-            bot.guilds.find(guild => guild.id === reactionRole.ServerID).channels.find(channel => channel.id === reactionRole.ChannelID).fetchMessage(reactionRole.MessageID)
-            .then(function (message) {
-                if (reactionRole.Emoji && reactionRole.Emoji.indexOf(':') != -1) {
-                    var emoji = bot.emojis.find(emoji => emoji.name === reactionRole.Emoji.split(':')[1]);
-                    message.react(emoji.id);
-                } else if (isEmoji(reactionRole.Emoji)) {
-                    message.react(reactionRole.Emoji);
-                } else {
-                    reportError(error, 400, 'The given emoji isn\'t well formated');
-                }
-                reactionEventListener(bot, reactionRole)
-            })
-            .catch(reportError(error));
-        });
-    });
+    })
 }
 
 function reactionEventListener(bot, reactionRole) {
@@ -305,18 +305,25 @@ function reactionEventListener(bot, reactionRole) {
     if (isWaitingForReaction == false) {
         bot.setMaxListeners(0);
         bot.on('messageReactionAdd', (reaction, user) => {
-            if (isEmoji(reactionRole.Emoji) && (reaction.emoji.name === reactionRole.Emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole.MessageID)) {
-                bot.guilds.find(guild => guild.id === reactionRole.ServerID).members.find(member => member.id === user.id).addRole(reactionRole.RoleID);
-            } else if ((':' + reaction.emoji.name + ':' === reactionRole.Emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole.MessageID)) {
-                bot.guilds.find(guild => guild.id === reactionRole.ServerID).members.find(member => member.id === user.id).addRole(reactionRole.RoleID);
+            if(reactionRole[reaction.emoji.name]) {
+                console.log(reaction.message.id);
+                console.log(reactionRole[reaction.emoji.name].messageID);
+                if (isEmoji(reactionRole[reaction.emoji.name].emoji) && (reactionRole[reaction.emoji.name]) && (user.id !== bot.user.id) && (reaction.message.id === reactionRole[reaction.emoji.name].messageID)) {
+                    
+                    bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji.name].serverID).members.find(member => member.id === user.id).addRole(reactionRole[reaction.emoji.name].roleID);
+                } else if ((':' + reaction.emoji.name + ':' === reactionRole[reaction.emoji.name].emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole[reaction.emoji.name].messageID)) {
+                    bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji.name].ServerID).members.find(member => member.id === user.id).addRole(reactionRole[reaction.emoji.name].roleID);
+                }
             }
         });
 
         bot.on('messageReactionRemove', (reaction, user) => {
-            if (isEmoji(reactionRole.Emoji) && (reaction.emoji.name === reactionRole.Emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole.MessageID)) {
-                bot.guilds.find(guild => guild.id === reactionRole.ServerID).members.find(member => member.id === user.id).removeRole(reactionRole.RoleID);
-            } else if ((':' + reaction.emoji.name + ':' === reactionRole.Emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole.MessageID)) {
-                bot.guilds.find(guild => guild.id === reactionRole.ServerID).members.find(member => member.id === user.id).removeRole(reactionRole.RoleID);
+            if(reactionRole[reaction.emoji.name]) {
+                if (isEmoji(reactionRole[reaction.emoji.name].emoji) && (reactionRole[reaction.emoji.name]) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole[reaction.emoji.name].messageID)) {
+                    bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji.name].serverID).members.find(member => member.id === user.id).removeRole(reactionRole[reaction.emoji.name].roleID);
+                } else if ((':' + reaction.emoji.name + ':' === reactionRole[reaction.emoji.name].emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole[reaction.emoji.name].messageID)) {
+                    bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji.name].serverID).members.find(member => member.id === user.id).removeRole(reactionRole[reaction.emoji.name].roleID);
+                }
             }
         })
         waitingForReaction.push(reactionRole.ID);
@@ -326,12 +333,8 @@ function reactionEventListener(bot, reactionRole) {
 function updateByTime() {
     var updateInterval = (5 * 60 * 1000);
     setInterval(function () {
-        dbConnection.query('SELECT * FROM public.bot_lists WHERE "BotID"=\'' + bot.user.id + '\';', function (error, result) {
-            if (error) {
-                reportError(error, '500', 'An error occured when I tryied to check the bot lists table in the database to update my activity. (./app.js)');
-            }
-            var defaultPrefix = result.rows[0].DefaultPrefix;
-            bot.user.setStatus(!!result.rows[0].isDev ? 'dnd' : 'Online');
+            var defaultPrefix = config.isDev ? config.dev_prefix : config.prod_prefix;
+            bot.user.setStatus(!!config.isDev ? 'dnd' : 'Online');
             var totalMembers = 0;
             $.ajax({
                 headers: {
@@ -358,13 +361,12 @@ function updateByTime() {
                     console.log(error);
                 }
             });
-        })
         reactionRoles();
     }, updateInterval)
     updateInterval = null;
 }
 
-function givePointsToUser(message, embedColor) {
+/*function givePointsToUser(message, embedColor) {
     dbConnection.query('SELECT * FROM public.discord_users WHERE "ServerID"=\'' + message.guild.id + '\' AND "DiscordID"=\'' + message.author.id + '\'', function (error, result) {
         if (error) {
             reportError(error, '500', 'An error occured when I tryied to check the discord user table in database to give experience points to a user. (./app.js)');
@@ -427,4 +429,4 @@ function givePointsToUser(message, embedColor) {
         }
         newDiscordPoints = null;
     });
-}
+}*/
