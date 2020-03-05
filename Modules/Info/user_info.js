@@ -42,7 +42,9 @@ exports.commands = function (message, prefix) {
         });
 
         guildMember.roles.forEach(function(role) {
-            roleLists.push('<@&' + role.id + '>');
+            if(role.name.indexOf('─')) {
+                roleLists.push('<@&' + role.id + '>');
+            }
         })
         if (userMentionned) {
             message.channel.send({
@@ -70,7 +72,7 @@ exports.commands = function (message, prefix) {
                     },
                     {
                         name: 'Bot',
-                        value: userMentionned.bot,
+                        value: userMentionned.bot ? 'Yes' : 'No',
                         inline: true
                     },
                     {
@@ -95,12 +97,12 @@ exports.commands = function (message, prefix) {
                     },
                     {
                         name: 'Streaming',
-                        value: userMentionned.presence.game ? userMentionned.presence.game.streaming : 'False',
+                        value: userMentionned.presence.game ? userMentionned.presence.game.streaming : 'Not on Stream',
                         inline: true
                     },
                     {
                         name: 'Roles [' + roleLists.length + ']',
-                        value: roleLists.join(' '),
+                        value: '' + roleLists.slice(0, 40).join(' '),
                         inline: true
                     },
                     {
