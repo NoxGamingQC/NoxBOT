@@ -12,7 +12,7 @@ exports.commands = function (message, prefix) {
                 timestamp: new Date(),
                 footer: {
                     icon_url: bot.user.avatarURL,
-                    text: bot.user.name
+                    text: bot.user.username
                 }
             }
         });
@@ -34,7 +34,7 @@ exports.commands = function (message, prefix) {
                 timestamp: new Date(),
                 footer: {
                     icon_url: bot.user.avatarURL,
-                    text: bot.user.name
+                    text: bot.user.username
                 }
             }
         });
@@ -56,7 +56,7 @@ exports.commands = function (message, prefix) {
                 timestamp: new Date(),
                 footer: {
                     icon_url: bot.user.avatarURL,
-                    text: bot.user.name
+                    text: bot.user.username
                 }
             }
         });
@@ -78,7 +78,7 @@ exports.commands = function (message, prefix) {
                 timestamp: new Date(),
                 footer: {
                     icon_url: bot.user.avatarURL,
-                    text: bot.user.name
+                    text: bot.user.username
                 }
             }
         });
@@ -101,7 +101,7 @@ exports.commands = function (message, prefix) {
                 timestamp: new Date(),
                 footer: {
                     icon_url: bot.user.avatarURL,
-                    text: bot.user.name
+                    text: bot.user.username
                 }
             }
         });
@@ -123,7 +123,7 @@ exports.commands = function (message, prefix) {
                 timestamp: new Date(),
                 footer: {
                     icon_url: bot.user.avatarURL,
-                    text: bot.user.name
+                    text: bot.user.username
                 }
             }
         });
@@ -145,7 +145,7 @@ exports.commands = function (message, prefix) {
                 timestamp: new Date(),
                 footer: {
                     icon_url: bot.user.avatarURL,
-                    text: bot.user.name
+                    text: bot.user.username
                 }
             }
         });
@@ -166,7 +166,7 @@ exports.commands = function (message, prefix) {
                 timestamp: new Date(),
                 footer: {
                     icon_url: bot.user.avatarURL,
-                    text: bot.user.name
+                    text: bot.user.username
                 }
             }
         });
