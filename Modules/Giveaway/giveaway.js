@@ -77,7 +77,7 @@ exports.commands = function (message, prefix) {
                                             icon_url: bot.user.avatarURL
                                         },
                                         title: giveawayTitle,
-                                        description: '🎉 The rerolled Winner is ' + giveawayWinner + '! 🎉',
+                                        description: giveawayWinner ? '🎉 The rerolled Winner is ' + giveawayWinner + '! 🎉' : 'Not enough participant to redraw a winner',
                                         thumbnail: {
                                             url: message.guild.iconURL
                                         },
