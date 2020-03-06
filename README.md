@@ -56,11 +56,11 @@
 
 ## Starting the bot
 
-- `pm2 start app.js`
+- `pm2 start noxbot.js`
 
 ## Stopping the bot
 
-- `pm2 stop app.js`
+- `pm2 stop noxbot.js`
 
 ## Get bot logs
 
