@@ -74,6 +74,6 @@
 
 ### Usefull Link
 
-[GitHub](https://github.com/nox-studios/NoxBOT)
+[GitHub](https://github.com/NoxGamingQC/NoxBOT)
 
 [Website](http://noxgamingqc.herokuapp.com/noxbot)
