@@ -64,7 +64,7 @@
 
 ## Get bot logs
 
-- `pm2 logs app`
+- `pm2 logs noxbot`
 
 ## Creator and contributors
 
