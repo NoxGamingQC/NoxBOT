@@ -277,14 +277,18 @@ function reactionRoles() {
                     if (reactionRole.emoji && reactionRole.emoji.indexOf(':') != -1) {
                         var emoji = bot.emojis.find(emoji => emoji.name === reactionRole.emoji.split(':')[1]);
                         message.react(emoji.id);
+                        if(!reactionLists.includes(reactionRole.emoji)) {
+                            reactionLists[reactionRole.emoji] = reactionRole
+                        }
                     } else if (isEmoji(reactionRole.emoji)) {
                         message.react(reactionRole.emoji);
+                        if(!reactionLists.includes(reactionRole.emoji)) {
+                            reactionLists[reactionRole.emoji] = reactionRole
+                        }
                     } else {
                         reportError("", 400, 'The given emoji isn\'t well formated');
                     }
-                    if(!reactionLists.includes(reactionRole.emoji)) {
-                        reactionLists[reactionRole.emoji] = reactionRole
-                    }
+                    
                     reactionEventListener(bot, reactionLists)
                 })
                 .catch(function (error) {
@@ -305,23 +309,18 @@ function reactionEventListener(bot, reactionRole) {
     if (isWaitingForReaction == false) {
         bot.setMaxListeners(0);
         bot.on('messageReactionAdd', (reaction, user) => {
-            if(reactionRole[reaction.emoji.name]) {
-                if (isEmoji(reactionRole[reaction.emoji.name].emoji) && (reactionRole[reaction.emoji.name]) && (user.id !== bot.user.id) && (reaction.message.id === reactionRole[reaction.emoji.name].messageID)) {
-                    
-                    bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji.name].serverID).members.find(member => member.id === user.id).addRole(reactionRole[reaction.emoji.name].roleID);
-                } else if ((':' + reaction.emoji.name + ':' === reactionRole[reaction.emoji.name].emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole[reaction.emoji.name].messageID)) {
-                    bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji.name].ServerID).members.find(member => member.id === user.id).addRole(reactionRole[reaction.emoji.name].roleID);
-                }
+            if (reactionRole[reaction.emoji] && isEmoji(reactionRole[reaction.emoji].emoji) && (reactionRole[reaction.emoji]) && (user.id !== bot.user.id) && (reaction.message.id === reactionRole[reaction.emoji].messageID)) {
+                bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji].serverID).members.find(member => member.id === user.id).addRole(reactionRole[reaction.emoji].roleID);
+            } else if (reactionRole[':' + reaction.emoji.name + ':'] && (':' + reaction.emoji.name + ':' === reactionRole[':' + reaction.emoji.name + ':'].emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole[':' + reaction.emoji.name + ':'].messageID)) {
+                bot.guilds.find(guild => guild.id === reactionRole[':' + reaction.emoji.name +  ':'].serverID).members.find(member => member.id === user.id).addRole(reactionRole[':' + reaction.emoji.name + ':'].roleID);
             }
         });
 
         bot.on('messageReactionRemove', (reaction, user) => {
-            if(reactionRole[reaction.emoji.name]) {
-                if (isEmoji(reactionRole[reaction.emoji.name].emoji) && (reactionRole[reaction.emoji.name]) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole[reaction.emoji.name].messageID)) {
-                    bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji.name].serverID).members.find(member => member.id === user.id).removeRole(reactionRole[reaction.emoji.name].roleID);
-                } else if ((':' + reaction.emoji.name + ':' === reactionRole[reaction.emoji.name].emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole[reaction.emoji.name].messageID)) {
-                    bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji.name].serverID).members.find(member => member.id === user.id).removeRole(reactionRole[reaction.emoji.name].roleID);
-                }
+            if (reactionRole[reaction.emoji] && isEmoji(reactionRole[reaction.emoji].emoji) && (reactionRole[reaction.emoji]) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole[reaction.emoji].messageID)) {
+                bot.guilds.find(guild => guild.id === reactionRole[reaction.emoji].serverID).members.find(member => member.id === user.id).removeRole(reactionRole[reaction.emoji].roleID);
+            } else if (reactionRole[':' + reaction.emoji.name + ':'] && (':' + reaction.emoji.name + ':' === reactionRole[':' + reaction.emoji.name + ':'].emoji) && (user.id !== bot.user.id) && (reaction.message.id == reactionRole[':' + reaction.emoji.name + ':'].messageID)) {
+                bot.guilds.find(guild => guild.id === reactionRole[':' + reaction.emoji.name + ':'].serverID).members.find(member => member.id === user.id).removeRole(reactionRole[':' + reaction.emoji.name + ':'].roleID);
             }
         })
         waitingForReaction.push(reactionRole.ID);
