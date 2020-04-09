@@ -286,7 +286,7 @@ function reactionRoles() {
                             reactionLists[reactionRole.emoji] = reactionRole
                         }
                     } else {
-                        reportError("", 400, 'The given emoji isn\'t well formated');
+                        reportError(null, 400, 'The given emoji isn\'t well formated');
                     }
                     
                     reactionEventListener(bot, reactionLists)
