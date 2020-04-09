@@ -13,7 +13,6 @@ const explicitContentName = {
 }
 
 exports.commands = function (message, prefix) {
-    console.log(prefix + 'getserver')
     var content = message.content;
         var parts = content.split(" ");
         var serverID = parts[1];
@@ -29,7 +28,6 @@ exports.commands = function (message, prefix) {
             url: 'https://discordapp.com/api/v6/guilds/' + serverID,
             method: 'GET',
             success: function(server) {
-                console.log(server);
                 message.channel.send({
                     embed: {
                         color: embedColor.success,
@@ -38,11 +36,10 @@ exports.commands = function (message, prefix) {
                             icon_url: bot.user.avatarURL
                         },
                         thumbnail: {
-                            url: message.guild.iconURL
+                            url: 'https://cdn.discordapp.com/icons/' + server.id + '/' + server.icon + '.png'
                         },
                         title: '👑 Owner',
                         description: '<@' + server.owner_id + '>',
-                        timestamp: message.guild.createdAt,
                         timestamp: new Date(),
                         fields: [
                         {
