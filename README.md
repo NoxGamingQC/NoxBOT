@@ -1,6 +1,6 @@
 # NoxBOT
 
-[![Build Status](https://travis-ci.com/nox-studios/NoxBOT.svg?token=8xPnyZAhxFTwCpTJsxsG&branch=master)](https://travis-ci.com/nox-studios/NoxBOT)
+[![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
 [![Known Vulnerabilities](https://snyk.io/test/github/NoxGamingQC/NoxBOT/badge.svg)](https://snyk.io/test/github/NoxGamingQC/NoxBOT)
 [![Online Discord Members](https://discordapp.com/api/guilds/605028700182020101/widget.png?style=shield)](https://discord,gg/reKASKN)
 
