@@ -1,7 +1,6 @@
 # NoxBOT
 
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
-[![Known Vulnerabilities](https://snyk.io/test/github/NoxGamingQC/NoxBOT/badge.svg)](https://snyk.io/test/github/NoxGamingQC/NoxBOT)
 [![Dependencies](https://david-dm.org/NoxGamingQC/NoxBOT.svg)](https://david-dm.org/NoxGamingQC/NoxBOT)
 [![Dev-Dependencies](https://david-dm.org/NoxGamingQC/NoxBOT/dev-status.svg)](https://david-dm.org/NoxGamingQC/NoxBOT?type=dev)
 [![Online Discord Members](https://discordapp.com/api/guilds/605028700182020101/widget.png?style=shield)](https://discord,gg/reKASKN)
