@@ -7,6 +7,7 @@ const botSettings = require('./Modules/Bot/settings.js');
 global.twitchInit = require('./twitch_init.js');
 const twitch = require('./Modules/Twitch/twitch_commands.js');
 global.baseMethods = require('./BaseMethods.js');
+global.reportError = require('./error.js');
 global.embed = require('./embed.js');
 const { Client } = require('pg');
 var jsdom = require('jsdom');
@@ -37,11 +38,11 @@ global.bot = new Discord.Client({
 });
 
 process.on('uncaughtException', (error) => {
-    reportError(error, 500, 'You have triggered an uncaughtException:')
+    reportError.reportError(error, 500, 'You have triggered an uncaughtException:')
 })
 
 process.on('unhandledRejection', (error) => {
-    reportError(error, 500, 'You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:')
+    reportError.reportError(error, 500, 'You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:')
 })
 
 function isEmoji(str) {
@@ -67,6 +68,7 @@ bot.on('ready', function () {
     console.log("Bot Launched...");
     //var username = bot.user.username;
     //bot.user.setAvatar('img/avatar/' + username + '\'s avatar.png');
+
     updateByTime();
     reactionRoles();
 
@@ -81,146 +83,6 @@ bot.on('ready', function () {
         TwitchClient.connect();
     }
 });
-
-global.reportError = function(error, errorCode = null, errorDescription = null, host = null) {
-    if (error) {
-        console.log(error);
-        var errorGuild = bot.guilds.find(guild => guild.id === '605028700182020101')
-        if(!errorGuild) {
-            return;
-        }
-        var errChannel = errorGuild.channels.find(channel => channel.id === '605898526362304512'); // #crash_logs in Nox's Server
-        if (!errChannel) {
-            return;
-        }
-        if (error.msg) {
-            errChannel.send({
-                embed: {
-                    color: 16711680,
-                    author: {
-                        name: bot.user.username,
-                        icon_url: bot.user.avatarURL
-                    },
-                    title: 'Error - Code: ' + error.code,
-                    description: 'Error Message: ' + error.msg,
-                    timestamp: new Date(),
-                    footer: {
-                        icon_url: bot.user.avatarURL,
-                        text: bot.user.username
-                    }
-                }
-
-            });
-        } else if (error.responseText && error.responseJSON) {
-            errChannel.send({
-                embed: {
-                    color: 16711680,
-                    author: {
-                        name: bot.user.username,
-                        icon_url: bot.user.avatarURL
-                    },
-                    title: 'Error - Code: ' + error.responseJSON.status + ' - ' + error.responseJSON.error,
-                    description: error.responseJSON.message,
-                    timestamp: new Date(),
-                    footer: {
-                        icon_url: bot.user.avatarURL,
-                        text: bot.user.username
-                    }
-                }
-
-            });
-        } else if (error.message !== null && errorCode === null && errorDescription === null) {
-            errChannel.send({
-                embed: {
-                    color: 16711680,
-                    author: {
-                        name: bot.user.username,
-                        icon_url: bot.user.avatarURL
-                    },
-                    title: 'Error - Code: 500',
-                    description: 'Error Message: ' + error.message,
-                    timestamp: new Date(),
-                    footer: {
-                        icon_url: bot.user.avatarURL,
-                        text: bot.user.username
-                    }
-                }
-            });
-        } else if (error.message !== null && errorCode !== null && errorDescription === null) {
-            errChannel.send({
-                embed: {
-                    color: 16711680,
-                    author: {
-                        name: bot.user.username,
-                        icon_url: bot.user.avatarURL
-                    },
-                    title: 'Error - Code: ' + errorCode,
-                    description: 'Error Message: ' + error.message,
-                    timestamp: new Date(),
-                    footer: {
-                        icon_url: bot.user.avatarURL,
-                        text: bot.user.username
-                    }
-                }
-            });
-        } else if (error.message !== null && errorCode !== null && errorDescription !== null) {
-            var data = [];
-            data.push({
-                name: 'Error Message',
-                value: error.message
-            });
-
-            if (error.request && error.request.connection && error.request.connection._host) {
-                data.push({
-                    name: 'Host',
-                    value: error.request.connection._host
-                });
-            }
-
-            var code = (error.code ? error.code : errorCode)
-
-            errChannel.send({
-                embed: {
-                    color: 16711680,
-                    author: {
-                        name: bot.user.username,
-                        icon_url: bot.user.avatarURL
-                    },
-                    title: 'Error - Code: ' + code,
-                    description: errorDescription,
-                    timestamp: new Date(),
-                    fields: data,
-                    footer: {
-                        icon_url: bot.user.avatarURL,
-                        text: bot.user.username
-                    }
-                }
-            });
-        } else if (error.message == null && errorCode !== null && errorCode !== null && errorDescription !== null) {
-            errChannel.send({
-                embed: {
-                    color: 16711680,
-                    author: {
-                        name: bot.user.username,
-                        icon_url: bot.user.avatarURL
-                    },
-                    title: 'Error - Code: ' + errorCode,
-                    description: 'Error Message: ' + errorDescription,
-                    timestamp: new Date(),
-                    fields: [{
-                        name: 'Description',
-                        value: errorDescription
-                    }],
-                    footer: {
-                        icon_url: bot.user.avatarURL,
-                        text: bot.user.username
-                    }
-                }
-            });
-        }
-        errChannel = null;
-    }
-}
 
 bot.on('disconnect', function(errMsg, code) {
     console.log('▬▬▬▬▬ Bot Disconnected from Discord with code', code, 'for reason:', errMsg);
@@ -266,7 +128,7 @@ function reactionRoles() {
         method: "GET",
 
         error: function (error) {
-            reportError(error, '500', 'An error occured when I tryied to check the reactions role table in the database. (./app.js)');
+            reportError.reportError(error, '500', 'An error occured when I tryied to check the reactions role table in the database. (./app.js)');
         },
         
         success: function (result) {
@@ -286,13 +148,13 @@ function reactionRoles() {
                             reactionLists[reactionRole.emoji] = reactionRole
                         }
                     } else {
-                        reportError(null, 400, 'The given emoji isn\'t well formated');
+                        reportError.reportError(null, 400, 'The given emoji isn\'t well formated');
                     }
                     
                     reactionEventListener(bot, reactionLists)
                 })
                 .catch(function (error) {
-                    reportError(error);
+                    reportError.reportError(error);
                 });
             });
         }
@@ -366,7 +228,7 @@ function updateByTime() {
 /*function givePointsToUser(message, embedColor) {
     dbConnection.query('SELECT * FROM public.discord_users WHERE "ServerID"=\'' + message.guild.id + '\' AND "DiscordID"=\'' + message.author.id + '\'', function (error, result) {
         if (error) {
-            reportError(error, '500', 'An error occured when I tryied to check the discord user table in database to give experience points to a user. (./app.js)');
+            reportError.reportError(error, '500', 'An error occured when I tryied to check the discord user table in database to give experience points to a user. (./app.js)');
         }
         var newDiscordPoints = Math.floor((Math.random() * 25) + 15);
         if (result.rows[0]) {
@@ -406,7 +268,7 @@ function updateByTime() {
             if(message.author.id !== bot.user.id) {
                 dbConnection.query('UPDATE public.discord_users SET "Experiences" = \'' + updatedDiscordPoints + '\' WHERE "ID"=\'' + result.rows[0].ID + '\'', function(error, result) {
                     if (error) {
-                        reportError(error, '500', 'An error occured when I tryied to update user experience points. (./app.js)');
+                        reportError.reportError(error, '500', 'An error occured when I tryied to update user experience points. (./app.js)');
                     }
                 });
 
@@ -419,7 +281,7 @@ function updateByTime() {
             if (message.author.id !== bot.user.id) {
                 dbConnection.query('INSERT INTO public.discord_users("DiscordID", "Experiences", "ServerID") VALUES (' + message.author.id + ', ' + newDiscordPoints + ', ' + message.guild.id + ')', function(error, result) {
                     if (error) {
-                        reportError(error, '500', 'An error occured when I tryied to create a new user to give them experience points. (./app.js)');
+                        reportError.reportError(error, '500', 'An error occured when I tryied to create a new user to give them experience points. (./app.js)');
                     }
                 });
             }
