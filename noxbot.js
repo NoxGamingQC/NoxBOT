@@ -91,6 +91,8 @@ bot.on('disconnect', function(errMsg, code) {
         msg: errMsg,
         date: new Date()
     }
+    reportError.reportError(lastError, code, ' Bot Disconnected from Discord: ' + errorMsg)
+
     bot.connect();
 });
 

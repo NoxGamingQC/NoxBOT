@@ -17,7 +17,7 @@ exports.commands = function (message, prefix, serverConfig) {
             });
         },
         error: function(error) {
-            reportError(error, '500', 'An error occured when I tryied to check the modules lists table in the database.');
+            reportError.reportError(error, '500', 'An error occured when I tryied to check the modules lists table in the database.');
             console.log(error);
         }
     });

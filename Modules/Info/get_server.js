@@ -99,7 +99,7 @@ exports.commands = function (message, prefix) {
                         }
                     });
                 }
-                reportError(error.status, error.statusText);
+                reportError.reportError(error.status, error.statusText);
             }
         })
     }

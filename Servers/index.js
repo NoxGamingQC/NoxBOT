@@ -9,7 +9,7 @@ exports.serversCommands = function (message) {
         var defaultPrefix = (isDev ? config.dev_prefix : config.prod_prefix);
         /*dbConnection.query('SELECT * FROM public.servers_config', function (error, result, fields) {
             if (error) {
-                reportError(error, '500', 'An error occured when I tryied to check the servers configuration table in the database. (./Servers/index.js)');
+                reportError.reportError(error, '500', 'An error occured when I tryied to check the servers configuration table in the database. (./Servers/index.js)');
             }
             result.rows.forEach(function(serverConfig) {
                 var prefix = isDev ? defaultPrefix : serverConfig.Prefix;

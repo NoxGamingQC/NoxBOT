@@ -7,7 +7,7 @@ exports.commands = function (message, prefix) {
         const ctx = canvas.getContext('2d')
         dbConnection.query('SELECT * FROM public.discord_users WHERE "ServerID"=\'' + message.guild.id + '\' AND "DiscordID"=\'' + message.author.id + '\'', function (error, discordUser) {
             if (error) {
-                reportError(error, '500', 'An error occured when I tryied to check the discord user table in database to give experience points to a user. (./app.js)');
+                reportError.reportError(error, '500', 'An error occured when I tryied to check the discord user table in database to give experience points to a user. (./app.js)');
             }
             if (discordUser.rows[0]) {
                 var currentLevel = 0;

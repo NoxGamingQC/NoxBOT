@@ -300,7 +300,7 @@ exports.commands = function (message, prefix) {
                 });
             }).catch(function(error) {
                 if (error) {
-                    reportError(error);
+                    reportError.reportError(error);
                     console.log(error);
                 }
             });
@@ -314,7 +314,7 @@ exports.commands = function (message, prefix) {
         var name = message.content.slice(6);
         youtubeSearch(name, opts, function (errors, results) {
             if (errors) {
-                reportError(errors);
+                reportError.reportError(errors);
                 console.log(errors);
                 message.reaction = null;
 

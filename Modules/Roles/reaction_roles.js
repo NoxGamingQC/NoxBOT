@@ -33,7 +33,7 @@ exports.commands = function (message, prefix) {
                     if (member.hasPermission('MANAGE_ROLES')) {
                         dbConnection.query('INSERT INTO public.ReactionRoles(ServerID, RoleID, MessageID, Emoji, ChannelID) VALUES (\'' + message.guild.id + '\', \'' + roleID + '\', \'' + messageID + '\', \'' + parts[3] + '\', \'' + channelID +'\')', function(error, result) {
                             if (error) {
-                                reportError(error);
+                                reportError.reportError(error);
                             }
                         });
                         message.channel.send({

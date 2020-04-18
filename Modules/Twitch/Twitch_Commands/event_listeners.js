@@ -4,7 +4,7 @@ exports.listener = function () {
         setInterval(function () {
             dbConnection.query('SELECT * FROM public.twitch_live', function (error, result, fields) {
                 if (error) {
-                    reportError(error, '500', 'An error occured when I tryied to check the twitch live table in the database. (./Modules/Twitch/event_listeners.js)');
+                    reportError.reportError(error, '500', 'An error occured when I tryied to check the twitch live table in the database. (./Modules/Twitch/event_listeners.js)');
                     return;
                 }
                 result.rows.forEach(function (twitchLive) {
@@ -61,37 +61,37 @@ exports.listener = function () {
                                                         }
                                                     });
                                                 } else {
-                                                    reportError(error, '404', 'Cannot find Guild or room. Server ID = ' + twitchLive.ServerID + ' Channel ID = twitchLive.ChannelID');
+                                                    reportError.reportError(error, '404', 'Cannot find Guild or room. Server ID = ' + twitchLive.ServerID + ' Channel ID = twitchLive.ChannelID');
                                                 }
                                             },
                                             error(error) {
-                                                reportError(error);
+                                                reportError.reportError(error);
                                                 console.log(error)
                                             }
                                         });
                                     },
                                     error (error) {
-                                        reportError(error);
+                                        reportError.reportError(error);
                                         console.log(error)
                                     }
                                 });
                                 dbConnection.query('UPDATE public.twitch_live SET "isLive"=\'true\' WHERE "ID"=\'' + twitchLive.ID + '\'', function(error, result) {
                                     if (error) {
-                                        reportError(error, '500', 'An error occured when I tryied to update a user live on twitch | _Twitch Live is active_. (./Modules/Twitch/event_listeners.js)');
+                                        reportError.reportError(error, '500', 'An error occured when I tryied to update a user live on twitch | _Twitch Live is active_. (./Modules/Twitch/event_listeners.js)');
                                     }
                                 });
                             } else {
                                 if ((!stream.data[0] || stream.data[0].type !== 'live') && twitchLive.isLive === 'true') {
                                     dbConnection.query('UPDATE public.twitch_live SET "isLive"=\'false\' WHERE "ID"=\'' + twitchLive.ID + '\'', function(error, result) {
                                         if (error) {
-                                            reportError(error, '500', 'An error occured when I tryied to update a user that completed his live on twitch | _Twitch Live is inactive_. (./Modules/Twitch/event_listeners.js)');
+                                            reportError.reportError(error, '500', 'An error occured when I tryied to update a user that completed his live on twitch | _Twitch Live is inactive_. (./Modules/Twitch/event_listeners.js)');
                                         }
                                     });
                                 }
                             }
                         },
                         error: function (error) {
-                            reportError(error);
+                            reportError.reportError(error);
                             console.log(error)
                         }
                     });
