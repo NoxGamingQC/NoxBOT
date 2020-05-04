@@ -23,6 +23,27 @@ exports.commands = function (message, prefix) {
             message.delete();
         }
     }
+    if (message.content.split(' ')[0] === prefix + 'hug' && (message.content.split(' ')[1])) {
+        message.channel.send({
+            embed: {
+                color: embedColor.success,
+                author: {
+                    name: bot.user.username + ' - Hug',
+                    icon_url: bot.user.avatarURL
+                },
+                title: 'Hugs 🤗',
+                description: '<@' + message.author.id + '> hugged ' + message.content.split(' ')[1] + ' ! ...Awh that\'s so sweet!\n... I think I\'m going to cry... (づ╥ᆺ╥)づ Wai u do dis?!',
+                timestamp: new Date(),
+                footer: {
+                    icon_url: message.author.avatarURL,
+                    text: message.author.tag
+                }
+            }
+        });
+        if (message && message.deletable) {
+            message.delete();
+        }
+    }
     if (message.content === prefix + 'lenny') {
         message.channel.send({
             embed: {
