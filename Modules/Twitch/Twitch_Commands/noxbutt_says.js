@@ -2,7 +2,7 @@ exports.commands = function (room, chatter, message, self, reportError) {
     if (self) {
         return;
     }
-    if ((message.toLowerCase()).includes("!no")) {
+    if ((message.toLowerCase()) == "!no") {
         TwitchClient.say(room, 'VoteNay')
     }
 
@@ -10,7 +10,7 @@ exports.commands = function (room, chatter, message, self, reportError) {
         TwitchClient.say(room, '!play')
     }
 
-    if ((message.toLowerCase()).includes("!yeah")) {
+    if ((message.toLowerCase()) == "!yeah") {
         TwitchClient.say(room, 'VoteYea')
     }
 }

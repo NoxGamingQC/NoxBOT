@@ -7,11 +7,11 @@ exports.commands = function (room, chatter, message, self, reportError) {
     }
 
     if ((message.toLowerCase()).includes("!golfwithyourfriends")) {
-        TwitchClient.action(room, 'The name of the private lobby is "nox" and the password is "racing"')
+        TwitchClient.action(room, 'The name of the private lobby is "nox" and the password is "gaming"')
     }
 
     if ((message.toLowerCase()).includes("!rocketleague")) {
-        TwitchClient.action(room, 'The name of the private match is: "nox" and the password is: "racing". Let\'s go and join the game!')
+        TwitchClient.action(room, 'The name of the private match is: "nox" and the password is: "gaming". Let\'s go and join the game!')
     }
 
     if ((message.toLowerCase()).includes("!warframe")) {

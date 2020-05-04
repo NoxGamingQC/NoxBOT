@@ -2,11 +2,8 @@ exports.commands = function (room, chatter, message, self, reportError) {
     if (self) {
         return;
     }
-    if ((message.toLowerCase()).includes("!curse")) {
-        TwitchClient.action(room, 'You can join NoxFam\'s server on Curse/Twitch at https://app.twitch.tv/servers/Eo9w5X')
-    }
     if ((message.toLowerCase()).includes("!discord")) {
-        TwitchClient.action(room, chatter['display-name'] + ' you can join the Kingdom on Discord at ' + discordServerLink)
+        TwitchClient.action(room, chatter['display-name'] + ' you can join our ship on Discord at ' + discordServerLink)
     }
     if ((message.toLowerCase()).includes("!instagram")) {
         TwitchClient.action(room, 'Follow @NoxGamingQC on Instagram at https://www.instagram.com/noxgamingqc/')
@@ -15,7 +12,7 @@ exports.commands = function (room, chatter, message, self, reportError) {
         TwitchClient.action(room, 'NoxGamingQC psn username is NoxGamingQC')
     }
     if ((message.toLowerCase()).includes("!steam")) {
-        TwitchClient.action(room, 'Here you can add NoxRacing as friend: https://steamcommunity.com/id/NoxGamingQC')
+        TwitchClient.action(room, 'Here you can add NoxGamingQC as friend: https://steamcommunity.com/id/NoxGamingQC')
     }
     if ((message.toLowerCase()).includes("!twitter")) {
         TwitchClient.action(room, 'Follow @NoxGamingQC on Twitter at https://twitter.com/noxgamingqc')
