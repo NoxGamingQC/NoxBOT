@@ -1,12 +1,14 @@
 exports.commands = function (message, prefix) {
     if(message.content.split(' ')[0].includes(prefix + 'twitchuserinfo') && message.content.split(' ')[1]) {
+
         $.ajax({
             headers: {
-                'Client-ID': twitchInit.options.identity.ClientID,
-                'Authorization': twitchInit.options.identity.password
+                'Client-ID': twitchInit.options.clientId,
+                'Authorization': 'Bearer ' + twitchInit.options.access_token
             },
             url: 'https://api.twitch.tv/helix/users?login=' + message.content.split(' ')[1],
             success: function (user) {
+                console.log(user)
                 var userData = [];
                 if(user.data[0]) {
                     user.data[0].display_name ? userData.push({
@@ -60,8 +62,8 @@ exports.commands = function (message, prefix) {
                 } else {
                     $.ajax({
                         headers: {
-                            'Client-ID': twitchInit.options.identity.ClientID,
-                            'Authorization': twitchInit.options.identity.password
+                            'Client-ID': twitchInit.options.clientId,
+                            'Authorization': 'Bearer ' + twitchInit.options.access_token
                         },
                         url: 'https://api.twitch.tv/helix/users?id=' + message.content.split(' ')[1],
                         success: function (user) {
@@ -135,37 +137,20 @@ exports.commands = function (message, prefix) {
                             }
                         },
 
-                        error: function() {
-
+                        error: function(error) {
+                            console.log(error);
+                            reportError.reportError(error);
                         }
                     });
                 }
-
-
-
-
 
                 if (message && message.deletable) {
                     message.delete();
                 }
             },
             error: function (error) {
-                message.channel.send({
-                    embed: {
-                        color: embedColor.error,
-                        author: {
-                            name: bot.user.username,
-                            icon_url: bot.user.avatarURL
-                        },
-                        title: 'Error ' + error.responseJSON.status + ' - ' + error.responseJSON.error,
-                        description: '' + error.responseJSON.message,
-                        timestamp: new Date(),
-                        footer: {
-                            icon_url: message.author.avatarURL,
-                            text: message.author.tag
-                        }
-                    }
-                });
+                console.log(error);
+                reportError.reportError(error);
                 if (message && message.deletable) {
                     message.delete();
                 }

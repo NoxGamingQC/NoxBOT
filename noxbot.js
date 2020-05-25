@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+global.reportError = require('./error.js');
 const tmi = require('tmi.js');
 const auth = require('./auth.json');
 global.config = require('./config.json');
@@ -7,7 +8,6 @@ const botSettings = require('./Modules/Bot/settings.js');
 global.twitchInit = require('./twitch_init.js');
 const twitch = require('./Modules/Twitch/twitch_commands.js');
 global.baseMethods = require('./BaseMethods.js');
-global.reportError = require('./error.js');
 global.embed = require('./embed.js');
 const { Client } = require('pg');
 var jsdom = require('jsdom');

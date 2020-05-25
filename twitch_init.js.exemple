@@ -1,3 +1,4 @@
+//https://twitchtokengenerator.com/
 exports.options = {
     identity: {
         username: '',
@@ -13,5 +14,7 @@ exports.options = {
         debug: true
     },
     clientId: '',
+    access_token: '',
+    refresh_token: '',
     channels: ['']
 };
