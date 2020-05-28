@@ -10,23 +10,23 @@ exports.listener = function () {
                 result.rows.forEach(function (twitchLive) {
                     $.ajax({
                         headers: {
-                            'Client-ID': twitchInit.options.identity.ClientID,
-                            'Authorization': twitchInit.options.identity.password
+                            'Client-ID': twitchInit.options.clientId,
+                            'Authorization': twitchInit.options.access_token
                         },
                         url: 'https://api.twitch.tv/helix/streams?user_id=' + twitchLive.UserID,
                         success: function (stream) {
                             if (stream.data[0] && stream.data[0].type === 'live' && twitchLive.isLive === false) {
                                 $.ajax({
                                     headers: {
-                                        'Client-ID': twitchInit.options.identity.ClientID,
-                                        'Authorization': twitchInit.options.identity.password
+                                        'Client-ID': twitchInit.options.clientId,
+                                        'Authorization': twitchInit.options.access_token
                                     },
                                     url: 'https://api.twitch.tv/helix/games?id=' + stream.data[0].game_id,
                                     success: function (game) {
                                         $.ajax({
                                             headers: {
-                                                'Client-ID': twitchInit.options.identity.ClientID,
-                                                'Authorization': twitchInit.options.identity.password
+                                                'Client-ID': twitchInit.options.clientId,
+                                                'Authorization': twitchInit.options.access_token
                                             },
                                             url: 'https://api.twitch.tv/helix/users?id=' + stream.data[0].user_id,
                                             success: function (user) {
