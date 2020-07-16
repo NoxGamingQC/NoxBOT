@@ -42,7 +42,17 @@ process.on('uncaughtException', (error) => {
 })
 
 process.on('unhandledRejection', (error) => {
-    reportError.reportError(error, 500, 'You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:')
+    if(error.code === "ECONNRESET") {
+        reportError.reportError(error, 500, 'You have triggered an ECONNRESET error. NoxBOT will now reconnect.')
+    
+        bot.connect();
+    } else if(error.code === "EAI_AGAIN") {
+        reportError.reportError(error, 500, 'You have triggered an EAI_AGAIN error. NoxBOT will now reconnect.')
+    
+        bot.connect();
+    } else {
+        reportError.reportError(error, 500, 'You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:')
+    }
 })
 
 function isEmoji(str) {

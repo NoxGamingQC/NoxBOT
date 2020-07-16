@@ -5,7 +5,7 @@
     "main": "noxbot.js",
     "author": "Jimmy Béland-Bédard",
     "dependencies": {
-        "canvas": "^2.4.1",
+        "canvas": "^2.6.1",
         "discord-yt-player": "^1.1.1",
         "discord.js": "^11.4.2",
         "discord.js-musicbot-addon": "^13.4.0",
