@@ -21,9 +21,9 @@
         "os": "^0.1.1",
         "pg": "^7.9.0",
         "request": "^2.88.0",
-        "tmi.js": "^1.4.1",
+        "tmi.js": "^1.8.0",
         "twitter": "^1.7.1",
-        "youtube-search": "^1.1.1",
+        "youtube-search": "^1.1.5",
         "ytdl": "^0.10.2",
         "ytdl-core": "^0.24.0"
     }
