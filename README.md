@@ -1,4 +1,4 @@
-# NoxBOT
+# NoxBOT (deprecated)
 
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
 [![Dependencies](https://david-dm.org/NoxGamingQC/NoxBOT.svg)](https://david-dm.org/NoxGamingQC/NoxBOT)
