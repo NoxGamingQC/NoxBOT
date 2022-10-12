@@ -4,4 +4,4 @@ auth.json
 twitch_init.js
 config.json
 *.log
-.env
+env.js
