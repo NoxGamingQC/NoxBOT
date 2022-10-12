@@ -1,3 +1,4 @@
+const env = require('.env');
 const Discord = require('discord.js');
 global.reportError = require('./error.js');
 const tmi = require('tmi.js');
