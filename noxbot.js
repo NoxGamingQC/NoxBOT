@@ -1,6 +1,4 @@
-const { Discord, Intents } = require('discord.js');
-const tmi = require('tmi.js');
-const { Client } = require('pg');
+const Discord = require('discord.js');
 var jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 const { window } = new JSDOM();
