@@ -2,6 +2,7 @@
 
 P.S. I'm currently fixing this project. Please stand by. Thank you ;)
 
+
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
 [![Dependencies](https://david-dm.org/NoxGamingQC/NoxBOT.svg)](https://david-dm.org/NoxGamingQC/NoxBOT)
 [![Dev-Dependencies](https://david-dm.org/NoxGamingQC/NoxBOT/dev-status.svg)](https://david-dm.org/NoxGamingQC/NoxBOT?type=dev)
