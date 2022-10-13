@@ -5,7 +5,8 @@ const { window } = new JSDOM();
 const { document } = (new JSDOM('')).window;
 global.document = document;
 global.$ = jQuery = require('jquery')(window);
-const env = require("./env.js");
+global.env = require("./env.js");
+inviteCommand = require("./Modules/Links/invite.js");
 
 
 var waitingForReaction = [];
@@ -31,10 +32,12 @@ bot.login(discordToken);
 bot.on('debug', console.log);
 
 bot.on('ready', function () {
-    console.log("Bot Launched...");
+    console.log('Connected as ' + bot.user.username);
     bot.user.setStatus(env.discord.bot_status);
-    bot.user.setActivity('Back online.');
+    bot.user.setActivity(bot.user.username + ' is back online.');
+    
 });
+
 
 bot.on('disconnect', function(errMsg, code) {
     console.log('▬▬▬▬▬ Bot Disconnected from Discord with code', code, 'for reason:', errMsg);
@@ -53,4 +56,5 @@ bot.on('message', function (message) {
     if(message == "n!ping") {
         message.channel.send("pong");
     }
+    inviteCommand.commands(message);
 });

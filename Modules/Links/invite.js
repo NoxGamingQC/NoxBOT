@@ -1,10 +1,10 @@
-exports.commands = function (message, prefix) {
-    if (message.content === prefix + 'invite') {
+exports.commands = function (message) {
+    if (message.content === env.discord.prefix + 'invite') {
         var server = message.guild;
         if (server) {
             message.channel.send({
                 embed: {
-                    color: embedColor.success,
+                    color: env.discord.embedColor.success,
                     author: {
                         name: bot.user.username + ' - Invite link',
                         icon_url: bot.user.avatarURL
@@ -13,7 +13,7 @@ exports.commands = function (message, prefix) {
                         url: server.iconURL
                     },
                     title: server.name,
-                    description: discordServerLink + '\n\n• ' + server.memberCount + ' members',
+                    description: env.discord.discord_invite + '\n\n• ' + server.memberCount + ' members',
                     timestamp: new Date(),
                     footer: {
                         icon_url: message.author.avatarURL,
