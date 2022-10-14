@@ -11,10 +11,6 @@ module.exports = {
         NODE_ENV: 'production'
       }
     },
-    {
-      name      : 'WEB',
-      script    : 'web.js'
-    }
   ],
   node_args: {
     name: "ES6",
