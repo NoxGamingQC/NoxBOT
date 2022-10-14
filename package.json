@@ -6,7 +6,7 @@
     "author": "Jimmy Béland-Bédard",
     "type": "module",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "license": "",
@@ -15,8 +15,8 @@
         "discord-yt-player": "^1.1.1",
         "discord.js": "11.6.1",
         "jquery": "^3.3.1",
-        "jsdom": "^13.2.0",
+        "jsdom": "^20.0.1",
         "libsodium-wrappers": "^0.7.10",
-        "npm": "^6.12.0"
+        "npm": "^8.19.2"
     }
 }
