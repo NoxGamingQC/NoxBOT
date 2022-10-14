@@ -58,7 +58,8 @@
 
 ## Starting the bot
 
-- `pm2 start noxbot.js`
+- `pm2 start ecosystem.config.cjs`
+- `pm2 start noxbot`
 
 ## Stopping the bot
 
