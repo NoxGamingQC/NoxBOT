@@ -1,7 +1,0 @@
-{
-    "dev_prefix": "/",
-    "prod_prefix": "!",
-    "development": true,
-
-    "db_url": ""
-}

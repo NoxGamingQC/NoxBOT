@@ -6,28 +6,18 @@ const { document } = (new JSDOM('')).window;
 global.document = document;
 global.$ = jQuery = require('jquery')(window);
 global.env = require("./env.js");
-inviteCommand = require("./Modules/Links/invite.js");
+const commands = require("./Modules/index.js");
 
 
 var waitingForReaction = [];
 
-global.authorName = 'NoxGamingQC#0001';
-global.website = 'https://rebrand.ly/noxgamingqc';
-global.discordServerLink = 'https://discord.gg/6DGc24x';
-global.server = {};
-global.discordToken = env.discord.bot_token;
-
-//global.TwitchClient = new tmi.client(twitchInit.options);
-const talkedRecently = new Set();
-
 global.lastError = null;
-
 
 console.log('Creating Discord Client');
 global.bot = new Discord.Client();
 
 
-bot.login(discordToken);
+bot.login(env.discord.bot_token);
 
 bot.on('debug', console.log);
 
@@ -53,8 +43,8 @@ bot.on('disconnect', function(errMsg, code) {
 
 
 bot.on('message', function (message) {
-    if(message == "n!ping") {
+    if(message == env.discord.prefix + "ping") {
         message.channel.send("pong");
     }
-    inviteCommand.commands(message);
+    commands.index(env.discord.prefix, message);
 });
