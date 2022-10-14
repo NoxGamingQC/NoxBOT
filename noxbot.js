@@ -1,12 +1,16 @@
-var jsdom = require('jsdom');
-const Discord = require('discord.js');
+import jsdom from 'jsdom';
+import Discord from 'discord.js';
 const { JSDOM } = jsdom;
 const { window } = new JSDOM();
 const { document } = (new JSDOM('')).window;
-const commands = require("./Modules/index.js");
+import commands from "./Modules/index.js";
 global.document = document;
-global.$ = jQuery = require('jquery')(window);
-global.env = require("./env.js");
+import jQuery from 'jquery';
+import env from "./env.cjs";
+
+global.env = env;
+global.$ = jQuery;
+global.jQuery = jQuery;
 
 console.log('Creating Discord Client');
 
@@ -28,5 +32,5 @@ bot.on('disconnect', function(errMsg, code) {
 });
 
 bot.on('message', function (message) {
-    commands.index(env.discord.prefix, message);
+    commands(env.discord.prefix, message);
 });

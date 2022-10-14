@@ -4,6 +4,12 @@
     "description": "A bot made by NoxGamingQC#0001",
     "main": "noxbot.js",
     "author": "Jimmy Béland-Bédard",
+    "type": "module",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "license": "",
     "dependencies": {
         "bufferutil": "^4.0.6",
         "discord-yt-player": "^1.1.1",

@@ -2,7 +2,7 @@ module.exports = {
   apps : [
     {
       name      : 'API',
-      script    : 'app.js',
+      script    : 'noxbot.js',
       log_type: "json",
       env: {
         COMMON_VARIABLE: 'true'
@@ -16,6 +16,11 @@ module.exports = {
       script    : 'web.js'
     }
   ],
+  node_args: {
+    name: "ES6",
+    script: "es6.js",
+    node_args: "--harmony"
+  },
   deploy : {
     production : {
       user : 'node',
