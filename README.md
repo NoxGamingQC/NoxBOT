@@ -1,7 +1,7 @@
 # NoxBOT (Curently on developement)
 
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
-[![License](https://img.shields.io/github/license/NoxGamingQC/NoxBOT)](#)
+[![License](https://img.shields.io/github/license/NoxGamingQC/Noxbot)](#)
 [![Discord.JS](https://img.shields.io/badge/Discord.JS-11.6.1-blue)](#)
 [![Online Discord Members](https://discord.com/api/guilds/938558244924829756/widget.png?style=shield)](https://noxgamingqc.ca/discord)
 
