@@ -1,12 +1,9 @@
-# NoxBOT (Curently broken)
-
-P.S. I'm currently fixing this project. Please stand by. Thank you ;)
-
+# NoxBOT (Curently on developement)
 
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
-[![Dependencies](https://david-dm.org/NoxGamingQC/NoxBOT.svg)](https://david-dm.org/NoxGamingQC/NoxBOT)
-[![Dev-Dependencies](https://david-dm.org/NoxGamingQC/NoxBOT/dev-status.svg)](https://david-dm.org/NoxGamingQC/NoxBOT?type=dev)
-[![Online Discord Members](https://discordapp.com/api/guilds/605028700182020101/widget.png?style=shield)](https://discord.gg/6DGc24x)
+[![License](https://img.shields.io/github/license/NoxGamingQC/NoxBOT)](#)
+[![Discord.JS](https://img.shields.io/badge/Discord.JS-11.6.1-blue)](#)
+[![Online Discord Members](https://discord.com/api/guilds/938558244924829756/widget.png?style=shield)](https://noxgamingqc.ca/discord)
 
 ## Setting up your environement
 
