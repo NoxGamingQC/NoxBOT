@@ -78,4 +78,4 @@
 
 [GitHub](https://github.com/NoxGamingQC/NoxBOT)
 
-[Website](http://noxgamingqc.herokuapp.com/noxbot)
+[Website](https://noxgamingqc.ca)
