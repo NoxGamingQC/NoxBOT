@@ -1,7 +1,7 @@
 node_modules
 auth.json
 .vscode
-env.js
+env.cjs
 twitch_init.js
 config.json
 *.log
