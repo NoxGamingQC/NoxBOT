@@ -10,7 +10,7 @@ const { document } = (new JSDOM('')).window;
 global.document = document;
 global.jQuery = jQuery;
 global.$ = jQuery;
-global.env = dotenv.config();
+global.env = dotenv;
 
 console.log('Creating Discord Client');
 
