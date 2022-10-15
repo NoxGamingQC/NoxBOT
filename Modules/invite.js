@@ -4,7 +4,7 @@ exports.command = function(prefix, message) {
         if (server) {
             message.channel.send({
                 embed: {
-                    color: env.discord.embedColor.success,
+                    color: env.success_color,
                     author: {
                         name: bot.user.username + ' - Invite link',
                         icon_url: bot.user.avatarURL

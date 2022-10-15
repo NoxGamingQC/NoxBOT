@@ -1,5 +1,5 @@
 node_modules
 .vscode
-env.cjs
+.env
 config.json
 *.log
