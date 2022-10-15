@@ -1,7 +1,7 @@
-import inviteModule from "./invite.js";
+const inviteModule = require("./invite.js");
 
-export default (prefix, message) => {
-    inviteModule(prefix, message);
+exports.commands = function(prefix, message) {
+    inviteModule.command(prefix, message);
 
     if(message == prefix + "ping") {
         message.channel.send("pong");

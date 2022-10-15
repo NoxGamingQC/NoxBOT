@@ -13,8 +13,8 @@ module.exports = {
     },
   ],
   node_args: {
-    name: "ES6",
-    script: "es6.js",
+    name: "ES5",
+    script: "es5.js",
     node_args: "--harmony"
   },
   deploy : {

@@ -1,4 +1,4 @@
-export default (prefix, message) => {
+exports.command = function(prefix, message) {
     if (message.content === prefix + 'invite') {
         var server = message.guild;
         if (server) {
