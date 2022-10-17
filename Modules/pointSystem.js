@@ -1,7 +1,7 @@
 exports.addPoints = function(user) {
     $.ajax({
         url: process.env.WEBSITE_BASE_LINK + "points/add",
-        type: "points",
+        type: "post",
         data: {
             'token': process.env.WEBSITE_TOKEN,
             'botID': bot.user.id,
