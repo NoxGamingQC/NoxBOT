@@ -1,14 +1,14 @@
 
-const Discord = require('discord.js');
-const commands = require("./Modules/index.js");
+var Discord = require('discord.js');
+var commands = require("./Modules/index.js");
 require('dotenv').config();
-const activities = require('./Modules/activities.js');
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const jQuery = require('jquery')(window);
-const { document } = (new JSDOM('')).window;
+var activities = require('./Modules/activities.js');
+var { JSDOM } = require( "jsdom" );
+var { window } = new JSDOM( "" );
+var jQuery = require('jquery')(window);
+var { document } = (new JSDOM('')).window;
+
 global.document = document;
-global.jQuery = jQuery;
 global.$ = jQuery;
 
 console.log('Creating Discord Client');
