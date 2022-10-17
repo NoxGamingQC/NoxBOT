@@ -22,6 +22,7 @@ bot.on('debug', console.log);
 bot.on('ready', function () {
     console.log('Connected as ' + bot.user.username);
     bot.user.setStatus(process.env.BOT_STATUS);
+    activities.setActivity(bot, process.env.WEBSITE_BASE_LINK);
     updateByTime();
 });
 
