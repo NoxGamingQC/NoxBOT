@@ -23,9 +23,9 @@ bot.on('debug', console.log);
 
 bot.on('ready', function () {
     console.log('Connected as ' + bot.user.username);
-    bot.user.setStatus(env.bot_status);
+    bot.user.setStatus(process.env.BOT_STATUS);
     //bot.user.setActivity(activities.getActivity(env.discord.website_base_link));
-    activities.getActivity(env.website_base_link);
+    activities.getActivity(process.env.WEBSITE_BASE_LINK);
     console.log(currentActivity);
     bot.user.setActivity(currentActivity);
     

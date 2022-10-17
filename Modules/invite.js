@@ -4,7 +4,7 @@ exports.command = function(prefix, message) {
         if (server) {
             message.channel.send({
                 embed: {
-                    color: process.env.success_color,
+                    color: process.env.SUCCESS_COLOR,
                     author: {
                         name: bot.user.username + ' - Invite link',
                         icon_url: bot.user.avatarURL
@@ -13,7 +13,7 @@ exports.command = function(prefix, message) {
                         url: server.iconURL
                     },
                     title: server.name,
-                    description: 'You can invite your friend to join our server with the link below: ' + process.env.discord_invite + '\n\n• ' + server.memberCount + ' members',
+                    description: 'You can invite your friend to join our server with the link below: ' + process.env.DISCORD_INVITE + '\n\n• ' + server.memberCount + ' members',
                     timestamp: new Date(),
                     footer: {
                         icon_url: message.author.avatarURL,
