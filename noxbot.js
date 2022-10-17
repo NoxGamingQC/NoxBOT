@@ -34,7 +34,7 @@ bot.on('disconnect', function(errMsg, code) {
 
 bot.on('message', function (message) {
     commands.commands(message);
-    //pointSystem.addPoints(message.author.tag);
+    pointSystem.addPoints(message.author.id, "Chatting in Discord");
 });
 
 function updateByTime() {
