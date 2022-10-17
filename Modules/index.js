@@ -1,9 +1,9 @@
 const inviteModule = require("./invite.js");
 
-exports.commands = function(prefix, message) {
-    inviteModule.command(prefix, message);
+exports.commands = function(message) {
+    inviteModule.command(message);
 
-    if(message == prefix + "ping") {
+    if(message == process.env.PREFIX + "ping") {
         message.channel.send("pong");
     }
 };

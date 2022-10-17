@@ -1,5 +1,5 @@
-exports.command = function(prefix, message) {
-    if (message.content === prefix + 'invite') {
+exports.command = function(message) {
+    if (message.content === process.env.PREFIX + 'invite') {
         var server = message.guild;
         if (server) {
             message.channel.send({
