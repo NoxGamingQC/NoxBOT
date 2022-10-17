@@ -1,7 +1,7 @@
 
 const Discord = require('discord.js');
 const commands = require("./Modules/index.js");
-const dotenv = require('dotenv');
+//const dotenv = require('dotenv');
 const activities = require('./Modules/activities.js');
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
@@ -10,7 +10,7 @@ const { document } = (new JSDOM('')).window;
 global.document = document;
 global.jQuery = jQuery;
 global.$ = jQuery;
-global.env = dotenv;
+//global.env = dotenv;
 
 console.log('Creating Discord Client');
 
@@ -18,7 +18,7 @@ global.bot = new Discord.Client();
 global.currentActivity = "";
 
 console.log(process.env.bot_token);
-bot.login(env.bot_token);
+bot.login(process.env.bot_token);
 
 bot.on('debug', console.log);
 
