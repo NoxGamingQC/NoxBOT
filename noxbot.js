@@ -37,5 +37,5 @@ bot.on('disconnect', function(errMsg, code) {
 });
 
 bot.on('message', function (message) {
-    commands.commands(env.prefix, message);
+    commands.commands(process.env.prefix, message);
 });
