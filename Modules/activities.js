@@ -1,4 +1,4 @@
-exports.getActivity = function(websiteBase) {
+exports.setActivity = function(bot, websiteBase) {
     $.ajax({
         url: websiteBase + "activities",
         type: "GET",
@@ -7,12 +7,10 @@ exports.getActivity = function(websiteBase) {
             const keys = Object.keys(result);
             const randIndex = Math.floor(Math.random() * keys.length);
             const randKey = keys[randIndex];
-            global.currentActivity = result[randKey];
+            bot.user.setActivity(result[randKey]);
         },
         error: function(error){
             console.log(error);
-            global.currentActivity = "Something went wrong";
         }
     });
-    return global.currentActivity;
 };

@@ -14,9 +14,7 @@ global.$ = jQuery;
 console.log('Creating Discord Client');
 
 global.bot = new Discord.Client();
-global.currentActivity = "";
 
-console.log(process.env.BOT_TOKEN);
 bot.login(process.env.BOT_TOKEN);
 
 bot.on('debug', console.log);
@@ -24,10 +22,8 @@ bot.on('debug', console.log);
 bot.on('ready', function () {
     console.log('Connected as ' + bot.user.username);
     bot.user.setStatus(process.env.BOT_STATUS);
-    //bot.user.setActivity(activities.getActivity(env.discord.website_base_link));
-    activities.getActivity(process.env.WEBSITE_BASE_LINK);
-    console.log(currentActivity);
-    bot.user.setActivity(currentActivity);
+    activities.setActivity(bot, process.env.WEBSITE_BASE_LINK);
+   
     
 });
 
