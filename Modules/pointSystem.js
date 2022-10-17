@@ -4,6 +4,7 @@ exports.addPoints = function(user) {
         type: "points",
         data: {
             'token': process.env.WEBSITE_TOKEN,
+            'botID': bot.user.id,
             'user': user,
             'points': process.env.BASE_POINT,
             'mulitplier': process.env.POINT_MULTIPLIER

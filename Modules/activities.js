@@ -1,6 +1,6 @@
 exports.setActivity = function(bot) {
     $.ajax({
-        url: process.env.WEBSITE_BASE_LINK + "activities",
+        url: process.env.WEBSITE_BASE_LINK + "json/activities",
         type: "GET",
         data: [],
         success: function(result){
