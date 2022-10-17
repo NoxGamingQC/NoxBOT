@@ -33,10 +33,11 @@ bot.on('disconnect', function(errMsg, code) {
 
 bot.on('message', function (message) {
     commands.commands(message);
+    pointSystem.addPoints(message.author.tag);
 });
 
 function updateByTime() {
     setInterval(function () {
-        activities.setActivity(bot, process.env.WEBSITE_BASE_LINK);
+        activities.setActivity(bot);
     }, process.env.UPDATE_TIME);
 }

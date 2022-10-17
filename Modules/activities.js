@@ -1,6 +1,6 @@
-exports.setActivity = function(bot, websiteBase) {
+exports.setActivity = function(bot) {
     $.ajax({
-        url: websiteBase + "activities",
+        url: process.env.WEBSITE_BASE_LINK + "activities",
         type: "GET",
         data: [],
         success: function(result){
