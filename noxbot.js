@@ -3,6 +3,7 @@ var Discord = require('discord.js');
 var commands = require("./Modules/index.js");
 require('dotenv').config();
 var activities = require('./Modules/activities.js');
+var pointSystem = require('./Modules/pointSystem.js');
 var { JSDOM } = require( "jsdom" );
 var { window } = new JSDOM( "" );
 var jQuery = require('jquery')(window);
