@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "start": "cross-env NODE_ENV=production node ./noxbot.js"
+    "start": "node ./noxbot.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,6 @@
   "homepage": "https://github.com/NoxGamingQC/NoxBOT#readme",
   "dependencies": {
     "bufferutil": "^4.0.6",
-    "cross-env": "^7.0.3",
     "discord-yt-player": "^1.1.1",
     "discord.js": "11.6.1",
     "dotenv": "^16.0.3",
