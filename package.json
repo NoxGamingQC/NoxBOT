@@ -3,12 +3,28 @@
     "version": "1.0.0",
     "description": "A bot made by NoxGamingQC#0001",
     "main": "noxbot.js",
-    "author": "Jimmy Béland-Bédard",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 0"
+    "author": "NoxGamingQC",
+    "engines": {
+        "node": "8.x",
+        "npm": "*"
     },
-    "keywords": [],
-    "license": "",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 0",
+        "start": "node noxbot.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/NoxGamingQC/NoxBOT.git"
+    },
+    "keywords": [
+        "heroku",
+        "discord.js"
+    ],
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/NoxGamingQC/NoxBOT/issues"
+    },
+    "homepage": "https://github.com/NoxGamingQC/NoxBOT#readme",
     "dependencies": {
         "bufferutil": "^4.0.6",
         "discord-yt-player": "^1.1.1",
