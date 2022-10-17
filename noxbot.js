@@ -22,9 +22,7 @@ bot.on('debug', console.log);
 bot.on('ready', function () {
     console.log('Connected as ' + bot.user.username);
     bot.user.setStatus(process.env.BOT_STATUS);
-    activities.setActivity(bot, process.env.WEBSITE_BASE_LINK);
-   
-    
+    updateByTime();
 });
 
 bot.on('disconnect', function(errMsg, code) {
@@ -35,3 +33,9 @@ bot.on('disconnect', function(errMsg, code) {
 bot.on('message', function (message) {
     commands.commands(message);
 });
+
+function updateByTime() {
+    setInterval(function () {
+        activities.setActivity(bot, process.env.WEBSITE_BASE_LINK);
+    }, process.env.UPDATE_TIME);
+}
