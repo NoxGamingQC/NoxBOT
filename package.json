@@ -38,6 +38,7 @@
     "libsodium-wrappers": "^0.7.10",
     "npm": "^8.19.2",
     "opusscript": "^0.0.6",
+    "play-dl": "^1.9.5",
     "ytdl-core": "^4.11.2"
   },
   "directories": {
