@@ -50,15 +50,25 @@ exports.command = function(message) {
                                 }
                             }
                         });
+                        if (message && message.deletable) {
+                            message.delete();
+                        }
                     },
                     error: function(error){
-                        message.channel.send('species error');
+                        if (message && message.deletable) {
+                            message.delete();
+                        }
+                        message.channel.send('An error occured while trying to search for the pokemon species. Please contact us @ noxgamingqc.ca and submit a bug report.');
                     }
                 });
             },
             error: function(error){
-                message.channel.send('pokemon error');
+                if (message && message.deletable) {
+                    message.delete();
+                }
+                message.channel.send('An error occured while trying to search for the pokemon you\'re looking for. Did you make a typo? You can try to search it with its id too.');
             }
         });
+
     }
 };
