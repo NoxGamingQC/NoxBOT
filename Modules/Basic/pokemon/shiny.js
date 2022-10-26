@@ -13,7 +13,7 @@ exports.command = function(message) {
                             embed: {
                                 color: process.env.SUCCESS_COLOR,
                                 author: {
-                                    name: bot.user.username + ' - POKéMON',
+                                    name: bot.user.username + ' - POKéMON shiny',
                                     icon_url: bot.user.avatarURL
                                 },
                                 thumbnail: {
