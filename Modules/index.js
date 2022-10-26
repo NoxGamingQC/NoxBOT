@@ -1,5 +1,5 @@
-var inviteModule = require("./Basic/invite.js");
-var helpModule = require("./Basic/help.js");
+var inviteModule = require("./Basic/utilities/invite.js");
+var helpModule = require("./Basic/help/index.js");
 
 exports.commands = function(message) {
     inviteModule.command(message);
