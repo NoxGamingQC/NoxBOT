@@ -13,7 +13,7 @@ exports.command = function(message) {
                         url: bot.user.avatarURL
                     },
                     title: 'Pong',
-                    description: `🏓 Latency is ${message.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`,
+                    description: `🏓 Latency is ${Math.abs(Date.now() - message.createdTimestamp)}ms. API Latency is ${Math.round(bot.ping)}ms`,
                     timestamp: new Date(),
                     footer: {
                         icon_url: message.author.avatarURL,
