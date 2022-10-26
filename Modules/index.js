@@ -1,10 +1,12 @@
 
-var helpModule = require("./Basic/help/help.js");
+var help = require("./Basic/help/help.js");
+var music = require("./Basic/music/index.js");
 var pokemon = require("./Basic/pokemon/index.js");
-var utilityModule = require("./Basic/utilities/index.js");
+var utility = require("./Basic/utilities/index.js");
 
 exports.commands = function(message) {
-    helpModule.command(message);
+    help.command(message);
+    music.module(message);
     pokemon.module(message);
-    utilityModule.module(message);
+    utility.module(message);
 };
