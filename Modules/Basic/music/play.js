@@ -7,8 +7,8 @@ exports.command = function(message, ytdl, streamOptions) {
         }
         if(global.connection) {
             if(url.length > 0) {
-                stream = ytdl(url, { filter : 'audioonly' });
-                global.connection.playStream(stream, streamOptions);
+                stream = ytdl(url,streamOptions);
+                global.connection.playStream(stream, {type: 'opus'});
             } else {
                 message.reply('Song not found.');
             }
