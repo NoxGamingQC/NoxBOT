@@ -20,7 +20,7 @@ exports.command = function(message) {
                                     url: response.sprites.front_shiny
                                 },
                                 title: response.name[0].toUpperCase() + response.name.substring(1),
-                                description: species.flavor_text_entries[0].flavor_text,
+                                description: species.flavor_text_entries[0].flavor_text.replace(/[\n\r]/g, ' '),
                                 fields: [
                                     {
                                         name: 'id',
