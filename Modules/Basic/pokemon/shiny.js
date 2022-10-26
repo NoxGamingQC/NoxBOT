@@ -1,0 +1,2 @@
+exports.command = function(message) {
+};
