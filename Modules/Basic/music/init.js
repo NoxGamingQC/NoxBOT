@@ -9,11 +9,11 @@ exports.init = function(message) {
     if (!message.member.voiceChannel) {
         message.reply('please join a voice channel first!');
     } else {
-        if(message.member.voiceChannel.joinable) {
+        if(message.member.voiceChannel.joinable && message.member.voiceChannel.speakable && !message.member.voiceChannel.full) {
             message.member.voiceChannel.join()
             .then(function(connection) {
                 global.connection = connection;   
-                message.reply('I\'m connected to your voice channel!');
+                message.reply('i\'m connected to your voice channel!');
             })
             .catch(console.error);
         } else {

@@ -9,6 +9,6 @@ exports.leave = function(message) {
         message.reply('i\'m not in a voice channel.');
     } else {
         voiceChannel.leave();
-        message.reply('i left your voice channel.');
+        message.reply('I left your voice channel.');
     }
 };
