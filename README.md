@@ -90,7 +90,7 @@ Project is: _in progress_
 
 ## Author
 
-[@noxgamingqc](https://www.noxgamingqc.ca/)
+[NoxGamingQC](https://www.noxgamingqc.ca/)
 
 ## Contributors
 
