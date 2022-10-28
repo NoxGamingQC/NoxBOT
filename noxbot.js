@@ -18,7 +18,7 @@ global.bot = new Discord.Client();
 
 bot.login(process.env.BOT_TOKEN);
 
-bot.on('debug', console.log);
+//bot.on('debug', console.log);
 
 bot.on('ready', function () {
     console.log('Connected as ' + bot.user.username);
