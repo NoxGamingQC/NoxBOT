@@ -1,4 +1,4 @@
-# Table of contents
+## Table of contents
 
 * [General information](#general-information)
 * [Project status](#project-status)
