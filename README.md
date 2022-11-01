@@ -1,6 +1,6 @@
 # NoxBOT
 
-> A multitasking Discord Bot.!-- If you have the project hosted somewhere, include the link here. -->
+> A multitasking Discord Bot.
 
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
 [![License](https://img.shields.io/github/license/NoxGamingQC/Noxbot)](#)
