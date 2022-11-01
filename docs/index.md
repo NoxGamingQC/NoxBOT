@@ -6,11 +6,11 @@
 
 ## General information
 
-* A list of feature will be added soon on our website.
+A list of feature will be added soon on our website.
 
 ## Project status
 
-* The project is still in progress.
+The project is still in progress.
 
 ## Author and contributors
 
