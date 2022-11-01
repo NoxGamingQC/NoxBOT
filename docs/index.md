@@ -7,6 +7,7 @@ A multitasking Discord bot.
 * [General information](#general-information)
 * [Project status](#project-status)
 * [Author and contributors](#author-and-contributors)
+* [License](#license)
 
 ## General information
 
