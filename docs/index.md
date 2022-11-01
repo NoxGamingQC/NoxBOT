@@ -20,3 +20,7 @@ The project is still in progress.
 
 * [NoxGamingQC](https://github.com/NoxGamingQC) - ([Website](https://www.noxgamingqc.ca))
 * [Gouliram](https://github.com/Gouliram) - ([Website](https://www.gouliram.com))
+
+## License
+
+This project is open source and license under the [MIT License](https://github.com/NoxGamingQC/NoxBOT/blob/master/LICENSE.md)
