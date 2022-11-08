@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/NoxGamingQC/NoxBOT#readme",
   "dependencies": {
-    "bufferutil": "^4.0.6",
+    "bufferutil": "^4.0.7",
     "discord-yt-player": "^1.1.1",
     "discord.js": "11.6.4",
     "dotenv": "^16.0.3",
