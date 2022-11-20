@@ -34,7 +34,7 @@
     "ffmpeg-binaries": "^3.2.2-3",
     "fs": "^0.0.2",
     "jquery": "^3.6.1",
-    "jsdom": "^20.0.1",
+    "jsdom": "^20.0.2",
     "libsodium-wrappers": "^0.7.10",
     "npm": "^8.19.2",
     "opusscript": "^0.0.6",
