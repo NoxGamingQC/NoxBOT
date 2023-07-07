@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "start": "node --max-old-space-size=512 ./noxbot.js"
+    "start": "node --max-old-space-size=4096 ./noxbot.js"
   },
   "repository": {
     "type": "git",
