@@ -23,7 +23,7 @@ bot.login(process.env.BOT_TOKEN);
 bot.on('ready', function () {
     console.log('Connected as ' + bot.user.username);
     bot.user.setStatus(process.env.BOT_STATUS);
-    activities.setActivity(bot, process.env.WEBSITE_BASE_LINK);
+    activities.setActivity(bot);
     updateByTime();
 });
 
@@ -33,12 +33,12 @@ bot.on('disconnect', function(errMsg, code) {
 });
 
 bot.on('message', function (message) {
-    commands.commands(message);
-    pointSystem.addPoints(message.author.id, "Chatting in Discord");
+    //commands.commands(message);
+    //pointSystem.addPoints(message.author.id, "Chatting in Discord");
 });
 
 function updateByTime() {
     setInterval(function () {
-        activities.setActivity(bot);
+        //activities.setActivity(bot);
     }, process.env.UPDATE_TIME);
 }
