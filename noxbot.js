@@ -39,6 +39,6 @@ bot.on('message', function (message) {
 
 function updateByTime() {
     setInterval(function () {
-        //activities.setActivity(bot);
+        activities.setActivity(bot);
     }, process.env.UPDATE_TIME);
 }
