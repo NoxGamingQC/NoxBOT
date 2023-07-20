@@ -25,7 +25,7 @@
     "bufferutil": "^4.0.6",
     "discord-yt-player": "^1.1.1",
     "discord.js": "11.6.4",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.3.1",
     "ffmpeg": "^0.0.4",
     "ffmpeg-binaries": "^3.2.2-3",
     "fs": "^0.0.2",
