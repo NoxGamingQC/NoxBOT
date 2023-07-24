@@ -17,7 +17,7 @@ A multitasking Discord Bot.
 
 ## General Information
 
-* A list of feature will be added soon on our website.
+* A list of feature will be added soon on our [website](https://www.noxgamingqc.ca/noxbot).
 
 ## Setup
 
