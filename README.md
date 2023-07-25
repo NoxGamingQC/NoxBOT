@@ -7,6 +7,8 @@ A multitasking Discord Bot.
   <img alt="License" src="https://img.shields.io/github/license/NoxGamingQC/Noxbot?style=for-the-badge" />
   <img alt="DiscordJS" src="https://img.shields.io/badge/Discord.JS-11.6.1-blue?style=for-the-badge" />
   <img alt="Discord" src="https://img.shields.io/discord/938558244924829756?style=for-the-badge&logo=discord&logoColor=%23ffffff&label=%20&labelColor=%23697EC4&color=%237289DA&link=https%3A%2F%2Fnoxgamingqc.ca%2Fdiscord">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff">
+  
 </p>
 
 ## Travis build status
