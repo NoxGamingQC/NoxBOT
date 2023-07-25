@@ -9,7 +9,7 @@ A multitasking Discord Bot.
   <img alt="Discord" src="https://img.shields.io/discord/938558244924829756?style=for-the-badge&logo=discord&logoColor=%23ffffff&label=%20&labelColor=%23697EC4&color=%237289DA&link=https%3A%2F%2Fnoxgamingqc.ca%2Fdiscord">
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff">
   <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff">
-  <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability-percentage/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate%20&logoColor=%23ffffff">
+  <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability-percentage/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff">
   <img alt="Code Climate issues" src="https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff">
   
 </p>
