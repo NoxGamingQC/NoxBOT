@@ -17,7 +17,7 @@ A multitasking Discord Bot.
 ## Travis build status
 
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
-
+<img alt="Snyk security" src="https://snyk.io/test/github/NoxGamingQC/NoxBOT/master/badge.svg" >
 ## Table of Contents
 
 * [General Info](#general-information)
