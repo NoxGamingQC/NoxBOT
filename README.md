@@ -2,10 +2,13 @@
 
 A multitasking Discord Bot.
 
+[![License](https://img.shields.io/github/license/NoxGamingQC/Noxbot?style=for-the-badge)](#)
+[![Discord.JS](https://img.shields.io/badge/Discord.JS-11.6.1-blue?style=for-the-badge)](#)
+<img alt="Discord" src="https://img.shields.io/discord/938558244924829756?style=for-the-badge&logo=discord&logoColor=%23ffffff&label=%20&labelColor=%23697EC4&color=%237289DA&link=https%3A%2F%2Fnoxgamingqc.ca%2Fdiscord">
+
+## Travis build status
+
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
-[![License](https://img.shields.io/github/license/NoxGamingQC/Noxbot)](#)
-[![Discord.JS](https://img.shields.io/badge/Discord.JS-11.6.1-blue)](#)
-[![Online Discord Members](https://discord.com/api/guilds/938558244924829756/widget.png?style=shield)](https://noxgamingqc.ca/discord)
 
 ## Table of Contents
 
