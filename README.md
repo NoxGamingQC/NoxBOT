@@ -12,6 +12,7 @@ A multitasking Discord Bot.
 ## Travis build status
 
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
+<a href="https://codeclimate.com/github/NoxGamingQC/NoxBOT/maintainability"><img src="https://api.codeclimate.com/v1/badges/79fd8a71afe7b3d2cc0f/maintainability" /></a>
 
 ## Table of Contents
 
