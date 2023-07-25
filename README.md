@@ -8,13 +8,15 @@ A multitasking Discord Bot.
   <img alt="DiscordJS" src="https://img.shields.io/badge/Discord.JS-11.6.1-blue?style=for-the-badge" />
   <img alt="Discord" src="https://img.shields.io/discord/938558244924829756?style=for-the-badge&logo=discord&logoColor=%23ffffff&label=%20&labelColor=%23697EC4&color=%237289DA&link=https%3A%2F%2Fnoxgamingqc.ca%2Fdiscord">
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff">
+  <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff">
+  <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability-percentage/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate%20&logoColor=%23ffffff">
+  <img alt="Code Climate issues" src="https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff">
   
 </p>
 
 ## Travis build status
 
 [![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
-<a href="https://codeclimate.com/github/NoxGamingQC/NoxBOT/maintainability"><img src="https://api.codeclimate.com/v1/badges/79fd8a71afe7b3d2cc0f/maintainability" /></a>
 
 ## Table of Contents
 
