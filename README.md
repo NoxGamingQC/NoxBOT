@@ -7,13 +7,14 @@ A multitasking Discord Bot.
 [![State](https://img.shields.io/badge/state-In%20development-228C22?style=for-the-badge)](#)
 [![Repo size](https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff)](#)
 [![License](https://img.shields.io/github/license/NoxGamingQC/NoxBOT?style=for-the-badge)](#)
+[![License](https://img.shields.io/travis/com/NoxGamingQC/NoxBOT?style=for-the-badge&label=Travis%20build&logo=travis&logoColor=%23ffffff)](#)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
 
 ## Travis build status
 
-[![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
 <img alt="Snyk security" src="https://snyk.io/test/github/NoxGamingQC/NoxBOT/master/badge.svg" >
+
 ## Table of Contents
 
 * [General Info](#general-information)
