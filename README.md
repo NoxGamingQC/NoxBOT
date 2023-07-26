@@ -11,10 +11,6 @@ A multitasking Discord Bot.
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
 
-## Travis build status
-
-<img alt="Snyk security" src="https://snyk.io/test/github/NoxGamingQC/NoxBOT/master/badge.svg" >
-
 ## Table of Contents
 
 * [General Info](#general-information)
