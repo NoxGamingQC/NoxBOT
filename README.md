@@ -2,12 +2,11 @@
 
 A multitasking Discord Bot.
 
-
 [![Type](https://img.shields.io/badge/project%20type-bot-blue?style=for-the-badge)](#)
 [![State](https://img.shields.io/badge/state-In%20development-228C22?style=for-the-badge)](#)
 [![Repo size](https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff)](#)
 [![License](https://img.shields.io/github/license/NoxGamingQC/NoxBOT?style=for-the-badge)](#)
-[![License](https://img.shields.io/travis/com/NoxGamingQC/NoxBOT?style=for-the-badge&label=Travis%20build&logo=travis&logoColor=%23ffffff)](#)
+[![Travis build](https://img.shields.io/travis/com/NoxGamingQC/NoxBOT?style=for-the-badge&label=Travis%20build&logo=travis&logoColor=%23ffffff)](#)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
 
