@@ -2,13 +2,13 @@
 
 A multitasking Discord Bot.
 
-[![Type](https://img.shields.io/badge/project%20type-bot-blue?style=for-the-badge)](#)
-[![State](https://img.shields.io/badge/state-In%20development-228C22?style=for-the-badge)](#)
-[![Repo size](https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff)](#)
-[![License](https://img.shields.io/github/license/NoxGamingQC/NoxBOT?style=for-the-badge)](#)
-[![Travis build](https://img.shields.io/travis/com/NoxGamingQC/NoxBOT?style=for-the-badge&label=Travis%20build&logo=travis&logoColor=%23ffffff)](#)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
-[![Code Climate issues](https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
+[![Type](https://img.shields.io/badge/project%20type-bot-blue?style=for-the-badge&labelColor=333333)](#)
+[![State](https://img.shields.io/badge/state-In%20development-228C22?style=for-the-badge&labelColor=333333)](#)
+[![Repo size](https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff&labelColor=333333)](#)
+[![License](https://img.shields.io/github/license/NoxGamingQC/NoxBOT?style=for-the-badge&labelColor=333333)](#)
+[![Travis build](https://img.shields.io/travis/com/NoxGamingQC/NoxBOT?style=for-the-badge&label=Travis%20build&logo=travis&logoColor=%23ffffff&labelColor=333333)](#)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff&labelColor=333333)](#)
+[![Code Climate issues](https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff&labelColor=333333)](#)
 
 ## Table of Contents
 
@@ -30,7 +30,7 @@ A multitasking Discord Bot.
 
 Below is a list of technology that we used. For some package you might need to verify the version you have installed, it might be required.
 
-[![DiscordJS](https://img.shields.io/badge/Discord.JS-11.6.1-blue?style=for-the-badge)](#)
+[![DiscordJS](https://img.shields.io/badge/Discord.JS-11.6.1-blue?style=for-the-badge&labelColor=333333)](#)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Discord account](https://img.shields.io/badge/A%20Discord%20account-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)
