@@ -2,16 +2,13 @@
 
 A multitasking Discord Bot.
 
-<p align="left">
-  <img alt="Type" src="https://img.shields.io/badge/project%20type-bot-red?style=for-the-badge" />
-  <img alt="License" src="https://img.shields.io/github/license/NoxGamingQC/Noxbot?style=for-the-badge" />
-  <img alt="DiscordJS" src="https://img.shields.io/badge/Discord.JS-11.6.1-blue?style=for-the-badge" />
-  <img alt="Discord" src="https://img.shields.io/discord/938558244924829756?style=for-the-badge&logo=discord&logoColor=%23ffffff&label=%20&labelColor=%23697EC4&color=%237289DA&link=https%3A%2F%2Fnoxgamingqc.ca%2Fdiscord">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff">
-  <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff">
-  <img alt="Code Climate issues" src="https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff">
-  
-</p>
+
+[![Type](https://img.shields.io/badge/project%20type-bot-blue?style=for-the-badge)](#)
+[![State](https://img.shields.io/badge/state-In%20development-228C22?style=for-the-badge)](#)
+[![Repo size](https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff)](#)
+[![License](https://img.shields.io/github/license/NoxGamingQC/NoxBOT?style=for-the-badge)](#)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
+[![Code Climate issues](https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff)](#)
 
 ## Travis build status
 
@@ -33,11 +30,14 @@ A multitasking Discord Bot.
 
 ### Setting up your environement
 
-#### Prerequirement
+#### Technology used
 
-* npm
-* nodejs
-* A discord account
+Below is a list of technology that we used. For some package you might need to verify the version you have installed, it might be required.
+
+[![DiscordJS](https://img.shields.io/badge/Discord.JS-11.6.1-blue?style=for-the-badge)](#)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Discord account](https://img.shields.io/badge/A%20Discord%20account-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)
 
 #### Windows 10 environement setup
 
