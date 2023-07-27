@@ -6,8 +6,8 @@ exports.setActivity = function(bot) {
 };
 
 function dataHandler(result) {
-    const keys = Object.keys(result.response);
+    const keys = Object.keys(result);
     const randIndex = Math.floor(Math.random() * keys.length);
     const randKey = keys[randIndex];
-    bot.user.setActivity(result.response[randKey]);
+    bot.user.setActivity(result[randKey]);
 }
