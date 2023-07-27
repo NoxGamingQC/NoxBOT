@@ -1,9 +1,12 @@
-exports.get = function(url, requestType, message = null) {
+exports.get = function(url, requestType, message = null, _callback) {
     $.ajax({
         url: url,
         type: requestType,
         success: function (response) {
             return response;
+        },
+        complete: function () { 
+            _callback();    
         },
         error: function(error){
             if(message) {
