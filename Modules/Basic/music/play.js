@@ -2,6 +2,9 @@
 var init = require("./init.js");
 var ytdl = require('ytdl-core');
 var youtubeSearchAPI = require("youtube-search-api");
+const { createreadstream } = require('fs');
+const { join } = require('path');
+const { createaudioresource, streamtype, createaudioplayer, joinvoicechannel } = require('@discordjs/voice');
 
 exports.command = function(message, streamOptions) {
     if (message.content.includes(process.env.PREFIX + 'play')) {
@@ -10,9 +13,7 @@ exports.command = function(message, streamOptions) {
         if(!global.connection) {
             init.init(message);
         }
-        const { createreadstream } = require('fs');
-        const { join } = require('path');
-        const { createaudioresource, streamtype, createaudioplayer, joinvoicechannel } = require('@discordjs/voice');
+        
         const player = createaudioplayer()
         joinvoicechannel({
             channelid: message.member.voice.channel.id,
