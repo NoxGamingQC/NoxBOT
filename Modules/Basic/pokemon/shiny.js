@@ -45,7 +45,7 @@ exports.command = function(message) {
                                 timestamp: new Date(),
                                 footer: {
                                     icon_url: message.author.avatarURL,
-                                    text: message.author.tag
+                                    text: message.author.username
                                 }
                             }
                         });

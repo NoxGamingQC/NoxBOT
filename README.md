@@ -2,10 +2,13 @@
 
 A multitasking Discord Bot.
 
-[![Build Status](https://api.travis-ci.com/NoxGamingQC/NoxBOT.svg?branch=master&status=errored)](https://travis-ci.com/NoxGamingQC/NoxBOT)
-[![License](https://img.shields.io/github/license/NoxGamingQC/Noxbot)](#)
-[![Discord.JS](https://img.shields.io/badge/Discord.JS-11.6.1-blue)](#)
-[![Online Discord Members](https://discord.com/api/guilds/938558244924829756/widget.png?style=shield)](https://noxgamingqc.ca/discord)
+[![Type](https://img.shields.io/badge/project%20type-bot-blue?style=for-the-badge&labelColor=333333)](#)
+[![State](https://img.shields.io/badge/state-In%20development-228C22?style=for-the-badge&labelColor=333333)](#)
+[![Repo size](https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff&labelColor=333333)](#)
+[![License](https://img.shields.io/github/license/NoxGamingQC/NoxBOT?style=for-the-badge&labelColor=333333)](#)
+[![Travis build](https://img.shields.io/travis/com/NoxGamingQC/NoxBOT?style=for-the-badge&label=Travis%20build&logo=travis&logoColor=%23ffffff&labelColor=333333)](#)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff&labelColor=333333)](#)
+[![Code Climate issues](https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff&labelColor=333333)](#)
 
 ## Table of Contents
 
@@ -17,17 +20,20 @@ A multitasking Discord Bot.
 
 ## General Information
 
-* A list of feature will be added soon on our website.
+* A list of feature will be added soon on our [website](https://www.noxgamingqc.ca/noxbot).
 
 ## Setup
 
 ### Setting up your environement
 
-#### Prerequirement
+#### Technology used
 
-* npm
-* nodejs
-* A discord account
+Below is a list of technology that we used. For some package you might need to verify the version you have installed, it might be required.
+
+[![DiscordJS](https://img.shields.io/badge/Discord.JS-11.6.1-blue?style=for-the-badge&labelColor=333333)](#)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Discord account](https://img.shields.io/badge/A%20Discord%20account-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)
 
 #### Windows 10 environement setup
 
