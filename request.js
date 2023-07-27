@@ -14,6 +14,7 @@ exports.get = function(url, requestType, dataHandler, message = null, data = nul
             }
         },
         error: function(error){
+            console.log(error);
             if(message) {
                 message.channel.send('An error occured while trying to search for the pokemon species. Please contact us @ noxgamingqc.ca and submit a bug report.');
             }
