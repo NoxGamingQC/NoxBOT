@@ -32,10 +32,10 @@
     "jquery": "^3.7.0",
     "jsdom": "^20.0.3",
     "libsodium-wrappers": "^0.7.11",
-    "npm": "^8.19.2",
+    "npm": "^9.8.1",
     "opusscript": "^0.0.6",
     "play-dl": "^1.9.5",
-    "pm2": "^5.3.0",
+    "semver": "^7.5.4",
     "youtube-search-api": "^1.2.0",
     "ytdl-core": "^4.11.4"
   },
