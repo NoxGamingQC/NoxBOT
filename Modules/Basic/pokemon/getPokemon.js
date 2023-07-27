@@ -2,10 +2,15 @@ var request = require("../../../request.js");
 
 exports.response = function(isShiny, search, message) {
     var url = 'https://pokeapi.co/api/v2/pokemon/' + search;
-    response = request.get(url, "get");
-    getSpeciesURL = response.response.species.url;
-    speciesResponse = request.get(getSpeciesURL, "get");
-            
+    getSpecies(message, request.get(url, "get", message));
+}
+
+function getSpecies(message, result) {
+    getSpeciesURL = result.species.url;
+    sendPokemonInfo(message, result, request.get(getSpeciesURL, "get", message));
+}
+
+function sendPokemonInfo(message, result, species) {
     message.channel.send({
         embed: {
             color: process.env.SUCCESS_COLOR,
@@ -14,28 +19,28 @@ exports.response = function(isShiny, search, message) {
                 icon_url: bot.user.avatarURL
             },
             thumbnail: {
-                url: isShiny ? response['response'].sprites.front_shiny : response['response'].sprites.front_default
+                url: isShiny ? result.sprites.front_shiny : result.sprites.front_default
             },
-            title: response['response'].name[0].toUpperCase() + response['response'].name.substring(1),
-            description: speciesResponse['response'].flavor_text_entries[0].flavor_text.replace(/[\n\r]/g, ' '),
+            title: result.name[0].toUpperCase() + result.name.substring(1),
+            description: species.flavor_text_entries[0].flavor_text.replace(/[\n\r]/g, ' '),
             fields: [
                 {
                     name: 'id',
-                    value: response['response'].id,
+                    value: result.id,
                 },
                 {
-                    name: response['response'].types.length > 1 ? 'Types' : 'Type',
-                    value: response['response'].types.length > 1 ? response['response'].types[0].type.name + ', ' + response['response'].types[1].type.name :  response.response.types[0].type.name,
+                    name: result.types.length > 1 ? 'Types' : 'Type',
+                    value: result.types.length > 1 ? result.types[0].type.name + ', ' + result.types[1].type.name :  result.types[0].type.name,
                     inline: true,
                 },
                 {
                     name: 'Height',
-                    value: response['response'].height,
+                    value: result.height,
                     inline: true,
                 },
                 {
                     name: 'Weight',
-                    value: response['response'].weight,
+                    value: result.weight,
                     inline: true,
                 },
             ],
