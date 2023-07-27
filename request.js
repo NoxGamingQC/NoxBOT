@@ -1,9 +1,17 @@
-exports.get = function(url, requestType, message = null) {
+exports.get = function(url, requestType, dataHandler, message = null, data = null) {
     $.ajax({
         url: url,
         type: requestType,
         success: function (response) {
-            return response;
+            if(message && data) {
+                dataHandler(response, message, data)
+            } else if(message && !data) {
+                dataHandler(response, message)
+            } else if(!message && data) {
+                dataHandler(response, data)
+            } else {
+                dataHandler(response)
+            }
         },
         error: function(error){
             if(message) {
