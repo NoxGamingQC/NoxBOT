@@ -2,10 +2,10 @@ var request = require("../request.js");
 
 exports.setActivity = function(bot) {
     var url = process.env.WEBSITE_BASE_LINK + "activities";
-    dataHandler(request.get(url, "GET"));
+    activityHandler(request.get(url, "GET"));
 };
 
-function dataHandler(result) {
+function activityHandler(result) {
     const keys = Object.keys(result);
     const randIndex = Math.floor(Math.random() * keys.length);
     const randKey = keys[randIndex];
