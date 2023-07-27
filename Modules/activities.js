@@ -6,7 +6,6 @@ exports.setActivity = function(bot) {
 };
 
 function activityHandler(result) {
-    _callback();    
     const keys = Object.keys(result);
     const randIndex = Math.floor(Math.random() * keys.length);
     const randKey = keys[randIndex];
