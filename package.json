@@ -6,7 +6,7 @@
   "author": "NoxGamingQC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "start": "pm2-runtime start ecosystem.config.js --env production"
+    "start": "node --max-old-space-size=4096 ./noxbot.js"
   },
   "repository": {
     "type": "git",
