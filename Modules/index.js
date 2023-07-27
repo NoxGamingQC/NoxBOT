@@ -8,5 +8,5 @@ exports.modules = function(message) {
     help.command(message);
     music.module(message);
     pokemon.module(message);
-    utility.module(message);
+    utility.commands(message);
 };
