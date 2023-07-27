@@ -7,6 +7,7 @@ A multitasking Discord Bot.
 [![Repo size](https://img.shields.io/github/repo-size/NoxGamingQC/NoxBOT?style=for-the-badge&logo=github&logoColor=%23ffffff&labelColor=333333)](#)
 [![License](https://img.shields.io/github/license/NoxGamingQC/NoxBOT?style=for-the-badge&labelColor=333333)](#)
 [![Travis build](https://img.shields.io/travis/com/NoxGamingQC/NoxBOT?style=for-the-badge&label=Travis%20build&logo=travis&logoColor=%23ffffff&labelColor=333333)](#)
+[![Snyk security](https://img.shields.io/badge/Snyk%20security-monitored-8E48BF?style=for-the-badge&labelColor=333333)](#)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff&labelColor=333333)](#)
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/NoxGamingQC/NoxBOT?style=for-the-badge&logo=codeclimate&logoColor=%23ffffff&labelColor=333333)](#)
 
