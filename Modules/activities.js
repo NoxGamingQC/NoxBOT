@@ -2,7 +2,7 @@ var request = require("../request.js");
 
 exports.setActivity = function(bot) {
     var url = process.env.WEBSITE_BASE_LINK + "activities";
-    request.get(url, "GET", null, () => activityHandler(result));
+    activityHandler(request.get(url, "GET", null));
 };
 
 function activityHandler(result) {
