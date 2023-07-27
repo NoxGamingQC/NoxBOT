@@ -14,28 +14,28 @@ exports.response = function(isShiny, search, message) {
                 icon_url: bot.user.avatarURL
             },
             thumbnail: {
-                url: isShiny ? response.response.sprites.front_shiny : response.response.sprites.front_default
+                url: isShiny ? response['response'].sprites.front_shiny : response['response'].sprites.front_default
             },
-            title: response.response.name[0].toUpperCase() + response.response.name.substring(1),
-            description: speciesResponse.flavor_text_entries[0].flavor_text.replace(/[\n\r]/g, ' '),
+            title: response['response'].name[0].toUpperCase() + response['response'].name.substring(1),
+            description: speciesResponse['response'].flavor_text_entries[0].flavor_text.replace(/[\n\r]/g, ' '),
             fields: [
                 {
                     name: 'id',
-                    value: response.response.id,
+                    value: response['response'].id,
                 },
                 {
-                    name: response.response.types.length > 1 ? 'Types' : 'Type',
-                    value: response.response.types.length > 1 ? response.response.types[0].type.name + ', ' + response.response.types[1].type.name :  response.response.types[0].type.name,
+                    name: response['response'].types.length > 1 ? 'Types' : 'Type',
+                    value: response['response'].types.length > 1 ? response['response'].types[0].type.name + ', ' + response['response'].types[1].type.name :  response.response.types[0].type.name,
                     inline: true,
                 },
                 {
                     name: 'Height',
-                    value: response.response.height,
+                    value: response['response'].height,
                     inline: true,
                 },
                 {
                     name: 'Weight',
-                    value: response.response.weight,
+                    value: response['response'].weight,
                     inline: true,
                 },
             ],
