@@ -1,7 +1,6 @@
 exports.command = function(message) {
     if (message.content === process.env.PREFIX + 'invite') {
-        var server = message.guild;
-        if (server) {
+        if (message.guild) {
             message.channel.send({
                 embed: {
                     color: process.env.SUCCESS_COLOR,
@@ -21,9 +20,6 @@ exports.command = function(message) {
                     }
                 }
             });
-        }
-        if (message && message.deletable) {
-            message.delete();
         }
     }
 }

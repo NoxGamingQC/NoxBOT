@@ -26,37 +26,35 @@ exports.command = function(message) {
                 },
                 title: message.author.tag,
                 description: message.author.presence.activities.name ? statusType[message.author.presence.activities.type] + ' ' + message.author.presence.activities.name : 'Not playing',
-                fields: [
-                    {
-                        name: 'ID',
-                        value: message.author.id,
-                    },
-                    {
-                        name: 'Creation date',
-                        value: message.author.createdAt,
-                        inline: true,
-                    },
-                    {
-                        name: 'Bot',
-                        value: message.author.bot,
-                        inline: true,
-                    },
-                    {
-                        name: 'Streaming',
-                        value: message.author.presence.activities.streaming ? 'Yes' : 'No',
-                        inline: true,
-                    },
-                    {
-                        name: 'Status',
-                        value: message.author.presence.status,
-                        inline: true,
-                    },
-                    {
-                        name: 'Device',
-                        value: message.author.presence.clientStatus ? Object.keys(message.author.presence.clientStatus)[0] : 'Offline',
-                        inline: true,
-                    },
-                ],
+                fields: [{
+                    name: 'ID',
+                    value: message.author.id,
+                },
+                {
+                    name: 'Creation date',
+                    value: message.author.createdAt,
+                    inline: true,
+                },
+                {
+                    name: 'Bot',
+                    value: message.author.bot,
+                    inline: true,
+                },
+                {
+                    name: 'Streaming',
+                    value: message.author.presence.activities.streaming ? 'Yes' : 'No',
+                    inline: true,
+                },
+                {
+                    name: 'Status',
+                    value: message.author.presence.status,
+                    inline: true,
+                },
+                {
+                    name: 'Device',
+                    value: message.author.presence.clientStatus ? Object.keys(message.author.presence.clientStatus)[0] : 'Offline',
+                    inline: true,
+                }],
                 timestamp: new Date(),
                 footer: {
                     icon_url: message.author.avatarURL,
