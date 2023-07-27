@@ -22,28 +22,28 @@ function sendPokemonInfo(species, message, data) {
                 icon_url: bot.user.avatarURL
             },
             thumbnail: {
-                url: isShiny ? result.sprites.front_shiny : result.sprites.front_default
+                url: data.isShiny ? data.result.sprites.front_shiny : data.result.sprites.front_default
             },
-            title: result.name[0].toUpperCase() + result.name.substring(1),
+            title: data.result.name[0].toUpperCase() + data.result.name.substring(1),
             description: species.flavor_text_entries[0].flavor_text.replace(/[\n\r]/g, ' '),
             fields: [
                 {
                     name: 'id',
-                    value: result.id,
+                    value: data.result.id,
                 },
                 {
-                    name: result.types.length > 1 ? 'Types' : 'Type',
-                    value: result.types.length > 1 ? result.types[0].type.name + ', ' + result.types[1].type.name :  result.types[0].type.name,
+                    name: data.result.types.length > 1 ? 'Types' : 'Type',
+                    value: data.result.types.length > 1 ? data.result.types[0].type.name + ', ' + data.result.types[1].type.name :  data.result.types[0].type.name,
                     inline: true,
                 },
                 {
                     name: 'Height',
-                    value: result.height,
+                    value: data.result.height,
                     inline: true,
                 },
                 {
                     name: 'Weight',
-                    value: result.weight,
+                    value: data.result.weight,
                     inline: true,
                 },
             ],
