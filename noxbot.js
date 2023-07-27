@@ -1,6 +1,6 @@
 
 var Discord = require('discord.js');
-var commands = require("./Modules/index.js");
+var modules = require("./Modules/index.js");
 require('dotenv').config();
 var activities = require('./Modules/activities.js');
 var pointSystem = require('./Modules/pointSystem.js');
@@ -33,7 +33,7 @@ bot.on('disconnect', function(errMsg, code) {
 });
 
 bot.on('message', function (message) {
-    commands.commands(message);
+    modules.modules(message);
     //pointSystem.addPoints(message.author.id, "Chatting in Discord");
 });
 
