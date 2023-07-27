@@ -1,13 +1,13 @@
 exports.reportError = function(error, errorCode = null, errorDescription = null, host = null) {
     if (error) {
-        console.log(error);
         var errorGuild = bot.guilds.find(guild => guild.id === '938558244924829756')
         if(!errorGuild) {
             return;
-        }
-        var errChannel = errorGuild.channels.find(channel => channel.id === '952332413344825404'); // #crash_logs in Nox's Server
-        if (!errChannel) {
-            return;
+        } else {
+            var errChannel = errorGuild.channels.find(channel => channel.id === '952332413344825404'); // #crash_logs in Nox's Server
+            if (!errChannel) {
+                return;
+            }
         }
         errCode = "500";
         errMessage = "Unknown error";
