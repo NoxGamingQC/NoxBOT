@@ -2,15 +2,18 @@ var request = require("../../../request.js");
 
 exports.response = function(isShiny, search, message) {
     var url = 'https://pokeapi.co/api/v2/pokemon/' + search;
-    getSpecies(message, request.get(url, "get", message));
+    request.get(url, "get",getSpecies, message, {
+        isShiny: isShiny
+    });
 }
 
-function getSpecies(message, result) {
+function getSpecies(result, message, data) {
     getSpeciesURL = result.species.url;
-    sendPokemonInfo(message, result, request.get(getSpeciesURL, "get", message));
+    data.result = result;
+    request.get(getSpeciesURL, "get", sendPokemonInfo, message, data)
 }
 
-function sendPokemonInfo(message, result, species) {
+function sendPokemonInfo(species, message, data) {
     message.channel.send({
         embed: {
             color: process.env.SUCCESS_COLOR,
