@@ -4,6 +4,7 @@ exports.get = function(url, requestType, message = null) {
         url: url,
         type: requestType,
         success: function (response) {
+            console.log('response: '+response);
             return {
                 'code': 200,
                 'response': response
