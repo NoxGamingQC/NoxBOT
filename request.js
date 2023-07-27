@@ -6,7 +6,9 @@ exports.get = function(url, requestType, message = null, _callback = null) {
             return response;
         },
         complete: function () { 
-            _callback();    
+            if(_callback) {
+                _callback();    
+            }
         },
         error: function(error){
             if(message) {
