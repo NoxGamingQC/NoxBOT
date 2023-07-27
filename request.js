@@ -1,4 +1,4 @@
-exports.get = function(url, requestType, message = null, _callback) {
+exports.get = function(url, requestType, message = null, _callback = null) {
     $.ajax({
         url: url,
         type: requestType,
