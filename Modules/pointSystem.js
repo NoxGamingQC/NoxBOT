@@ -15,13 +15,6 @@ exports.addPoints = function(userID, comment) {
             points: process.env.BASE_POINT,
             mulitplier: process.env.POINT_MULTIPLIER,
             comment: comment
-        },
-        success: function() {
-            console.log('success')
-        },
-        error: function(error) {
-            console.log('An error occured:');
-            console.log(error);
         }
     });
 };
