@@ -24,10 +24,10 @@ function sendToDiscord(result, message, data) {
                 icon_url: bot.user.avatarURL
             },
             image: {
-                url: "https://crafthead.net/armor/body/" + username
+                url: "https://crafthead.net/armor/body/" + data.username
             },
             title: result + ' Minecraft skin',
-            description: 'Minecraft UUID' + `${result.id.uuid.substr(0, 8)}-${result.id.uuid.substr(8, 4)}-${result.id.uuid.substr(12, 4)}-${result.id.uuid.substr(16, 4)}-${result.id.uuid.substr(20, 12)}`,
+            description: 'UUID: ' + result.id.substr(0, 8) + "-" + result.id.substr(8, 4) + "-" + result.id.substr(12, 4) + "-" + result.id.substr(16, 4) + "-" + result.id.substr(20, 12),
         
             timestamp: new Date(),
             footer: {
