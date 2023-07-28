@@ -4,6 +4,7 @@ var music = require("./Basic/music/index.js");
 var pokemon = require("./Basic/pokemon/index.js");
 var utility = require("./Basic/utilities/index.js");
 var minecraft = require("./Basic/minecraft/index.js");
+var link = require("./Basic/link.js");
 
 exports.modules = function(message) {
     help.command(message);
