@@ -34,7 +34,9 @@ bot.on('disconnect', function(errMsg, code) {
 
 bot.on('message', function (message) {
     modules.modules(message);
-    //pointSystem.addPoints(message.author.id, "Chatting in Discord");
+    if(pointSystem.isActive()) {
+        pointSystem.addPoints(message.author.id, "Chatting in Discord server: " + message.guild.name + ' (' + message.guild.id + ')');
+    }
 });
 
 function updateByTime() {
