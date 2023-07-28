@@ -6,7 +6,7 @@ exports.command = function(message) {
                 type: "POST",
                 data: {
                     website_token: process.env.WEBSITE_TOKEN,
-                    discord_id: userID,
+                    discord_id: message.author.id,
                     platform: 'discord'
                 },
                 success: function(result) {
