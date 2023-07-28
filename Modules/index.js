@@ -6,7 +6,8 @@ var utility = require("./Basic/utilities/index.js");
 
 exports.modules = function(message) {
     help.command(message);
-    music.module(message);
+    //music.module(message);
     pokemon.module(message);
     utility.commands(message);
+    minecraft.module(message)
 };
