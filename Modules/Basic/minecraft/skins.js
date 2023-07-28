@@ -9,10 +9,11 @@ exports.command = function(message) {
 
 function getMinecraftUserinfo(message, username) {
     var url = "https://crafthead.net/profile/" + username;
-    request.get(url, "get", sendToDiscord, message);
+    data.username = username;
+    request.get(url, "get", sendToDiscord, message, data);
 }
 
-function sendToDiscord(result, message) {
+function sendToDiscord(result, message, data) {
     message.channel.send({
         embed: {
             color: process.env.SUCCESS_COLOR,
