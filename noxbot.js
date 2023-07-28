@@ -35,8 +35,10 @@ bot.on('disconnect', function(errMsg, code) {
 bot.on('message', function (message) {
     modules.modules(message);
     if(pointSystem.isActive()) {
-        var comment = "Chatting in a Discord server: " + message.guild.name + ' (' + message.guild.id + ')';
-        pointSystem.addPoints(message.author.id, comment);
+        if(message.guild) {
+            var comment = "Chatting in a Discord server: " + message.guild.name + ' (' + message.guild.id + ')';
+            pointSystem.addPoints(message.author.id, comment);
+        }
     }
 });
 
