@@ -9,7 +9,9 @@ exports.command = function(message) {
 
 function getMinecraftUserinfo(message, username) {
     var url = "https://crafthead.net/profile/" + username;
-    data.username = username;
+    var data = {
+        username: username;
+    }
     request.get(url, "get", sendToDiscord, message, data);
 }
 
