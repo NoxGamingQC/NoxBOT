@@ -1,4 +1,4 @@
-exports.isActive() = function(userID) {
+exports.isActive = function(userID) {
     if(process.env.WEBSITE_API_LINK && process.env.WEBSITE_TOKEN && process.env.ENVIRONEMENT == 'production') {
         return true;
     }
