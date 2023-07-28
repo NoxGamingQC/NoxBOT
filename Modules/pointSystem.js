@@ -1,5 +1,5 @@
 exports.isActive() = function(userID) {
-    if(process.env.WEBSITE_BASE_LINK && process.env.WEBSITE_TOKEN && process.env.ENVIRONEMENT == 'production') {
+    if(process.env.WEBSITE_API_LINK && process.env.WEBSITE_TOKEN && process.env.ENVIRONEMENT == 'production') {
         return true;
     }
     return false;
