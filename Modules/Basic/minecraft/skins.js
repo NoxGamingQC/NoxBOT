@@ -26,8 +26,8 @@ function sendToDiscord(result, message, data) {
             image: {
                 url: "https://crafthead.net/armor/body/" + data.username
             },
-            title: result + ' Minecraft skin',
-            description: 'UUID: ' + result.id.substr(0, 8) + "-" + result.id.substr(8, 4) + "-" + result.id.substr(12, 4) + "-" + result.id.substr(16, 4) + "-" + result.id.substr(20, 12),
+            title: result.json().name + ' Minecraft skin',
+            description: 'UUID: ' + result.json().id.substr(0, 8) + "-" + result.json().id.substr(8, 4) + "-" + result.json().id.substr(12, 4) + "-" + result.json().id.substr(16, 4) + "-" + result.json().id.substr(20, 12),
         
             timestamp: new Date(),
             footer: {
