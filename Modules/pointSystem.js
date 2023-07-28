@@ -8,7 +8,7 @@ exports.isActive = function(userID) {
 exports.addPoints = function(userID, comment) {
     $.ajax({
         url: process.env.WEBSITE_BASE_LINK + "points/add",
-        type: "post",
+        type: "GET",
         data: {
             website_token: process.env.WEBSITE_TOKEN,
             discord_id: userID,
