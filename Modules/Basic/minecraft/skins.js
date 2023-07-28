@@ -1,3 +1,5 @@
+var request = require("../../../request.js");
+
 exports.command = function(message) {
     if (message.content.includes(process.env.PREFIX + 'skin')) {
         var username = message.content.split(process.env.PREFIX + 'skin ', 2)[1];
