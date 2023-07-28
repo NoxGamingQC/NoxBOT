@@ -10,8 +10,8 @@ exports.addPoints = function(userID, comment) {
         url: process.env.WEBSITE_BASE_LINK + "points/add",
         type: "post",
         data: {
-            websiteToken: process.env.WEBSITE_TOKEN,
-            botID: bot.user.id,
+            website_token: process.env.WEBSITE_TOKEN,
+            bot_id: bot.user.id,
             discord_id: userID,
             points: process.env.BASE_POINT,
             mulitplier: process.env.POINT_MULTIPLIER,
