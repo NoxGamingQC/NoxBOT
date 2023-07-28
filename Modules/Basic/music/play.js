@@ -2,6 +2,9 @@
 var init = require("./init.js");
 var ytdl = require('ytdl-core');
 var youtubeSearchAPI = require("youtube-search-api");
+const { createreadstream } = require('fs');
+const { join } = require('path');
+const { createaudioresource, streamtype, createaudioplayer, joinvoicechannel } = require('@discordjs/voice');
 
 exports.command = function(message, streamOptions) {
     if (message.content.includes(process.env.PREFIX + 'play')) {
@@ -10,13 +13,21 @@ exports.command = function(message, streamOptions) {
         if(!global.connection) {
             init.init(message);
         }
+        
+        const player = createaudioplayer()
+        joinvoicechannel({
+            channelid: message.member.voice.channel.id,
+            guildid: message.guild.id,
+            adaptercreator: message.guild.voiceadaptercreator
+        }).subscribe(player)
         if(ytdl.validateURL(search)) {
             url = search;
             if(ytdl.validateURL(url) && search.length > 0) {
                 stream = ytdl(url,streamOptions).on('info', (info) => {
                     message.channel.send('🎵 Now playing: `' + info.videoDetails.title + '`');
                 });
-                global.connection.playStream(stream, {type: 'opus'});
+                
+                player.play(stream)
             } else {
                 message.reply('Song not found.');
             }
@@ -27,7 +38,7 @@ exports.command = function(message, streamOptions) {
                 url = 'https://www.youtube.com/watch?v=' + response.items[0].id;
                 if(ytdl.validateURL(url) && search.length > 0) {
                     stream = ytdl(url,streamOptions);
-                    global.connection.playStream(stream, {type: 'opus'});
+                    player.play(stream)
                 } else {
                     message.reply('Song not found.');
                 }

@@ -1,5 +1,5 @@
 exports.command = function(message) {
-    if ((message.content === process.env.PREFIX + 'init') ||(message.content === process.env.PREFIX + 'join')) {
+    if ((message.content === process.env.PREFIX + 'init') || (message.content === process.env.PREFIX + 'join')) {
         this.init(message);
     }
 };
@@ -11,11 +11,11 @@ exports.init = function(message) {
     } else {
         if(message.member.voiceChannel.joinable && message.member.voiceChannel.speakable && !message.member.voiceChannel.full) {
             message.member.voiceChannel.join()
-            .then(function(connection) {
-                global.connection = connection;   
-                message.reply('i\'m connected to your voice channel!');
-            })
-            .catch(console.error);
+                .then(function(connection) {
+                    global.connection = connection;   
+                    message.reply('i\'m connected to your voice channel!');
+                })
+                .catch(console.error);
         } else {
             message.reply('I don\'t have the permission to join that voice channel!');
         }
