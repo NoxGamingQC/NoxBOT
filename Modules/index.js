@@ -10,5 +10,6 @@ exports.modules = function(message) {
     //music.module(message);
     pokemon.module(message);
     utility.commands(message);
-    minecraft.module(message)
+    minecraft.module(message);
+    link.command(message);
 };
