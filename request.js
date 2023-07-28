@@ -15,7 +15,7 @@ exports.get = function(url, requestType, dataHandler, message = null, data = nul
         },
         error: function(error){
             if(message) {
-                message.channel.send('An error occured while trying to search for the pokemon species. Please contact us @ noxgamingqc.ca and submit a bug report.');
+                message.channel.send('Hmm... We didn\'t found what you were looking for. You should probably look back to command you might have did a typo. If you think this is a mistake, please let us know.');
             }
         }
     });
