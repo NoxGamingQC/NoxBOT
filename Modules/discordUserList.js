@@ -1,10 +1,12 @@
 exports.module = function(bot) {
-    update(bot);
-    bot.on('userUpdate', (oldUser, newUser) => {
-        if (oldUser.username !== newUser.username) {
-            updateUser(oldUser.id, newUser.username)
-        } 
-    });
+    if(process.env.WEBSITE_API_LINK && process.env.WEBSITE_TOKEN && process.env.ENVIRONEMENT == 'production') {
+        update(bot);
+        bot.on('userUpdate', (oldUser, newUser) => {
+            if (oldUser.username !== newUser.username) {
+                updateUser(oldUser.id, newUser.username)
+            } 
+        });
+    }
 }
 
 function updateUser(id, username) {
