@@ -1,6 +1,6 @@
-exports.command = function(message) {
+exports.command = function(message, prefix) {
     if(message.channel.type === 'dm') {
-        if (message.content === process.env.PREFIX + 'link') {
+        if (message.content === prefix + 'link') {
             $.ajax({
                 url: process.env.WEBSITE_API_LINK + "link/new",
                 type: "POST",

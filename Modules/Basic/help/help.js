@@ -1,5 +1,5 @@
-exports.command = function(message) {
-    if (message.content === process.env.PREFIX + 'help') {
+exports.command = function(message, prefix) {
+    if (message.content === prefix + 'help') {
         if (message.guild) {
             message.channel.send({
                 embed: {

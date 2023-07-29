@@ -1,5 +1,5 @@
-exports.command = function(message) {
-    if (message.content === process.env.PREFIX + 'ping') {
+exports.command = function(message, prefix) {
+    if (message.content === prefix + 'ping') {
         message.channel.send({
             embed: {
                 color: process.env.SUCCESS_COLOR,

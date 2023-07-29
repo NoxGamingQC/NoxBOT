@@ -3,9 +3,9 @@ var ping = require("./ping.js");
 var user = require("./user.js");
 var server = require("./server.js");
 
-exports.commands = function(message) {
-    invite.command(message);
-    ping.command(message);
-    user.command(message);
-    server.command(message);
+exports.commands = function(message, prefix) {
+    invite.command(message, prefix);
+    ping.command(message, prefix);
+    user.command(message, prefix);
+    server.command(message, prefix);
 };
