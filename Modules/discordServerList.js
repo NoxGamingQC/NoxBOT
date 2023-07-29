@@ -16,3 +16,13 @@ exports.updateServer = function(id, name, avatarURL) {
         });
     }
 }
+
+exports.getServerConfig = function(id) {
+    $.ajax({
+        url: process.env.WEBSITE_API_LINK + "discord/config/get/" + id,
+        type: "GET",
+        success: function(result) {
+            return result;
+        }
+    });
+}
