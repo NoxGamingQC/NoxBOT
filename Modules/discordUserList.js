@@ -9,18 +9,20 @@ exports.module = function(bot) {
 }
 
 exports.updateUser = function(id, username, avatarURL) {
-    var user = {};
-    user[id] = {
-        id: id,
-        username: username,
-        avatar_url: avatarURL
-    }
-    $.ajax({
-        url: process.env.WEBSITE_API_LINK + "discord/update",
-        type: "POST",
-        data: {
-            website_token: process.env.WEBSITE_TOKEN,
-            users: user,
+    if(process.env.WEBSITE_API_LINK && process.env.WEBSITE_TOKEN && process.env.ENVIRONEMENT == 'production') {
+        var user = {};
+        user[id] = {
+            id: id,
+            username: username,
+            avatar_url: avatarURL
         }
-    });
+        $.ajax({
+            url: process.env.WEBSITE_API_LINK + "discord/update",
+            type: "POST",
+            data: {
+                website_token: process.env.WEBSITE_TOKEN,
+                users: user,
+            }
+        });
+    }
 }
