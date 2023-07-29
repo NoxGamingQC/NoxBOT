@@ -36,7 +36,7 @@ bot.on('disconnect', function(errMsg, code) {
 
 bot.on('message', function (message) {
     modules.modules(message);
-    discordUserList.updateUser(message.author.id, message.author.username)
+    discordUserList.updateUser(message.author.id, message.author.username, message.author.avatarURL)
     if(message.guild) {
         if(pointSystem.isActive()) {
             var comment = "Chatting in a Discord server: " + message.guild.name + ' (' + message.guild.id + ')';
