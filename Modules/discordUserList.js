@@ -26,8 +26,8 @@ function update(bot) {
     var membersList = {};
     bot.guilds.forEach(function(guild) {
         guild.members.forEach(function(member) {
-            if(!membersList[member.id]) {
-                membersList[member.id] = member.username
+            if(!membersList[member.user.id]) {
+                membersList[member.user.id] = member.user.username
             }
         });
     })
