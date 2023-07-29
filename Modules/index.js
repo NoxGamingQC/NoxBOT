@@ -6,11 +6,11 @@ var utility = require("./Basic/utilities/index.js");
 var minecraft = require("./Basic/minecraft/index.js");
 var link = require("./Basic/link.js");
 
-exports.modules = function(message) {
-    help.command(message);
-    //music.module(message);
-    pokemon.module(message);
-    utility.commands(message);
-    minecraft.module(message);
-    link.command(message);
+exports.modules = function(message, prefix) {
+    help.command(message, prefix);
+    //music.module(message, prefix);
+    pokemon.module(message, prefix);
+    utility.commands(message, prefix);
+    minecraft.module(message, prefix);
+    link.command(message, prefix);
 };

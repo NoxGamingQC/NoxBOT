@@ -36,16 +36,25 @@ bot.on('disconnect', function(errMsg, code) {
 });
 
 bot.on('message', function (message) {
-    modules.modules(message);
     discordUserList.updateUser(message.author.id, message.author.username, message.author.avatarURL)
     if(message.guild) {
-        if(pointSystem.isActive()) {
+        discordServerList.getServerConfig(message.guild, message, handleMessage);
+        discordServerList.updateServer(message.guild.id, message.guild.name, message.guild.iconURL)
+    } else {
+        modules.modules(message, process.env.PREFIX);
+    }
+});
+
+function handleMessage(message, result) {
+    if(pointSystem.isActive()) {
+        if(result.can_receive_points) {
             var comment = "Chatting in a Discord server: " + message.guild.name + ' (' + message.guild.id + ')';
             pointSystem.addPoints(message.author.id, comment);
         }
-        discordServerList.updateServer(message.guild.id, message.guild.name, message.guild.iconURL)
     }
-});
+    console.log(result.prefix);
+    modules.modules(message, result.prefix);
+}
 
 function updateByTime() {
     setInterval(function () {

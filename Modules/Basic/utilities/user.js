@@ -12,8 +12,8 @@ var statusColor = {
     'offline': 7634829,
 
 };
-exports.command = function(message) {
-    if (message.content === process.env.PREFIX + 'user') {
+exports.command = function(message, prefix) {
+    if (message.content === prefix + 'user') {
         message.channel.send({
             embed: {
                 color: statusColor[message.author.presence.status],
