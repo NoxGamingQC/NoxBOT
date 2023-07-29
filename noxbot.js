@@ -5,6 +5,7 @@ require('dotenv').config();
 var activities = require('./Modules/activities.js');
 var pointSystem = require('./Modules/pointSystem.js');
 var discordUserList = require('./Modules/discordUserList.js');
+var discordServerList = require('./Modules/discordServerList.js');
 var { JSDOM } = require( "jsdom" );
 var { window } = new JSDOM( "" );
 var jQuery = require('jquery')(window);
@@ -42,6 +43,7 @@ bot.on('message', function (message) {
             var comment = "Chatting in a Discord server: " + message.guild.name + ' (' + message.guild.id + ')';
             pointSystem.addPoints(message.author.id, comment);
         }
+        discordServerList.updateServer(message.guild.id, message.guild.name, message.guild.iconURL)
     }
 });
 
