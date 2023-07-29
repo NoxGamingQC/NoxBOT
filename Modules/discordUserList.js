@@ -1,6 +1,6 @@
 exports.module = function(bot) {
-    update(bot)
-    client.on('userUpdate', (oldUser, newUser) => {
+    update(bot);
+    bot.on('userUpdate', (oldUser, newUser) => {
         if (oldUser.username !== newUser.username) {
             updateUser(oldUser.id, newUser.username)
         } 
