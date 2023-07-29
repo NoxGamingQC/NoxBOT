@@ -25,12 +25,15 @@ function updateUser(id, username) {
 function update(bot) {
     var membersList = {};
     bot.guilds.forEach(function(guild) {
-        guild.members.forEach(function(member) {
-            if(!membersList[member.user.id]) {
-                membersList[member.user.id] = member.user.username
-            }
-        });
-    })
+        guild.members.fetch()
+        .then(
+            this.forEach(function(member) {
+                if(!membersList[member.user.id]) {
+                    membersList[member.user.id] = member.user.username
+                }
+            })
+        );
+    });
     console.log(membersList);
     $.ajax({
         url: process.env.WEBSITE_API_LINK + "discord/update",
