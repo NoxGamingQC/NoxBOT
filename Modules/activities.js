@@ -9,5 +9,5 @@ function dataHandler(result) {
     const keys = Object.keys(result);
     const randIndex = Math.floor(Math.random() * keys.length);
     const randKey = keys[randIndex];
-    bot.user.setActivity(result[randKey]);
+    bot.user.setActivity(process.env.PREFIX + result[randKey]);
 }
