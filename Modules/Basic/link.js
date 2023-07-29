@@ -1,4 +1,4 @@
-var discordUserList = require('./Modules/discordUserList.js');
+var discordUserList = require('../discordUserList.js');
 
 exports.command = function(message) {
     if(message.channel.type === 'dm') {
