@@ -1,8 +1,5 @@
-var discordUserList = require('../discordUserList.js');
-
 exports.command = function(message) {
     if(message.channel.type === 'dm') {
-        discordUserList.updateUser(message.author.id, message.author.username)
         if (message.content === process.env.PREFIX + 'link') {
             $.ajax({
                 url: process.env.WEBSITE_API_LINK + "link/new",
