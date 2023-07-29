@@ -2,15 +2,19 @@ exports.module = function(bot) {
     if(process.env.WEBSITE_API_LINK && process.env.WEBSITE_TOKEN && process.env.ENVIRONEMENT == 'production') {
         bot.on('userUpdate', (oldUser, newUser) => {
             if (oldUser.username !== newUser.username) {
-                updateUser(oldUser.id, newUser.username)
+                updateUser(oldUser.id, newUser.username, newUser.avatarURL)
             } 
         });
     }
 }
 
-exports.updateUser = function(id, username) {
+exports.updateUser = function(id, username, avatarURL) {
     var user = {};
-    user[id] = username;
+    user[id] = {
+        id: id,
+        username: username,
+        avatar_url: avatarURL
+    }
     $.ajax({
         url: process.env.WEBSITE_API_LINK + "discord/update",
         type: "POST",
