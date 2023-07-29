@@ -8,7 +8,7 @@ exports.module = function(bot) {
     }
 }
 
-xports.updateUser = function(id, username) {
+exports.updateUser = function(id, username) {
     var user = {};
     user[id] = username;
     $.ajax({
