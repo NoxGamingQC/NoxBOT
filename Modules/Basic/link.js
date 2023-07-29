@@ -12,7 +12,7 @@ exports.command = function(message) {
                 success: function(result) {
                     message.reply('Your token is: ' + result);
                 },
-                error() {
+                error: function() {
                     message.reply('An error happen. Please try again later.');
                 }
             });
