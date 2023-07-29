@@ -52,7 +52,6 @@ function handleMessage(message, result) {
             pointSystem.addPoints(message.author.id, comment);
         }
     }
-    console.log(result.prefix);
     modules.modules(message, result.prefix);
 }
 
