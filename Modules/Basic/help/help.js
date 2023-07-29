@@ -9,7 +9,7 @@ exports.command = function(message) {
                         icon_url: bot.user.avatarURL
                     },
                     thumbnail: {
-                        url: server.iconURL
+                        url: message.guild.iconURL
                     },
                     title: 'Help requested!',
                     description: 'Sorry, but this module is not currently available. Thank you for your patience.',
