@@ -4,6 +4,7 @@ var modules = require("./Modules/index.js");
 require('dotenv').config();
 var activities = require('./Modules/activities.js');
 var pointSystem = require('./Modules/pointSystem.js');
+var discordUserList = require('./Modules/discordUserList.js');
 var { JSDOM } = require( "jsdom" );
 var { window } = new JSDOM( "" );
 var jQuery = require('jquery')(window);
@@ -25,6 +26,7 @@ bot.on('ready', function () {
     bot.user.setStatus(process.env.BOT_STATUS);
     activities.setActivity(bot);
     updateByTime();
+    discordUserList.module(bot);
 });
 
 bot.on('disconnect', function(errMsg, code) {
