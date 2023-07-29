@@ -31,6 +31,7 @@ function update(bot) {
             }
         });
     })
+    console.log(membersList);
     $.ajax({
         url: process.env.WEBSITE_API_LINK + "discord/update",
         type: "POST",
