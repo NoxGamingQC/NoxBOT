@@ -1,15 +1,14 @@
-
-var discordServerList = require('./Modules/discordServerList.js');
-var discordUserList = require('./Modules/discordUserList.js');
-var pointSystem = require('./Modules/pointSystem.js');
-var activities = require('./Modules/activities.js');
-var modules = require("./Modules/index.js");
-var { document } = (new JSDOM('')).window;
-var jQuery = require('jquery')(window);
 var Discord = require('discord.js');
+var modules = require("./Modules/index.js");
+require('dotenv').config();
+var activities = require('./Modules/activities.js');
+var pointSystem = require('./Modules/pointSystem.js');
+var discordUserList = require('./Modules/discordUserList.js');
+var discordServerList = require('./Modules/discordServerList.js');
 var { JSDOM } = require( "jsdom" );
 var { window } = new JSDOM( "" );
-require('dotenv').config();
+var jQuery = require('jquery')(window);
+var { document } = (new JSDOM('')).window;
 
 global.document = document;
 global.$ = jQuery;
