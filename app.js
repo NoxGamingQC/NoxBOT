@@ -20,9 +20,9 @@ discordBot.login(process.env.BOT_TOKEN);
 discordBot.on('ready', function () {
     console.log('Connected to Discord as ' + discordBot.user.username);
     discordBot.user.setStatus(process.env.BOT_STATUS);
-    activities.setActivity(bot);
+    activities.setActivity(discordBot);
     updateByTime();
-    discordUserList.loadChangeEvent(bot);
+    discordUserList.loadChangeEvent(discordBot);
 });
 
 discordBot.on('disconnect', function(errMsg, code) {
