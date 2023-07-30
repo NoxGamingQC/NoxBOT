@@ -26,8 +26,8 @@ function sendPokemonInfo(species, message, data) {
         embed: {
             color: process.env.SUCCESS_COLOR,
             author: {
-                name: bot.user.username + ' - POKéMON',
-                icon_url: bot.user.avatarURL
+                name: discordBot.user.username + ' - POKéMON',
+                icon_url: discordBot.user.avatarURL
             },
             thumbnail: {
                 url: data.isShiny ? data.result.sprites.front_shiny : data.result.sprites.front_default

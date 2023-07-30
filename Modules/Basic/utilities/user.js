@@ -18,8 +18,8 @@ exports.command = function(message, prefix) {
             embed: {
                 color: statusColor[message.author.presence.status],
                 author: {
-                    name: bot.user.username + ' - User information',
-                    icon_url: bot.user.avatarURL
+                    name: discordBot.user.username + ' - User information',
+                    icon_url: discordBot.user.avatarURL
                 },
                 thumbnail: {
                     url: message.author.avatarURL
@@ -37,7 +37,7 @@ exports.command = function(message, prefix) {
                 },
                 {
                     name: 'Bot',
-                    value: message.author.bot,
+                    value: message.author.discordBot,
                     inline: true,
                 },
                 {

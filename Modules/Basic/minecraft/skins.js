@@ -21,8 +21,8 @@ function sendToDiscord(response, message, data) {
         embed: {
             color: process.env.SUCCESS_COLOR,
             author: {
-                name: bot.user.username + ' - MINECRAFT SKIN',
-                icon_url: bot.user.avatarURL
+                name: discordBot.user.username + ' - MINECRAFT SKIN',
+                icon_url: discordBot.user.avatarURL
             },
             image: {
                 url: "https://crafthead.net/armor/body/" + data.username

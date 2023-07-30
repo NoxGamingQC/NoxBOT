@@ -5,8 +5,8 @@ exports.command = function(message, prefix) {
                 embed: {
                     color: process.env.SUCCESS_COLOR,
                     author: {
-                        name: bot.user.username + ' - Server information',
-                        icon_url: bot.user.avatarURL
+                        name: discordBot.user.username + ' - Server information',
+                        icon_url: discordBot.user.avatarURL
                     },
                     thumbnail: {
                         url: message.guild.iconURL
