@@ -1,6 +1,6 @@
 var help = require("./help/help.js");
 var linkAccount = require("./linkAccount.js");
-var minecraftSkins = require("./skins.js");
+var minecraftSkins = require("./minecraft/skins.js");
 var getPokemonInformation = require("./pokemon/getPokemon.js");
 var invite = require("./utilities/invite.js");
 var ping = require("./utilities/ping.js");
