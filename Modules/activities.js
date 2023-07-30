@@ -1,4 +1,4 @@
-var request = require("../request.js");
+var request = require("../Essentials/request.js");
 
 exports.setActivity = function(bot) {
     var url = process.env.WEBSITE_BASE_LINK + "activities";

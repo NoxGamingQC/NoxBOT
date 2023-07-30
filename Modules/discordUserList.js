@@ -1,4 +1,4 @@
-exports.module = function(bot) {
+exports.loadChangeEvent = function(bot) {
     if(process.env.WEBSITE_API_LINK && process.env.WEBSITE_TOKEN && process.env.ENVIRONEMENT == 'production') {
         bot.on('userUpdate', (oldUser, newUser) => {
             if (oldUser.username !== newUser.username) {

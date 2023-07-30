@@ -1,4 +1,4 @@
-var request = require("../../../request.js");
+var request = require("../../../Essentials/request.js");
 
 exports.command = function(message, prefix) {
     if (message.content.includes(prefix + 'skin')) {
