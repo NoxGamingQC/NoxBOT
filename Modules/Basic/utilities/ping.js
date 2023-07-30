@@ -4,14 +4,14 @@ exports.command = function(message, prefix) {
             embed: {
                 color: process.env.SUCCESS_COLOR,
                 author: {
-                    name: bot.user.username + ' - Ping',
-                    icon_url: bot.user.avatarURL
+                    name: discordBot.user.username + ' - Ping',
+                    icon_url: discordBot.user.avatarURL
                 },
                 thumbnail: {
-                    url: bot.user.avatarURL
+                    url: discordBot.user.avatarURL
                 },
                 title: 'Pong',
-                description: `🏓 Latency is ${Math.abs(Date.now() - message.createdTimestamp)}ms. API Latency is ${Math.round(bot.ping)}ms`,
+                description: `🏓 Latency is ${Math.abs(Date.now() - message.createdTimestamp)}ms. API Latency is ${Math.round(discordBot.ping)}ms`,
                 timestamp: new Date(),
                 footer: {
                     icon_url: message.author.avatarURL,

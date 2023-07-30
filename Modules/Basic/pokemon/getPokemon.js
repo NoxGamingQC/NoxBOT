@@ -1,6 +1,14 @@
-var request = require("../../../request.js");
+var request = require("../../../Essentials/request.js");
 
-exports.response = function(isShiny, search, message) {
+exports.command = function(message, prefix) {
+    if (message.content.includes(prefix + 'pokemon') || message.content.includes(prefix + 'shiny')) {
+        var isShiny = message.content.includes(prefix + 'shiny');
+        var pokemonSearchTerms = message.content.split(prefix + (isShiny ? 'shiny ' : 'pokemon '), 2)[1];
+        response(isShiny, pokemonSearchTerms, message);
+    }
+}
+
+function response(isShiny, search, message) {
     var url = 'https://pokeapi.co/api/v2/pokemon/' + search;
     request.get(url, "get",getSpecies, message, {
         isShiny: isShiny
@@ -18,8 +26,8 @@ function sendPokemonInfo(species, message, data) {
         embed: {
             color: process.env.SUCCESS_COLOR,
             author: {
-                name: bot.user.username + ' - POKéMON',
-                icon_url: bot.user.avatarURL
+                name: discordBot.user.username + ' - POKéMON',
+                icon_url: discordBot.user.avatarURL
             },
             thumbnail: {
                 url: data.isShiny ? data.result.sprites.front_shiny : data.result.sprites.front_default
