@@ -38,7 +38,7 @@
     "play-dl": "^1.9.5",
     "semver": "^7.5.4",
     "youtube-search-api": "^1.2.0",
-    "ytdl-core": "^4.11.4"
+    "ytdl-core": "^4.11.5"
   },
   "directories": {
     "doc": "docs"
