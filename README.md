@@ -17,6 +17,7 @@ A multitasking Discord Bot.
 * [Project Status](#project-status)
 * [Acknowledgements](#acknowledgements)
 * [License](#license)
+* [To do](#to-do)
 
 ## General Information
 
@@ -88,6 +89,10 @@ npm start
 ## Project Status
 
 Project is: _in progress_
+
+## To do
+
+- [ ] If the user has an account check their language preference and answer in that language (Required [NoxGamingQC/translation-module-js](https://github.com/NoxGamingQC/translation-module-js)).
 
 ## Acknowledgements
 
