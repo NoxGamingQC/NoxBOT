@@ -1,6 +1,7 @@
 var Discord = require('discord.js');
 var modules = require("./Modules/index.js");
 require('dotenv').config();
+require('./assets/translation-module.js/index')
 var activities = require('./Modules/activities.js');
 var pointSystem = require('./Modules/pointSystem.js');
 var discordUserList = require('./Modules/discordUserList.js');

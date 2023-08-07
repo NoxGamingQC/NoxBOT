@@ -11,7 +11,7 @@ exports.command = function(message, prefix) {
                     thumbnail: {
                         url: message.guild.iconURL
                     },
-                    title: 'Help requested!',
+                    title: trans('help.help_title'),
                     description: 'Sorry, but this module is not currently available. Thank you for your patience.',
                     timestamp: new Date(),
                     footer: {
