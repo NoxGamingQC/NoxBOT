@@ -1,0 +1,3 @@
+[submodule "assets/translation-module-js"]
+	path = assets/translation-module-js
+	url = git@github.com:NoxGamingQC/translation-module-js.git
