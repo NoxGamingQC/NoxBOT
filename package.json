@@ -30,7 +30,7 @@
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.1.0",
     "fs": "^0.0.2",
-    "jquery": "^3.7.0",
+    "jquery": "^3.7.1",
     "jsdom": "^20.0.3",
     "libsodium-wrappers": "^0.7.11",
     "npm": "^9.8.1",
