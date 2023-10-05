@@ -32,7 +32,7 @@
     "fs": "^0.0.2",
     "jquery": "^3.7.0",
     "jsdom": "^20.0.3",
-    "libsodium-wrappers": "^0.7.11",
+    "libsodium-wrappers": "^0.7.13",
     "npm": "^9.8.1",
     "opusscript": "^0.0.6",
     "play-dl": "^1.9.5",
