@@ -34,7 +34,7 @@
     "jsdom": "^20.0.3",
     "libsodium-wrappers": "^0.7.11",
     "npm": "^9.8.1",
-    "opusscript": "^0.0.6",
+    "opusscript": "^0.1.1",
     "play-dl": "^1.9.5",
     "semver": "^7.5.4",
     "youtube-search-api": "^1.2.0",
