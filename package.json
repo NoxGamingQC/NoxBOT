@@ -25,7 +25,7 @@
     "@discordjs/voice": "^0.16.0",
     "bufferutil": "^4.0.6",
     "discord-yt-player": "^1.1.1",
-    "discord.js": "11.6.4",
+    "discord.js": "13.14.0",
     "dotenv": "^16.3.1",
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^5.1.0",
