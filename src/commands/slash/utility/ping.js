@@ -14,7 +14,7 @@ export default function ping (client, commands) {
 
             const ping = reply.createdTimestamp - interaction.createdTimestamp;
 
-            interaction.editReply(`Pong! :ping_pong:\n\n:hourglass: Time: ${ping}ms\n:stopwatch: WS: ${client.ws.ping}ms`);
+            interaction.editReply(`Pong! :ping_pong:\n\n|:hourglass: Client: ${ping}ms\n|:stopwatch: Websocket: ${client.ws.ping}ms`);
         }
     });
 }
