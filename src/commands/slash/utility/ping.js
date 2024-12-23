@@ -1,4 +1,4 @@
-import { Events, WebSocketManager } from 'discord.js';
+import { Events } from 'discord.js';
 
 export default function ping (client, commands) {
     commands.push({
