@@ -8,7 +8,7 @@ export default function ping (client, commands) {
 
     client.on(Events.InteractionCreate, async interaction => {
         if (interaction.commandName === 'ping') {
-            await interaction.reply('Pong!');
+            await interaction.reply('Pong! :ping_pong:\n\n:hourglass: Time: N/A\n:sparkles: Micro: N/A\n:stopwatch: WS: N/A');
         }
     });
 }
