@@ -6,8 +6,9 @@
   "author": "NoxGamingQC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "start": "node --max-old-space-size=4096 ./app.mjs"
+    "start": "node --max-old-space-size=4096 ./app.js"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NoxGamingQC/NoxBOT.git"
