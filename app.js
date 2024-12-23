@@ -1,7 +1,7 @@
 import { Client, Events, GatewayIntentBits, REST, Routes } from 'discord.js';
 import dotenv from 'dotenv'
 import { JSDOM } from 'jsdom';
-import utilityCommands from './commands/slash/utility/index.js';
+import utilityCommands from './src/commands/slash/utility/index.js';
 
 var { window } = new JSDOM( "" );
 
