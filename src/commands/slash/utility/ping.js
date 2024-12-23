@@ -11,7 +11,6 @@ export default function ping (client, commands) {
             await interaction.deferReply();
 
             const reply = await interaction.fetchReply();
-
             const ping = reply.createdTimestamp - interaction.createdTimestamp;
 
             interaction.editReply(`Pong! :ping_pong:\n\n|:hourglass: Client: ${ping}ms\n|:stopwatch: Websocket: ${client.ws.ping}ms`);

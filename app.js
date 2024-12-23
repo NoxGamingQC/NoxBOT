@@ -1,7 +1,7 @@
 import { Client, Events, GatewayIntentBits, REST, Routes } from 'discord.js';
 import dotenv from 'dotenv'
 import { JSDOM } from 'jsdom';
-import utilityCommands from './src/commands/slash/utility/index.js';
+import slashCommands from './src/commands/slash/index.js';
 
 var { window } = new JSDOM( "" );
 
@@ -23,7 +23,7 @@ client.login(process.env.BOT_TOKEN);
 const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
 
 
-utilityCommands(client, commands);
+slashCommands(client, commands);
 
 try {
   console.log('Started refreshing application (/) commands.');
