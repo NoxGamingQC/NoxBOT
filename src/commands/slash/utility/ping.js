@@ -8,12 +8,11 @@ export default function ping (client, commands) {
 
     client.on(Events.InteractionCreate, async interaction  => {
         if (interaction.commandName === 'ping') {
-            await interaction.deferReply();
+            await interaction.deferReply({ephemeral: true});
 
             const reply = await interaction.fetchReply();
             const ping = reply.createdTimestamp - interaction.createdTimestamp;
-
-            interaction.editReply(`Pong! :ping_pong:\n\n|:hourglass: Client: ${ping}ms\n|:stopwatch: Websocket: ${client.ws.ping}ms`);
+            interaction.editReply({ content: `Pong! :ping_pong:\n\n|:hourglass: Client: ${ping}ms\n|:stopwatch: Websocket: ${client.ws.ping}ms`, ephemeral: true});
         }
     });
 }

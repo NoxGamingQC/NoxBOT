@@ -8,7 +8,7 @@ export default function invite (client, commands) {
 
     client.on(Events.InteractionCreate, async interaction  => {
         if (interaction.commandName === 'invite') {
-            interaction.reply(`You can invite your friend to join our server with the link below: ${process.env.DISCORD_INVITE}`);
+            interaction.reply({ content: `You can invite your friend to join our server with the link below: ${process.env.DISCORD_INVITE}`, ephemeral: true});
         }
     });
 }
