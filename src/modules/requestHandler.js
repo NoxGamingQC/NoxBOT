@@ -1,8 +1,14 @@
-exports.get = function(url, requestType, dataHandler, message = null, data = null) {
-    $.ajax({
+import { JSDOM } from 'jsdom';
+import jQuery from 'jquery';
+var { window } = new JSDOM( "" );
+var { document } = (new JSDOM('')).window;
+
+export default function requestHandler(url, requestType, dataHandler, message = null, data = null, client = null) {
+    jQuery(window).ajax({
         url: url,
         type: requestType,
         success: function (response) {
+            console.log(response);
             if(message && data) {
                 dataHandler(response, message, data)
             } else if(message && !data) {

@@ -2,6 +2,7 @@ import { Client, Events, GatewayIntentBits, REST, Routes } from 'discord.js';
 import dotenv from 'dotenv'
 import { JSDOM } from 'jsdom';
 import slashCommands from './src/commands/slash/index.js';
+import setActivity from './src/modules/setActivity.js';
 
 var { window } = new JSDOM( "" );
 
