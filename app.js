@@ -12,7 +12,7 @@ const commands = [];
 
 client.on(Events.ClientReady, readyClient => {
     console.log(`Logged in as ${readyClient.user.tag}!`);
-    client.user.setPresence({ activities: [{ name: 'www.noxgamingqc.ca', type: 'custom'}], status: process.env.BOT_STATUS, afk: true });
+    client.user.setPresence({ activities: [{ name: 'www.noxgamingqc.ca', type: '4'}], status: process.env.BOT_STATUS, afk: true });
 });
 
 client.on(Events.InteractionCreate, async interaction => {
