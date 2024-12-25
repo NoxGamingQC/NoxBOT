@@ -21,6 +21,9 @@ client.on(Events.InteractionCreate, async interaction => {
 
 client.login(process.env.BOT_TOKEN);
 
+
+setActivity(client);
+
 const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
 
 

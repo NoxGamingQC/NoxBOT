@@ -6,6 +6,7 @@ export default function setActivity (client) {
 };
 
 function dataHandler(result) {
+    console.log('applying result')
     const keys = Object.keys(result);
     const randIndex = Math.floor(Math.random() * keys.length);
     const randKey = keys[randIndex];
