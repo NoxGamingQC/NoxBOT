@@ -12,7 +12,7 @@ const commands = [];
 
 client.on(Events.ClientReady, readyClient => {
     console.log(`Logged in as ${readyClient.user.tag}!`);
-    client.user.setStatus(process.env.BOT_STATUS);
+    client.user.setPresence({ activities: [{ name: 'www.noxgamingqc.ca', type: 'custom'}], status: process.env.BOT_STATUS, afk: true });
 });
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -20,9 +20,6 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 client.login(process.env.BOT_TOKEN);
-
-
-setActivity(client);
 
 const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
 
