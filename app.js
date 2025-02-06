@@ -1,4 +1,4 @@
-import { Client, Events, GatewayIntentBits, REST, Routes, ActivityType } from 'discord.js';
+import { Client, Events, GatewayIntentBits, REST, Routes, ActivityType, Emoji } from 'discord.js';
 import dotenv from 'dotenv'
 import { JSDOM } from 'jsdom';
 import basicCommands from './src/basic/commands/index.js';
@@ -12,8 +12,7 @@ const commands = [];
 
 client.on(Events.ClientReady, readyClient => {
     console.log(`Logged in as ${readyClient.user.tag}!`);
-  
-    readyClient.user.setPresence({ activities: [{ name: 'Currently being rewriten.', type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: true });
+    readyClient.user.setPresence({activities: [{name: '🇨🇦 Currently being rewriten. Thanks for your patience.', type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: true });
 });
 
 client.on(Events.InteractionCreate, async interaction => {
