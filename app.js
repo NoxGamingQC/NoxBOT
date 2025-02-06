@@ -1,8 +1,8 @@
-import { Client, Events, GatewayIntentBits, REST, Routes } from 'discord.js';
+import { Client, Events, GatewayIntentBits, REST, Routes, ActivityType } from 'discord.js';
 import dotenv from 'dotenv'
 import { JSDOM } from 'jsdom';
-import slashCommands from './src/commands/slash/index.js';
-import setActivity from './src/modules/setActivity.js';
+import basicCommands from './src/basic/commands/index.js';
+import setActivity from './src/basic/modules/setActivity.js';
 
 var { window } = new JSDOM( "" );
 
@@ -12,7 +12,8 @@ const commands = [];
 
 client.on(Events.ClientReady, readyClient => {
     console.log(`Logged in as ${readyClient.user.tag}!`);
-    client.user.setPresence({ activities: [{ name: 'Currently being rewriten.'/*, type: 'Custom'*/}], status: process.env.BOT_STATUS, afk: true });
+  
+    readyClient.user.setPresence({ activities: [{ name: 'Currently being rewriten.', type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: true });
 });
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -24,7 +25,7 @@ client.login(process.env.BOT_TOKEN);
 const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
 
 
-slashCommands(client, commands);
+basicCommands(client, commands);
 
 try {
   console.log('Started refreshing application (/) commands.');

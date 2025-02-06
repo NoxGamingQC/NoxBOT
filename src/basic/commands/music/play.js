@@ -1,0 +1,16 @@
+import { Events } from 'discord.js';
+
+export default function play (client, commands) {
+    commands.push({
+        name: 'play',
+        description: 'Play some music',
+    });
+
+    client.on(Events.InteractionCreate, async interaction  => {
+        if (interaction.commandName === 'ping') {
+            await interaction.deferReply({ephemeral: true});
+            
+            interaction.editReply({ content: `Song: ? , is currently playing`, ephemeral: true});
+        }
+    });
+}
