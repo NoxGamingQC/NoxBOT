@@ -7,7 +7,7 @@ import setActivity from './src/basic/modules/setActivity.js';
 var { window } = new JSDOM( "" );
 const global = (0,eval)("this");
 
-const client = new Client({ intents: 641/*[
+const client = new Client({ intents: 131071/*[
     GatewayIntentBits.Guilds,
     //GatewayIntentBits.GuildMessages,
     //GatewayIntentBits.MessageContent,
