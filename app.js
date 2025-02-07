@@ -12,7 +12,8 @@ const client = new Client({ intents: [
     //GatewayIntentBits.GuildMessages,
     //GatewayIntentBits.MessageContent,
     //GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildVoiceState
+    //GatewayIntentBits.GuildVoiceState
+    GUILD_VOICE_STATES
 ] });
 dotenv.config({ path: './.env' });
 const commands = [];
