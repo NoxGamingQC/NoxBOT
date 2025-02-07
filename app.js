@@ -9,9 +9,9 @@ const global = (0,eval)("this");
 
 const client = new Client({ intents: [
     GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-	GatewayIntentBits.MessageContent,
-	GatewayIntentBits.GuildMembers,
+    //GatewayIntentBits.GuildMessages,
+    //GatewayIntentBits.MessageContent,
+    //GatewayIntentBits.GuildMembers,
     GatewayIntentBits.GuildVoiceState
 ] });
 dotenv.config({ path: './.env' });
