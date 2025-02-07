@@ -1,4 +1,5 @@
 import { Events } from 'discord.js';
+import { joinVoiceChannel } from '@discordjs/voice';
 
 export default function play (client, commands) {
     commands.push({
@@ -7,7 +8,7 @@ export default function play (client, commands) {
     });
 
     client.on(Events.InteractionCreate, async interaction  => {
-        if (interaction.commandName === 'ping') {
+        if (interaction.commandName === 'play') {
             await interaction.deferReply({ephemeral: true});
             
             interaction.editReply({ content: `Song: ? , is currently playing`, ephemeral: true});
