@@ -45,7 +45,7 @@
     "sodium": "^3.0.2",
     "@stablelib/xchacha20poly1305": "^2.0.0",
     "@noble/ciphers": "^1.0.0",
-    "@discordjs/opus": "^0.4.0"
+    "@discordjs/opus": "^0.10.0"
   },
   "directories": {
     "doc": "docs"
