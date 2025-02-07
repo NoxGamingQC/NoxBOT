@@ -23,7 +23,7 @@ export default function play (client, commands) {
                     interaction.editReply({ content: `:face_with_spiral_eyes: I had some trouble finding your voice channel. Are you in one?`, ephemeral: true});
                 }
             } catch (error) {
-                interaction.editReply({ content: `:face_with_spiral_eyes: I'm dizzy. Can you send this error to a developper. Thank you. - `+ error, ephemeral: true});
+                interaction.editReply({ content: `:face_with_spiral_eyes: I'm dizzy. Can you send this error to a developper. Thank you. /init - `+ error, ephemeral: true});
             }
             
         }
