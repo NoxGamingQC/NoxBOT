@@ -7,14 +7,14 @@ import setActivity from './src/basic/modules/setActivity.js';
 var { window } = new JSDOM( "" );
 const global = (0,eval)("this");
 
-const client = new Client({ intents: [
+const client = new Client({ intents: 641/*[
     GatewayIntentBits.Guilds,
     //GatewayIntentBits.GuildMessages,
     //GatewayIntentBits.MessageContent,
     //GatewayIntentBits.GuildMembers,
     //GatewayIntentBits.GuildVoiceState
     GUILD_VOICE_STATES
-] });
+] */});
 dotenv.config({ path: './.env' });
 const commands = [];
 
