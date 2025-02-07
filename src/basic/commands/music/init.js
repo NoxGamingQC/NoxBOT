@@ -10,13 +10,17 @@ export default function play (client, commands) {
     client.on(Events.InteractionCreate, async interaction  => {
         if (interaction.commandName === 'init') {
             await interaction.deferReply({ephemeral: true});
-            const connection = joinVoiceChannel({
-                channelId: interaction.member.voice.channel.id,
-                guildId: interaction.member.voice.guild.id,
-                adapterCreator: interaction.member.voice.guild.voiceAdapterCreator
-            });
-            console.log(connection);
-            interaction.editReply({ content: `Connected to voice chat`, ephemeral: true});
+            console.log(interaction.member.voice.channel);
+            if(interaction.member.voice.channel) {
+                const connection = joinVoiceChannel({
+                    channelId: interaction.member.voice.channel.id,
+                    guildId: interaction.member.voice.guild.id,
+                    adapterCreator: interaction.member.voice.guild.voiceAdapterCreator
+                });
+                interaction.editReply({ content: `Connected to voice chat`, ephemeral: true});
+            } else {
+                interaction.editReply({ content: `:face_with_spiral_eyes: I had some trouble finding your voice channel. Are you in one?`, ephemeral: true});
+            }
         }
     });
 }

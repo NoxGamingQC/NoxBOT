@@ -40,3 +40,5 @@ jspm_packages
 *.tgz
 .yarn-integrity
 .env
+package-lock.json
+yarn.lock
