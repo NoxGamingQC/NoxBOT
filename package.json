@@ -2,7 +2,7 @@
   "name": "noxbot",
   "version": "1.0.0",
   "description": "A bot made by NoxGamingQC#0001",
-  "main": "noxbot.js",
+  "main": "app.js",
   "author": "NoxGamingQC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
@@ -14,7 +14,6 @@
     "url": "git+https://github.com/NoxGamingQC/NoxBOT.git"
   },
   "keywords": [
-    "heroku",
     "discord.js"
   ],
   "license": "MIT",
@@ -37,11 +36,16 @@
     "jsdom": "^20.0.3",
     "libsodium-wrappers": "^0.7.11",
     "npm": "^9.8.1",
-    "opusscript": "^0.0.6",
+    "opusscript": "^0.0.7",
     "play-dl": "^1.9.5",
     "semver": "^7.5.4",
     "youtube-search-api": "^1.2.0",
-    "ytdl-core": "^4.11.5"
+    "ytdl-core": "^4.11.5",
+    "sodium-native": "^3.3.0",
+    "sodium": "^3.0.2",
+    "@stablelib/xchacha20poly1305": "^2.0.0",
+    "@noble/ciphers": "^1.0.0",
+    "@discordjs/opus": "^0.4.0"
   },
   "directories": {
     "doc": "docs"

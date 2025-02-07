@@ -17,7 +17,7 @@ export default function play (client, commands) {
                     guildId: interaction.member.voice.guild.id,
                     adapterCreator: interaction.member.voice.guild.voiceAdapterCreator
                 });
-                interaction.editReply({ content: `Connected to voice chat`, ephemeral: true});
+                interaction.editReply({ content: `:smile: Connected to voice chat`, ephemeral: true});
             } else {
                 interaction.editReply({ content: `:face_with_spiral_eyes: I had some trouble finding your voice channel. Are you in one?`, ephemeral: true});
             }
