@@ -11,16 +11,21 @@ export default function play (client, commands) {
         if (interaction.commandName === 'init') {
             await interaction.deferReply({ephemeral: true});
             console.log(interaction.member.voice.channel);
-            if(interaction.member.voice.channel) {
-                const connection = joinVoiceChannel({
-                    channelId: interaction.member.voice.channel.id,
-                    guildId: interaction.member.voice.guild.id,
-                    adapterCreator: interaction.member.voice.guild.voiceAdapterCreator
-                });
-                interaction.editReply({ content: `:smile: Connected to voice chat`, ephemeral: true});
-            } else {
-                interaction.editReply({ content: `:face_with_spiral_eyes: I had some trouble finding your voice channel. Are you in one?`, ephemeral: true});
+            try {
+                if(interaction.member.voice.channel) {
+                    const connection = joinVoiceChannel({
+                        channelId: interaction.member.voice.channel.id,
+                        guildId: interaction.member.voice.guild.id,
+                        adapterCreator: interaction.member.voice.guild.voiceAdapterCreator
+                    });
+                    interaction.editReply({ content: `:smile: Connected to voice chat`, ephemeral: true});
+                } else {
+                    interaction.editReply({ content: `:face_with_spiral_eyes: I had some trouble finding your voice channel. Are you in one?`, ephemeral: true});
+                }
+            } catch (error) {
+                interaction.editReply({ content: `:face_with_spiral_eyes: I'm dizzy. Can you send this error to a developper. Thank you. - `+ error, ephemeral: true});
             }
+            
         }
     });
 }
