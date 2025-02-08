@@ -1,4 +1,4 @@
-import { Events } from 'discord.js';
+import { Events, MessageFlags } from 'discord.js';
 
 export default function ping (client, commands) {
     commands.push({
@@ -12,7 +12,7 @@ export default function ping (client, commands) {
 
             const reply = await interaction.fetchReply();
             const ping = reply.createdTimestamp - interaction.createdTimestamp;
-            interaction.editReply({ content: `Pong! :ping_pong:\n\n|:hourglass: Client: ${ping}ms\n|:stopwatch: Websocket: ${client.ws.ping}ms`, ephemeral: true});
+            interaction.editReply({ content: `Pong! :ping_pong:\n\n|:hourglass: Client: ${ping}ms\n|:stopwatch: Websocket: ${client.ws.ping}ms`, flags: MessageFlags.Ephemeral});
         }
     });
 }

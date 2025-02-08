@@ -1,4 +1,4 @@
-import { Events } from 'discord.js';
+import { Events, MessageFlags } from 'discord.js';
 import { joinVoiceChannel } from '@discordjs/voice';
 
 export default function play (client, commands) {
@@ -17,12 +17,12 @@ export default function play (client, commands) {
                         guildId: interaction.member.voice.guild.id,
                         adapterCreator: interaction.member.voice.guild.voiceAdapterCreator
                     });
-                    interaction.editReply({ content: `:smile: Connected to voice chat`, ephemeral: true});
+                    interaction.editReply({ content: `:smile: Connected to voice chat`, flags: MessageFlags.Ephemeral});
                 } else {
-                    interaction.editReply({ content: `:face_with_spiral_eyes: I had some trouble finding your voice channel. Are you in one?`, ephemeral: true});
+                    interaction.editReply({ content: `:face_with_spiral_eyes: I had some trouble finding your voice channel. Are you in one?`, flags: MessageFlags.Ephemeral});
                 }
             } catch (error) {
-                interaction.editReply({ content: `:face_with_spiral_eyes: I'm dizzy. Can you send this error to a developper. Thank you. Error happen durring \`/init\``, ephemeral: true});
+                interaction.editReply({ content: `:face_with_spiral_eyes: I'm dizzy. Can you send this error to a developper. Thank you. Error happen durring \`/init\``, flags: MessageFlags.Ephemeral});
             }
             
         }
