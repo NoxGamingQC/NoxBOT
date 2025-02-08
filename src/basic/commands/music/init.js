@@ -18,12 +18,12 @@ export default function play (client, commands) {
                         guildId: interaction.member.voice.guild.id,
                         adapterCreator: interaction.member.voice.guild.voiceAdapterCreator
                     });
-                    interaction.editReply({ content: `:smile: Connected to voice chat`, ephemeral: true});
+                    currentInteraction.editReply({ content: `:smile: Connected to voice chat`, ephemeral: true});
                 } else {
-                    interaction.editReply({ content: `:face_with_spiral_eyes: I had some trouble finding your voice channel. Are you in one?`, ephemeral: true});
+                    currentInteraction.editReply({ content: `:face_with_spiral_eyes: I had some trouble finding your voice channel. Are you in one?`, ephemeral: true});
                 }
             } catch (error) {
-                interaction.editReply({ content: `:face_with_spiral_eyes: I'm dizzy. Can you send this error to a developper. Thank you. /init - `+ error, ephemeral: true});
+                currentInteraction.editReply({ content: `:face_with_spiral_eyes: I'm dizzy. Can you send this error to a developper. Thank you. /init - `+ error, ephemeral: true});
             }
             
         }

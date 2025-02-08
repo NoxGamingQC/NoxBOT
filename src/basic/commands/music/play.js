@@ -1,5 +1,4 @@
 import { Events } from 'discord.js';
-import { joinVoiceChannel } from '@discordjs/voice';
 
 export default function play (client, commands) {
     commands.push({
