@@ -42,3 +42,4 @@ jspm_packages
 .env
 package-lock.json
 yarn.lock
+start.sh
