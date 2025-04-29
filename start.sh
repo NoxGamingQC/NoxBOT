@@ -1,3 +1,5 @@
 #!/bin/bash
 
-npm start app.js
+npm start /home/noxgamingqc/NoxBOT/app.js
+
+bash /home/noxgamingqc/NoxBOT/start.sh
