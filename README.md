@@ -58,6 +58,7 @@ Below is a list of technology that we used. For some package you might need to v
 * Install git: `sudo apt-get install git`
 * Install ssh: `sudo apt-get install ssh`
 * Install npm: `sudo apt-get install npm`
+* A dependency requires libtool so you will need to install it `sudo apt-get install libtool`
 * Generate an ssh key: `ssh keygen`
 * Accept the default location
 * Enter a password
