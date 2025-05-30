@@ -23,6 +23,8 @@
   "homepage": "https://github.com/NoxGamingQC/NoxBOT#readme",
   "dependencies": {
     "@discordjs/voice": "^0.16.1",
+    "@noble/ciphers": "^1.0.0",
+    "@stablelib/xchacha20poly1305": "^2.0.0",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
     "bufferutil": "^4.0.6",
@@ -39,13 +41,12 @@
     "opusscript": "^0.0.7",
     "play-dl": "^1.9.5",
     "semver": "^7.5.4",
-    "youtube-search-api": "^1.2.0",
-    "ytdl-core": "^4.11.5",
-    "sodium-native": "^3.3.0",
     "sodium": "^3.0.2",
-    "@stablelib/xchacha20poly1305": "^2.0.0",
-    "@noble/ciphers": "^1.0.0",
-    "@discordjs/opus": "^0.10.0"
+    "@discordjs/opus": "^0.10.0",
+    "sodium-native": "^3.3.0",
+    "ws": "^8.18.2",
+    "youtube-search-api": "^1.2.0",
+    "ytdl-core": "^4.11.5"
   },
   "directories": {
     "doc": "docs"
