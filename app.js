@@ -173,6 +173,7 @@ async function registerEventSubListeners() {
 	} else {
 		const data = await response.json();
 		console.log(`Subscribed to channel.chat.message [${data.data[0].id}]`);
+    sendChatMessage("Connected to chat.")
 	}
 }
 
