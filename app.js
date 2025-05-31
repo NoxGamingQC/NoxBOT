@@ -45,12 +45,11 @@ let twitchData = await fetch('https://www.noxgamingqc.ca/api/noxbot/twitch/setup
 
 if (twitchData.status == 200){
 	let data = await twitchData.json();
-	const TWITCH_BOT_USER_ID = data.data.bot_id; // This is the User ID of the chat bot
-	const TWITCH_OAUTH_TOKEN = data.data.oauth_token; // Needs scopes user:bot, user:read:chat, user:write:chat
+	const TWITCH_BOT_USER_ID = data.data.bot_id;
+	const TWITCH_OAUTH_TOKEN = data.data.oauth_token;
 	const TWITCH_CLIENT_ID = data.data.client_id;
 
-	const CHAT_CHANNEL_USER_ID = data.data.streamers.noxgamingqc; // This is the User ID of the channel that the bot will join and listen to chat messages of
-
+	const CHAT_CHANNEL_USER_ID = data.data.streamers.noxgamingqc;
 	const EVENTSUB_WEBSOCKET_URL = 'wss://eventsub.wss.twitch.tv/ws';
 
 	var websocketSessionID;
