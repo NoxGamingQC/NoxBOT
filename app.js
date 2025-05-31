@@ -36,7 +36,7 @@ client.on(Events.ClientReady, readyClient => {
 
 //twitch
 
-let twitchData = await fetch('', {
+let twitchData = await fetch('https://www.noxgamingqc.ca/api/noxbot/twitch/setup/' + process.env.WEBSITE_TOKEN, {
 	method:'GET',
 	headers: {
 
@@ -44,11 +44,12 @@ let twitchData = await fetch('', {
 });
 
 if (twitchData.status == 200){
-	const TWITCH_BOT_USER_ID = '1317402674'; // This is the User ID of the chat bot
-	const TWITCH_OAUTH_TOKEN = process.env.TWITCH_USER_ACCESS_TOKEN; // Needs scopes user:bot, user:read:chat, user:write:chat
-	const TWITCH_CLIENT_ID = process.env.TWITCH_CLIENT_ID;
+	let data = await twitchData.json();
+	const TWITCH_BOT_USER_ID = data.data.bot_id; // This is the User ID of the chat bot
+	const TWITCH_OAUTH_TOKEN = data.data.oauth_token; // Needs scopes user:bot, user:read:chat, user:write:chat
+	const TWITCH_CLIENT_ID = data.data.client_id;
 
-	const CHAT_CHANNEL_USER_ID = '74102850'; // This is the User ID of the channel that the bot will join and listen to chat messages of
+	const CHAT_CHANNEL_USER_ID = data.data.streamers.noxgamingqc; // This is the User ID of the channel that the bot will join and listen to chat messages of
 
 	const EVENTSUB_WEBSOCKET_URL = 'wss://eventsub.wss.twitch.tv/ws';
 
@@ -199,8 +200,8 @@ if (twitchData.status == 200){
 		}
 	}
 } else {
-	let data = await response.json();
-	console.error("Unable to fetch Twitch data:  " + response.status);
+	let data = await twitchData.json();
+	console.error("Unable to fetch Twitch data:  " + twitchData.status);
 	console.error(data);
 }
 
