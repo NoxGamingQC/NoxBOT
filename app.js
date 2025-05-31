@@ -173,10 +173,22 @@ async function registerEventSubListeners() {
 	} else {
 		const data = await response.json();
 		console.log(`Subscribed to channel.chat.message [${data.data[0].id}]`);
-    sendChatMessage("Connected to chat.")
+		sendChatMessage('Connected to chat');
+		var announcements = Array(
+			'/announcepurple Soyez de la course en nous rejoignant sur Discord au https://discord.gg/PryKE2Xvrh',
+			'/announcepurple Join the racetrack on Discord at https://discord.gg/PryKE2Xvrh',
+			'/announcepurple Suivez NoxGamingQC sur YouTube pour du contenu exclusif: https://www.youtube.com/@noxgamingqc',
+			'/announcepurple Follow NoxGamingQC\'s YouTube Channel for some awesome content: https://www.youtube.com/@noxgamingqc',
+			'/announcepurple Vous voulez acheter un jeux sans vous ruiner, Instant Gaming vends des clés de jeux à très bas prix: https://www.instant-gaming.com/en/?igr=NoxGamingQC',
+			'/announcepurple Want to buy some game and want to saves on them, Instant Gaming sells game key at a cheap price: https://www.instant-gaming.com/en/?igr=NoxGamingQC',
+			'/announcepurple Vous voulez acheter un jeux et donner cet argent pour la charité? Humble Bundle est là pour vous!: https://www.humblebundle.com/?partner=noxgamingqc',
+			'/announcepurple Want to buy some games and gives that money to charity instead? Humble Bundle is there for you!: https://www.humblebundle.com/?partner=noxgamingqc'
+		)
+		setInterval(function() {
+			sendChatMessage(announcements[Math.floor(Math.random()*announcements.length)]);
+		}, 900000);
 	}
 }
-
 
 
 //miscs
