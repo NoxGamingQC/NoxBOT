@@ -45,7 +45,7 @@
     "@discordjs/opus": "^0.10.0",
     "sodium-native": "^3.3.0",
     "ws": "^8.18.2",
-    "youtube-search-api": "^1.2.0",
+    "youtube-search-api": "^2.0.0",
     "ytdl-core": "^4.11.5"
   },
   "directories": {
