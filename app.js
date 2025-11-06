@@ -24,7 +24,7 @@ const commands = [];
 client.on(Events.ClientReady, readyClient => {
     console.log(`Logged in as ${readyClient.user.tag}!`);
     global.bot = readyClient;
-    readyClient.user.setPresence({activities: [{name: '🇨🇦 Currently being rewriten. Thanks for your patience.', state: '🇨🇦 Currently being rewriten. Thanks for your patience.', type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: false });
+    readyClient.user.setPresence({activities: [{name: '🇨🇦 Currently being rewriten. Thanks for your patience.', state: '🇨🇦 Currently being rewriten. Thanks for your patience.', type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: process.env.IS_AFK });
   });
   
   client.on(Events.InteractionCreate, async interaction => {
@@ -79,7 +79,6 @@ if (twitchData.status == 200){
 			let data = await response.json();
 			console.error("Token is not valid. /oauth2/validate returned status code " + response.status);
 			console.error(data);
-			process.exit(1);
 		}
 
 		console.log("Validated token.");
