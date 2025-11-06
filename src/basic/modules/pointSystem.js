@@ -21,6 +21,8 @@ export default function pointSystem (client, commands) {
             });
             if (response.status != 200) {
                 console.log("Error when trying to send points data: " + response.status);
+            } else {
+                console.log("Points data sent successfully.");
             }
         }
     });
