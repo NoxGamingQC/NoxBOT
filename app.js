@@ -2,6 +2,7 @@ import { Client, Events, GatewayIntentBits, REST, Routes, ActivityType, Emoji } 
 import dotenv from 'dotenv'
 import { JSDOM } from 'jsdom';
 import basicCommands from './src/basic/commands/index.js';
+import pointSystem from './src/basic/modules/pointSystem.js';
 import WebSocket from 'ws';
 
 var { window } = new JSDOM( "" );
@@ -233,7 +234,7 @@ if (twitchData.status == 200){
   
   
   basicCommands(client, commands);
-  
+  pointSystem(client, commands);
   try {
   console.log('Started refreshing application (/) commands.');
 
