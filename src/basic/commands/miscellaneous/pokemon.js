@@ -24,7 +24,6 @@ export default function pokemon (client, commands) {
 				'Authorization': process.env.WEBSITE_TOKEN
 			}
 		});
-            console.log(interaction);
 		if (response.status != 200) {
 			let data = await response.json();
 			console.error("Error when trying to get Pokémon data: " + response.status);
@@ -34,7 +33,6 @@ export default function pokemon (client, commands) {
 			let data = await response.json();
             const reply = await interaction.fetchReply();
             const pokemon = reply.createdTimestamp - interaction.createdTimestamp;
-            console.log(client);
             const pokemonInformation = new EmbedBuilder()
                 //.setColor(data.data.color)
                 .setTitle(data.data.name)

@@ -2,7 +2,7 @@ import { Client, Events, GatewayIntentBits, REST, Routes, ActivityType, Emoji } 
 import dotenv from 'dotenv'
 import { JSDOM } from 'jsdom';
 import basicCommands from './src/basic/commands/index.js';
-import setActivity from './src/basic/modules/setActivity.js';
+import pointSystem from './src/basic/modules/pointSystem.js';
 import WebSocket from 'ws';
 
 var { window } = new JSDOM( "" );
@@ -19,13 +19,44 @@ const client = new Client({ intents: 131071/*[
 dotenv.config({ path: './.env' });
 const commands = [];
 
+async function getActivity() {
+	console.log("Fetching Activity data...");
+		let response = await fetch(process.env.WEBSITE_API_LINK + '/noxbot/activity', {
+		method: 'GET',
+		headers: {
+			'Authorization': process.env.WEBSITE_TOKEN
+		}
+	});
+	if (response.status != 200) {
+		let data = await response.json();
+		console.error("Error when trying to get activity data: " + response.status);
+		console.error(data);
+	} else {
+		let data = await response.json();
+		return data.data[0];
+	}
+}
 
 //discord
 client.on(Events.ClientReady, readyClient => {
     console.log(`Logged in as ${readyClient.user.tag}!`);
     global.bot = readyClient;
-    readyClient.user.setPresence({activities: [{name: '🇨🇦 Currently being rewriten. Thanks for your patience.', state: '🇨🇦 Currently being rewriten. Thanks for your patience.', type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: process.env.IS_AFK });
-  });
+	let currentActivity = getActivity().then((activityData) => {
+		readyClient.user.setPresence({activities: [{name: activityData, state: activityData, type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: process.env.IS_AFK });
+	}).catch((error) => {
+		console.error("Failed to fetch activity data");
+		console.error(error);
+	});
+	setInterval(() => {
+		let currentActivity = getActivity().then((activityData) => {
+		readyClient.user.setPresence({activities: [{name: activityData, state: activityData, type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: process.env.IS_AFK });
+
+	}).catch((error) => {
+		console.error("Failed to fetch activity data");
+		console.error(error);
+	});
+  }, 600000); //10 minutes
+});
   
   client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isChatInputCommand()) return;
@@ -209,7 +240,7 @@ if (twitchData.status == 200){
   
   
   basicCommands(client, commands);
-  
+  pointSystem(client, commands);
   try {
   console.log('Started refreshing application (/) commands.');
 
