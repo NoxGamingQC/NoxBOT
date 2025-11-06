@@ -41,6 +41,12 @@ async function getActivity() {
 client.on(Events.ClientReady, readyClient => {
     console.log(`Logged in as ${readyClient.user.tag}!`);
     global.bot = readyClient;
+	let currentActivity = getActivity().then((activityData) => {
+		readyClient.user.setPresence({activities: [{name: activityData, state: activityData, type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: process.env.IS_AFK });
+	}).catch((error) => {
+		console.error("Failed to fetch activity data");
+		console.error(error);
+	});
 	setInterval(() => {
 		let currentActivity = getActivity().then((activityData) => {
 		readyClient.user.setPresence({activities: [{name: activityData, state: activityData, type: ActivityType.Custom}], status: process.env.BOT_STATUS, afk: process.env.IS_AFK });
