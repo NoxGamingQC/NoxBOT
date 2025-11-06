@@ -2,7 +2,6 @@ import { Client, Events, GatewayIntentBits, REST, Routes, ActivityType, Emoji } 
 import dotenv from 'dotenv'
 import { JSDOM } from 'jsdom';
 import basicCommands from './src/basic/commands/index.js';
-import setActivity from './src/basic/modules/setActivity.js';
 import WebSocket from 'ws';
 
 var { window } = new JSDOM( "" );
