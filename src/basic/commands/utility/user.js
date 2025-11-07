@@ -19,7 +19,9 @@ export default function user (client, commands) {
                 .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true, size: 1024 }))
                 .addFields(
                     { name: 'id', value: interaction.user.id, inline: true },
+                    { name: 'Account created', value: interaction.user.createdAt.toDateString(), inline: true },
                     { name: 'Bot', value: interaction.user.bot ? 'Yes' : 'No', inline: true },
+                    { name: 'Streaming', value: presence && presence.activities.some(activity => activity.type === 'STREAMING') ? 'Yes' : 'No', inline: true },
                     { name: 'Username', value: '@' + interaction.user.username, inline: true },
                     { name: 'Status', value: presence ? presence.status : 'offline', inline: true },
                     { name: 'Desktop', value: presence ? (presence.clientStatus.desktop ? presence.clientStatus.desktop : 'Offline') : 'Offline', inline: true },
