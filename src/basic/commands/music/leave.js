@@ -1,24 +1,22 @@
-import { Events, MessageFlags } from 'discord.js';
+import { Events } from 'discord.js';
+import manager from './manager.js';
 
-export default function play (client, commands) {
-    commands.push({
-        name: 'leave',
-        description: 'Leave the voice channel',
-    });
+export default function leave(client, commands) {
+  commands.push({
+    name: 'leave',
+    description: 'Disconnect the bot from the voice channel',
+  });
 
-    client.on(Events.InteractionCreate, async interaction  => {
-        if (interaction.commandName === 'leave') {
-            await interaction.deferReply({ephemeral: true});
-            try {
-                if (global.connection) { 
-                    global.connection.destroy();
-                    interaction.editReply({ content: `:wave: Channel left.`, flags: MessageFlags.Ephemeral});
-                } else {
-                    interaction.editReply({ content: `:thinking: Am I in a voice chat? I can't find the connection. To fix this issue, connect to a voice channel, then use command \`/init\`, so I can reset the connection then do the command \`/leave.\`. If the error persist, please contact a developer. Thank you.`, flags: MessageFlags.Ephemeral});
-                }    
-            } catch {
-                interaction.editReply({ content: `:thinking: Am I in a voice chat? I can't find the connection. To fix this issue, connect to a voice channel, then use command \`/init\`, so I can reset the connection then do the command \`/leave.\`. If the error persist, please contact a developer. Thank you.`, flags: MessageFlags.Ephemeral});
-            }
-        }
-    });
+  client.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isCommand()) return;
+    if (interaction.commandName !== 'leave') return;
+
+    try {
+      await manager.leave(interaction.guildId);
+      return interaction.reply({ content: 'Left voice channel.', ephemeral: true });
+    } catch (err) {
+      console.error('leave', err);
+      return interaction.reply({ content: 'Error while leaving voice channel.', ephemeral: true });
+    }
+  });
 }
