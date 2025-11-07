@@ -12,14 +12,16 @@ export default function user (client, commands) {
             const member = interaction.guild.members.cache.get(interaction.user.id);
             const presence = member.presence;
             const userInformation = new EmbedBuilder()
-                //.setColor(data.data.color)
+                .setColor(presence.status == 'online' ? '#57A75B' : (presence.status == 'idle' ? '#F0B232' : (presence.status == 'dnd' ? '#E94641' : '#80848E')))
                 .setTitle(interaction.user.globalName)
-                .setAuthor({ name: interaction.user.globalName + ' - USER', iconURL: interaction.user.displayAvatarURL({ dynamic: true, size: 1024 }) })
+                .setAuthor({ name: client.user.username + ' - USER', iconURL: client.user.displayAvatarURL({ dynamic: true, size: 1024 }) })
                 .setDescription(presence ? presence.activities.map(activity => activity.name).join(', ') : 'No current activities')
                 .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true, size: 1024 }))
                 .addFields(
                     { name: 'id', value: interaction.user.id, inline: true },
+                    { name: 'Account created', value: interaction.user.createdAt.toDateString(), inline: true },
                     { name: 'Bot', value: interaction.user.bot ? 'Yes' : 'No', inline: true },
+                    { name: 'Streaming', value: presence && presence.activities.some(activity => activity.type === 'STREAMING') ? 'Yes' : 'No', inline: true },
                     { name: 'Username', value: '@' + interaction.user.username, inline: true },
                     { name: 'Status', value: presence ? presence.status : 'offline', inline: true },
                     { name: 'Desktop', value: presence ? (presence.clientStatus.desktop ? presence.clientStatus.desktop : 'Offline') : 'Offline', inline: true },
