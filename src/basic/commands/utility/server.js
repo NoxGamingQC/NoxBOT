@@ -2,17 +2,17 @@ import { Events, MessageFlags, EmbedBuilder } from 'discord.js';
 
 export default function user (client, commands) {
     commands.push({
-        name: 'user',
-        description: 'Display information about you!'
+        name: 'server',
+        description: 'Display information about the current server'
     });
 
     client.on(Events.InteractionCreate, async interaction  => {
-        if (interaction.commandName === 'user') {
+        if (interaction.commandName === 'server') {
             await interaction.deferReply({ephemeral: true});
-            const member = interaction.guild.members.cache.get(interaction.user.id);
-            const presence = member.presence;
+            const server = interaction.guild;
+            console.log(server);
             const userInformation = new EmbedBuilder()
-                .setColor(presence.status == 'online' ? '#57A75B' : (presence.status == 'idle' ? '#F0B232' : (presence.status == 'dnd' ? '#E94641' : '#80848E')))
+                //.setColor(data.data.color)
                 .setTitle(interaction.user.globalName)
                 .setAuthor({ name: client.user.username + ' - USER', iconURL: client.user.displayAvatarURL({ dynamic: true, size: 1024 }) })
                 .setDescription(presence ? presence.activities.map(activity => activity.name).join(', ') : 'No current activities')
