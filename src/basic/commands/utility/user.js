@@ -14,7 +14,7 @@ export default function user (client, commands) {
             const userInformation = new EmbedBuilder()
                 //.setColor(data.data.color)
                 .setTitle(interaction.user.globalName)
-                .setAuthor({ name: interaction.user.globalName + ' - USER', iconURL: interaction.user.displayAvatarURL({ dynamic: true, size: 1024 }) })
+                .setAuthor({ name: client.user.username + ' - USER', iconURL: client.user.displayAvatarURL({ dynamic: true, size: 1024 }) })
                 .setDescription(presence ? presence.activities.map(activity => activity.name).join(', ') : 'No current activities')
                 .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true, size: 1024 }))
                 .addFields(
