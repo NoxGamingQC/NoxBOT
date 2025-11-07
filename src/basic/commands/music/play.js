@@ -101,7 +101,16 @@ export default function play(client, commands) {
 
       let info;
       try {
-        info = await ytdl.getInfo(url);
+        info = await ytdl.getInfo(url, {
+          requestOptions: {
+            headers: {
+              // Avoids some 403 errors
+              "User-Agent":
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+                "(KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+            },
+          },
+        });
       } catch {
         return await interaction.editReply({ content: ":x: Failed to get video info." });
       }
