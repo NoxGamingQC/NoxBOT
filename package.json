@@ -40,7 +40,7 @@
     "jsdom": "^20.0.3",
     "libsodium-wrappers": "^0.7.11",
     "node-fetch": "^2.7.0",
-    "npm": "^9.8.1",
+    "npm": "^11.0.0",
     "opusscript": "^0.0.7",
     "play-dl": "^1.9.5",
     "semver": "^7.5.4",
